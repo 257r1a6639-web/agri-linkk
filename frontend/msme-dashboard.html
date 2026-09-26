@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>MSME Dashboard - AGRI LINKK</title>
+
+
+    <!-- Bootstrap -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+
+    <style>
+
+        body {
+
+            background-color: #f4f7f5;
+
+        }
+
+
+        .navbar-brand {
+
+            font-weight: bold;
+
+        }
+
+
+        .dashboard-header {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0d6efd,
+                    #6610f2
+                );
+
+            color: white;
+
+            padding: 35px;
+
+            border-radius: 15px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .card {
+
+            border: none;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 4px 15px
+                rgba(0, 0, 0, 0.08);
+
+        }
+
+
+        .section-title {
+
+            color: #0d6efd;
+
+            font-weight: bold;
+
+        }
+
+
+        .product-card {
+
+            transition: 0.2s;
+
+        }
+
+
+        .product-card:hover {
+
+            transform:
+                translateY(-4px);
+
+            box-shadow:
+                0 8px 20px
+                rgba(0, 0, 0, 0.12);
+
+        }
+
+
+        .grade-a {
+
+            background-color: #198754;
+
+            color: white;
+
+        }
+
+
+        .grade-b {
+
+            background-color: #ffc107;
+
+            color: black;
+
+        }
+
+
+        .grade-c {
+
+            background-color: #dc3545;
+
+            color: white;
+
+        }
+
+
+        .farmer-info {
+
+            background-color: #f8f9fa;
+
+            border-radius: 10px;
+
+            padding: 12px;
+
+        }
+
+
+        .price {
+
+            font-size: 22px;
+
+            font-weight: bold;
+
+            color: #198754;
+
+        }
+
+
+        .quantity {
+
+            font-weight: bold;
+
+            color: #0d6efd;
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ========================================
+     NAVBAR
+======================================== -->
+
+<nav class="navbar navbar-dark bg-primary">
+
+    <div class="container">
+
+        <a
+            class="navbar-brand"
+            href="index.html"
+        >
+
+            🌾 AGRI LINKK
+
+        </a>
+
+
+        <button
+            class="btn btn-light btn-sm"
+            onclick="logout()"
+        >
+
+            Logout
+
+        </button>
+
+    </div>
+
+</nav>
+
+
+
+<!-- ========================================
+     MAIN CONTAINER
+======================================== -->
+
+<div class="container mt-4">
+
+
+    <!-- ========================================
+         DASHBOARD HEADER
+    ======================================== -->
+
+    <div class="dashboard-header">
+
+        <h2>
+
+            Welcome,
+
+            <span id="msmeName">
+                MSME
+            </span>
+
+            🏢
+
+        </h2>
+
+
+        <p class="mb-0">
+
+            Discover fresh agricultural products
+            directly from farmers.
+
+        </p>
+
+    </div>
+
+
+
+    <!-- ========================================
+         PROFILE
+    ======================================== -->
+
+    <div class="card p-4 mb-4">
+
+        <h4 class="section-title mb-3">
+
+            👤 MSME Profile
+
+        </h4>
+
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <p>
+
+                    <strong>
+                        Name:
+                    </strong>
+
+                    <span id="profileName">
+                    </span>
+
+                </p>
+
+
+                <p>
+
+                    <strong>
+                        Email:
+                    </strong>
+
+                    <span id="profileEmail">
+                    </span>
+
+                </p>
+
+            </div>
+
+
+            <div class="col-md-6">
+
+                <p>
+
+                    <strong>
+                        Phone:
+                    </strong>
+
+                    <span id="profilePhone">
+                    </span>
+
+                </p>
+
+
+                <p>
+
+                    <strong>
+                        Role:
+                    </strong>
+
+                    <span id="profileRole">
+                    </span>
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ========================================
+         MARKETPLACE
+    ======================================== -->
+
+    <div class="card p-4 mb-5">
+
+        <div
+            class="d-flex
+            justify-content-between
+            align-items-center
+            mb-4"
+        >
+
+            <h4 class="section-title mb-0">
+
+                🥕 Agricultural Marketplace
+
+            </h4>
+
+
+            <button
+                class="btn btn-primary"
+                onclick="loadProducts()"
+            >
+
+                🔄 Refresh
+
+            </button>
+
+        </div>
+
+
+        <!-- PRODUCT COUNT -->
+
+        <div
+            class="alert alert-info"
+            id="productCount"
+        >
+
+            Loading products...
+
+        </div>
+
+
+        <!-- PRODUCTS -->
+
+        <div
+            class="row g-4"
+            id="productsContainer"
+        >
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+
+// ========================================
+// LOGIN INFORMATION
+// ========================================
+
+const token =
+    localStorage.getItem(
+        "agrilinkkToken"
+    );
+
+
+const userData =
+    localStorage.getItem(
+        "agrilinkkUser"
+    );
+
+
+// ========================================
+// LOGIN CHECK
+// ========================================
+
+if (
+    !token ||
+    !userData
+) {
+
+    alert(
+        "Please login first."
+    );
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+// ========================================
+// USER DATA
+// ========================================
+
+let user;
+
+try {
+
+    user =
+        JSON.parse(userData);
+
+}
+
+catch (error) {
+
+    localStorage.removeItem(
+        "agrilinkkToken"
+    );
+
+    localStorage.removeItem(
+        "agrilinkkUser"
+    );
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+// ========================================
+// ROLE CHECK
+// ========================================
+
+if (
+    user &&
+    user.role !== "MSME"
+) {
+
+    alert(
+        "Access denied. MSME account required."
+    );
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+// ========================================
+// DISPLAY USER INFORMATION
+// ========================================
+
+if (user) {
+
+    document.getElementById(
+        "msmeName"
+    ).textContent =
+        user.full_name;
+
+
+    document.getElementById(
+        "profileName"
+    ).textContent =
+        user.full_name;
+
+
+    document.getElementById(
+        "profileEmail"
+    ).textContent =
+        user.email;
+
+
+    document.getElementById(
+        "profilePhone"
+    ).textContent =
+        user.phone;
+
+
+    document.getElementById(
+        "profileRole"
+    ).textContent =
+        user.role;
+
+}
+
+
+
+// ========================================
+// LOAD MARKET PRODUCTS
+// ========================================
+
+async function loadProducts() {
+
+
+    const container =
+        document.getElementById(
+            "productsContainer"
+        );
+
+
+    const countBox =
+        document.getElementById(
+            "productCount"
+        );
+
+
+    container.innerHTML = `
+
+        <div
+            class="col-12 text-center p-4"
+        >
+
+            <div
+                class="spinner-border text-primary"
+                role="status"
+            ></div>
+
+            <p class="mt-2">
+
+                Loading agricultural products...
+
+            </p>
+
+        </div>
+
+    `;
+
+
+    countBox.textContent =
+        "Loading products...";
+
+
+    try {
+
+
+        const response =
+            await fetch(
+
+                "http://localhost:5000/api/market-products",
+
+                {
+
+                    method: "GET",
+
+                    headers: {
+
+                        "Authorization":
+                            "Bearer " + token
+
+                    }
+
+                }
+
+            );
+
+
+        const data =
+            await response.json();
+
+
+        // ========================================
+        // TOKEN ERROR
+        // ========================================
+
+        if (
+            response.status === 401 ||
+            response.status === 403
+        ) {
+
+            alert(
+                data.message ||
+                "Your session has expired."
+            );
+
+
+            logout();
+
+            return;
+
+        }
+
+
+        // ========================================
+        // API ERROR
+        // ========================================
+
+        if (!data.success) {
+
+            countBox.className =
+                "alert alert-danger";
+
+
+            countBox.textContent =
+                data.message ||
+                "Failed to load products";
+
+
+            container.innerHTML = "";
+
+            return;
+
+        }
+
+
+        // ========================================
+        // NO PRODUCTS
+        // ========================================
+
+        if (
+            !data.products ||
+            data.products.length === 0
+        ) {
+
+            countBox.className =
+                "alert alert-warning";
+
+
+            countBox.textContent =
+                "No agricultural products are currently available.";
+
+
+            container.innerHTML = `
+
+                <div class="col-12">
+
+                    <div
+                        class="text-center
+                        text-muted
+                        p-5"
+                    >
+
+                        <div
+                            style="font-size: 60px;"
+                        >
+                            🌾
+                        </div>
+
+                        <h5>
+                            No Products Available
+                        </h5>
+
+                        <p>
+
+                            Farmers have not listed
+                            any products yet.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        // ========================================
+        // PRODUCT COUNT
+        // ========================================
+
+        countBox.className =
+            "alert alert-success";
+
+
+        countBox.textContent =
+            data.products.length +
+            " agricultural product(s) available";
+
+
+
+        // ========================================
+        // DISPLAY PRODUCTS
+        // ========================================
+
+        container.innerHTML =
+
+            data.products
+                .map(
+                    product =>
+                        createProductCard(product)
+                )
+                .join("");
+
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Product loading error:",
+            error
+        );
+
+
+        countBox.className =
+            "alert alert-danger";
+
+
+        countBox.textContent =
+            "Unable to connect to the AGRI LINKK server.";
+
+
+        container.innerHTML = `
+
+            <div class="col-12">
+
+                <div
+                    class="text-center
+                    text-danger
+                    p-4"
+                >
+
+                    <h5>
+                        Server Connection Error
+                    </h5>
+
+                    <p>
+
+                        Make sure your backend
+                        server is running on port 5000.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+
+// ========================================
+// CREATE PRODUCT CARD
+// ========================================
+
+function createProductCard(product) {
+
+
+    let gradeClass =
+        "grade-c";
+
+
+    if (
+        product.grade === "A"
+    ) {
+
+        gradeClass =
+            "grade-a";
+
+    }
+
+    else if (
+        product.grade === "B"
+    ) {
+
+        gradeClass =
+            "grade-b";
+
+    }
+
+
+    return `
+
+        <div class="col-md-6 col-lg-4">
+
+            <div
+                class="card
+                product-card
+                h-100
+                p-3"
+            >
+
+
+                <!-- PRODUCT HEADER -->
+
+                <div
+                    class="d-flex
+                    justify-content-between
+                    align-items-center"
+                >
+
+                    <h5 class="mb-0">
+
+                        🌱
+
+                        ${escapeHtml(
+                            product.product_name
+                        )}
+
+                    </h5>
+
+
+                    <span
+                        class="
+                        badge
+                        ${gradeClass}
+                        "
+                    >
+
+                        Grade
+                        ${escapeHtml(
+                            product.grade
+                        )}
+
+                    </span>
+
+                </div>
+
+
+                <hr>
+
+
+
+                <!-- FARMER -->
+
+                <div class="farmer-info mb-3">
+
+                    <strong>
+                        👨‍🌾 Farmer
+                    </strong>
+
+                    <br>
+
+                    ${escapeHtml(
+                        product.farmer_name
+                    )}
+
+                    <br>
+
+                    <small
+                        class="text-muted"
+                    >
+
+                        📍
+
+                        ${escapeHtml(
+                            product.land_location ||
+                            "Location not provided"
+                        )}
+
+                    </small>
+
+                </div>
+
+
+
+                <!-- CROP -->
+
+                <p>
+
+                    <strong>
+                        🌱 Crop:
+                    </strong>
+
+                    ${escapeHtml(
+                        product.crop_name ||
+                        product.product_name
+                    )}
+
+                </p>
+
+
+
+                <!-- FARMING TYPE -->
+
+                <p>
+
+                    <strong>
+                        🌿 Farming Type:
+                    </strong>
+
+                    ${escapeHtml(
+                        product.farming_type ||
+                        "Not specified"
+                    )}
+
+                </p>
+
+
+
+                <!-- QUANTITY -->
+
+                <p>
+
+                    <strong>
+                        📦 Available Quantity:
+                    </strong>
+
+                    <span class="quantity">
+
+                        ${escapeHtml(
+                            product.quantity
+                        )}
+                        Kg
+
+                    </span>
+
+                </p>
+
+
+
+                <!-- PRICE -->
+
+                <p>
+
+                    <strong>
+                        💰 Price:
+                    </strong>
+
+                    <span class="price">
+
+                        ₹${escapeHtml(
+                            product.price
+                        )}
+
+                        <small>
+                            / Kg
+                        </small>
+
+                    </span>
+
+                </p>
+
+
+
+                <!-- DESCRIPTION -->
+
+                <p>
+
+                    <strong>
+                        📝 Description:
+                    </strong>
+
+                    <br>
+
+                    ${escapeHtml(
+                        product.description ||
+                        "No description provided"
+                    )}
+
+                </p>
+
+
+
+                <hr>
+
+
+
+                <!-- CONTACT FARMER -->
+
+                <button
+                    class="btn btn-outline-primary w-100"
+                    onclick="contactFarmer(
+                        '${escapeHtml(
+                            product.farmer_name
+                        )}',
+                        '${escapeHtml(
+                            product.farmer_phone
+                        )}'
+                    )"
+                >
+
+                    📞 Contact Farmer
+
+                </button>
+
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+
+// ========================================
+// CONTACT FARMER
+// ========================================
+
+function contactFarmer(
+    farmerName,
+    farmerPhone
+) {
+
+    if (
+        !farmerPhone ||
+        farmerPhone === "undefined"
+    ) {
+
+        alert(
+            "Farmer phone number is not available."
+        );
+
+        return;
+
+    }
+
+
+    const confirmed =
+        confirm(
+            "Farmer: " +
+            farmerName +
+            "\n\n" +
+            "Phone: " +
+            farmerPhone +
+            "\n\n" +
+            "Do you want to call this farmer?"
+        );
+
+
+    if (confirmed) {
+
+        window.location.href =
+            "tel:" +
+            farmerPhone;
+
+    }
+
+}
+
+
+
+// ========================================
+// HTML ESCAPE
+// ========================================
+
+function escapeHtml(value) {
+
+    return String(
+        value ?? ""
+    )
+
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
+
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
+
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
+
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
+
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
+
+}
+
+
+
+// ========================================
+// LOGOUT
+// ========================================
+
+function logout() {
+
+    localStorage.removeItem(
+        "agrilinkkToken"
+    );
+
+
+    localStorage.removeItem(
+        "agrilinkkUser"
+    );
+
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+
+// ========================================
+// LOAD PRODUCTS WHEN PAGE OPENS
+// ========================================
+
+loadProducts();
+
+</script>
+
+
+</body>
+
+</html>

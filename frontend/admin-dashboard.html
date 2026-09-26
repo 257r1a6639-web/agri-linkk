@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard - AGRI LINKK</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        body {
+            background-color: #f4f7f5;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+        }
+
+        .dashboard-header {
+            background: linear-gradient(
+                135deg,
+                #212529,
+                #0d6efd
+            );
+            color: white;
+            padding: 35px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow:
+                0 4px 15px
+                rgba(0, 0, 0, 0.08);
+        }
+
+        .stat-card {
+            transition: 0.2s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .stat-number {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .section-title {
+            font-weight: bold;
+            color: #0d6efd;
+        }
+
+        .table-responsive {
+            border-radius: 12px;
+        }
+
+        .badge-farmer {
+            background-color: #198754;
+        }
+
+        .badge-msme {
+            background-color: #0d6efd;
+        }
+
+        .badge-logistics {
+            background-color: #fd7e14;
+        }
+
+        .badge-community {
+            background-color: #6f42c1;
+        }
+
+        .badge-apartment {
+            background-color: #20c997;
+        }
+
+        .badge-admin {
+            background-color: #212529;
+        }
+
+        .grade-a {
+            background-color: #198754;
+            color: white;
+        }
+
+        .grade-b {
+            background-color: #ffc107;
+            color: black;
+        }
+
+        .grade-c {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 30px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ========================================
+     NAVBAR
+======================================== -->
+
+<nav class="navbar navbar-dark bg-dark">
+
+    <div class="container">
+
+        <a
+            class="navbar-brand"
+            href="index.html"
+        >
+            🌾 AGRI LINKK
+        </a>
+
+        <span class="text-white me-auto ms-3">
+
+            Admin Panel
+
+        </span>
+
+        <button
+            class="btn btn-outline-light btn-sm"
+            onclick="logout()"
+        >
+
+            Logout
+
+        </button>
+
+    </div>
+
+</nav>
+
+
+
+<div class="container mt-4 mb-5">
+
+
+    <!-- ========================================
+         HEADER
+    ======================================== -->
+
+    <div class="dashboard-header">
+
+        <h2>
+
+            Welcome Admin 👨‍💼
+
+        </h2>
+
+        <p class="mb-0">
+
+            Manage and monitor the AGRI LINKK platform.
+
+        </p>
+
+    </div>
+
+
+
+    <!-- ========================================
+         STATISTICS
+    ======================================== -->
+
+    <div class="row g-4 mb-4">
+
+
+        <!-- TOTAL USERS -->
+
+        <div class="col-md-6 col-lg-3">
+
+            <div
+                class="card
+                stat-card
+                p-4
+                text-center"
+            >
+
+                <div style="font-size: 35px;">
+                    👥
+                </div>
+
+                <h6 class="text-muted">
+                    Total Users
+                </h6>
+
+                <div
+                    id="totalUsers"
+                    class="stat-number text-primary"
+                >
+                    0
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- FARMERS -->
+
+        <div class="col-md-6 col-lg-3">
+
+            <div
+                class="card
+                stat-card
+                p-4
+                text-center"
+            >
+
+                <div style="font-size: 35px;">
+                    👨‍🌾
+                </div>
+
+                <h6 class="text-muted">
+                    Farmers
+                </h6>
+
+                <div
+                    id="totalFarmers"
+                    class="stat-number text-success"
+                >
+                    0
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- MSMEs -->
+
+        <div class="col-md-6 col-lg-3">
+
+            <div
+                class="card
+                stat-card
+                p-4
+                text-center"
+            >
+
+                <div style="font-size: 35px;">
+                    🏢
+                </div>
+
+                <h6 class="text-muted">
+                    MSMEs
+                </h6>
+
+                <div
+                    id="totalMsmes"
+                    class="stat-number text-primary"
+                >
+                    0
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PRODUCTS -->
+
+        <div class="col-md-6 col-lg-3">
+
+            <div
+                class="card
+                stat-card
+                p-4
+                text-center"
+            >
+
+                <div style="font-size: 35px;">
+                    🌾
+                </div>
+
+                <h6 class="text-muted">
+                    Products
+                </h6>
+
+                <div
+                    id="totalProducts"
+                    class="stat-number text-warning"
+                >
+                    0
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ========================================
+         OTHER ROLE STATISTICS
+    ======================================== -->
+
+    <div class="row g-4 mb-4">
+
+
+        <div class="col-md-4">
+
+            <div class="card p-4 text-center">
+
+                <h6>
+                    🚚 Logistics
+                </h6>
+
+                <h3
+                    id="totalLogistics"
+                    class="text-warning"
+                >
+                    0
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-4">
+
+            <div class="card p-4 text-center">
+
+                <h6>
+                    🏘️ Communities
+                </h6>
+
+                <h3
+                    id="totalCommunities"
+                    class="text-purple"
+                >
+                    0
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-4">
+
+            <div class="card p-4 text-center">
+
+                <h6>
+                    🏠 Apartments
+                </h6>
+
+                <h3
+                    id="totalApartments"
+                    class="text-success"
+                >
+                    0
+                </h3>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ========================================
+         USERS TABLE
+    ======================================== -->
+
+    <div class="card p-4 mb-4">
+
+        <div
+            class="d-flex
+            justify-content-between
+            align-items-center
+            mb-3"
+        >
+
+            <h4 class="section-title mb-0">
+
+                👥 Registered Users
+
+            </h4>
+
+
+            <button
+                class="btn btn-primary"
+                onclick="loadAdminData()"
+            >
+
+                🔄 Refresh
+
+            </button>
+
+        </div>
+
+
+        <div
+            id="userMessage"
+            class="alert alert-info"
+        >
+
+            Loading users...
+
+        </div>
+
+
+        <div class="table-responsive">
+
+            <table
+                class="table
+                table-hover
+                align-middle"
+            >
+
+                <thead class="table-dark">
+
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>Name</th>
+
+                        <th>Email</th>
+
+                        <th>Phone</th>
+
+                        <th>Role</th>
+
+                        <th>Registered</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody
+                    id="usersTableBody"
+                >
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ========================================
+         PRODUCTS TABLE
+    ======================================== -->
+
+    <div class="card p-4 mb-4">
+
+        <div
+            class="d-flex
+            justify-content-between
+            align-items-center
+            mb-3"
+        >
+
+            <h4 class="section-title mb-0">
+
+                🌾 All Farmer Products
+
+            </h4>
+
+        </div>
+
+
+        <div
+            id="productMessage"
+            class="alert alert-info"
+        >
+
+            Loading products...
+
+        </div>
+
+
+        <div class="table-responsive">
+
+            <table
+                class="table
+                table-hover
+                align-middle"
+            >
+
+                <thead class="table-dark">
+
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>Product</th>
+
+                        <th>Farmer</th>
+
+                        <th>Crop</th>
+
+                        <th>Grade</th>
+
+                        <th>Quantity</th>
+
+                        <th>Price</th>
+
+                        <th>Farming Type</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody
+                    id="productsTableBody"
+                >
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ========================================
+         SYSTEM INFORMATION
+    ======================================== -->
+
+    <div class="card p-4">
+
+        <h4 class="section-title">
+
+            ℹ️ System Information
+
+        </h4>
+
+
+        <div class="row mt-3">
+
+            <div class="col-md-6">
+
+                <p>
+
+                    <strong>
+                        Platform:
+                    </strong>
+
+                    AGRI LINKK
+
+                </p>
+
+                <p>
+
+                    <strong>
+                        Purpose:
+                    </strong>
+
+                    Direct farmer-to-market connection
+
+                </p>
+
+            </div>
+
+
+            <div class="col-md-6">
+
+                <p>
+
+                    <strong>
+                        Backend:
+                    </strong>
+
+                    Node.js + Express.js
+
+                </p>
+
+                <p>
+
+                    <strong>
+                        Database:
+                    </strong>
+
+                    MySQL
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+// ========================================
+// LOGIN DATA
+// ========================================
+
+const token =
+    localStorage.getItem(
+        "agrilinkkToken"
+    );
+
+
+const userData =
+    localStorage.getItem(
+        "agrilinkkUser"
+    );
+
+
+// ========================================
+// LOGIN CHECK
+// ========================================
+
+if (
+    !token ||
+    !userData
+) {
+
+    alert(
+        "Please login first."
+    );
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+let user;
+
+try {
+
+    user =
+        JSON.parse(userData);
+
+}
+
+catch (error) {
+
+    localStorage.removeItem(
+        "agrilinkkToken"
+    );
+
+    localStorage.removeItem(
+        "agrilinkkUser"
+    );
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+// ========================================
+// ADMIN ROLE CHECK
+// ========================================
+
+if (
+    user &&
+    user.role !== "Admin"
+) {
+
+    alert(
+        "Access denied. Admin account required."
+    );
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+// ========================================
+// LOAD ADMIN DATA
+// ========================================
+
+async function loadAdminData() {
+
+    await loadUsers();
+
+    await loadProducts();
+
+}
+
+
+
+// ========================================
+// LOAD USERS
+// ========================================
+
+async function loadUsers() {
+
+
+    const message =
+        document.getElementById(
+            "userMessage"
+        );
+
+
+    const tableBody =
+        document.getElementById(
+            "usersTableBody"
+        );
+
+
+    try {
+
+        const response =
+            await fetch(
+                "http://localhost:5000/api/admin/users",
+                {
+
+                    method: "GET",
+
+                    headers: {
+
+                        "Authorization":
+                            "Bearer " + token
+
+                    }
+
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (
+            response.status === 401 ||
+            response.status === 403
+        ) {
+
+            alert(
+                data.message ||
+                "Admin access required."
+            );
+
+            logout();
+
+            return;
+
+        }
+
+
+        if (!data.success) {
+
+            message.className =
+                "alert alert-danger";
+
+            message.textContent =
+                data.message ||
+                "Failed to load users.";
+
+            return;
+
+        }
+
+
+        const users =
+            data.users || [];
+
+
+        // ========================================
+        // UPDATE COUNTS
+        // ========================================
+
+        document.getElementById(
+            "totalUsers"
+        ).textContent =
+            users.length;
+
+
+        document.getElementById(
+            "totalFarmers"
+        ).textContent =
+            users.filter(
+                user => user.role === "Farmer"
+            ).length;
+
+
+        document.getElementById(
+            "totalMsmes"
+        ).textContent =
+            users.filter(
+                user => user.role === "MSME"
+            ).length;
+
+
+        document.getElementById(
+            "totalLogistics"
+        ).textContent =
+            users.filter(
+                user => user.role === "Logistics"
+            ).length;
+
+
+        document.getElementById(
+            "totalCommunities"
+        ).textContent =
+            users.filter(
+                user => user.role === "Community"
+            ).length;
+
+
+        document.getElementById(
+            "totalApartments"
+        ).textContent =
+            users.filter(
+                user => user.role === "Apartment"
+            ).length;
+
+
+
+        // ========================================
+        // EMPTY USERS
+        // ========================================
+
+        if (users.length === 0) {
+
+            message.className =
+                "alert alert-warning";
+
+            message.textContent =
+                "No users registered yet.";
+
+            tableBody.innerHTML = "";
+
+            return;
+
+        }
+
+
+
+        message.className =
+            "alert alert-success";
+
+        message.textContent =
+            users.length +
+            " user(s) registered.";
+
+
+
+        // ========================================
+        // USER TABLE
+        // ========================================
+
+        tableBody.innerHTML =
+            users
+                .map(
+                    user =>
+                        createUserRow(user)
+                )
+                .join("");
+
+    }
+
+
+    catch (error) {
+
+        console.error(
+            error
+        );
+
+
+        message.className =
+            "alert alert-danger";
+
+        message.textContent =
+            "Unable to connect to the server.";
+
+    }
+
+}
+
+
+
+// ========================================
+// CREATE USER ROW
+// ========================================
+
+function createUserRow(user) {
+
+
+    const roleClass =
+        getRoleClass(
+            user.role
+        );
+
+
+    const date =
+        user.created_at
+            ? new Date(
+                user.created_at
+            ).toLocaleDateString()
+            : "-";
+
+
+    return `
+
+        <tr>
+
+            <td>
+                ${escapeHtml(user.id)}
+            </td>
+
+            <td>
+                <strong>
+                    ${escapeHtml(
+                        user.full_name
+                    )}
+                </strong>
+            </td>
+
+            <td>
+                ${escapeHtml(
+                    user.email
+                )}
+            </td>
+
+            <td>
+                ${escapeHtml(
+                    user.phone
+                )}
+            </td>
+
+            <td>
+
+                <span
+                    class="badge ${roleClass}"
+                >
+
+                    ${escapeHtml(
+                        user.role
+                    )}
+
+                </span>
+
+            </td>
+
+            <td>
+                ${escapeHtml(date)}
+            </td>
+
+        </tr>
+
+    `;
+
+}
+
+
+
+// ========================================
+// ROLE BADGE
+// ========================================
+
+function getRoleClass(role) {
+
+    switch (role) {
+
+        case "Farmer":
+            return "badge-farmer";
+
+        case "MSME":
+            return "badge-msme";
+
+        case "Logistics":
+            return "badge-logistics";
+
+        case "Community":
+            return "badge-community";
+
+        case "Apartment":
+            return "badge-apartment";
+
+        case "Admin":
+            return "badge-admin";
+
+        default:
+            return "bg-secondary";
+
+    }
+
+}
+
+
+
+// ========================================
+// LOAD PRODUCTS
+// ========================================
+
+async function loadProducts() {
+
+
+    const message =
+        document.getElementById(
+            "productMessage"
+        );
+
+
+    const tableBody =
+        document.getElementById(
+            "productsTableBody"
+        );
+
+
+    try {
+
+        const response =
+            await fetch(
+                "http://localhost:5000/api/admin/products",
+                {
+
+                    method: "GET",
+
+                    headers: {
+
+                        "Authorization":
+                            "Bearer " + token
+
+                    }
+
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (
+            response.status === 401 ||
+            response.status === 403
+        ) {
+
+            alert(
+                data.message ||
+                "Admin access required."
+            );
+
+            logout();
+
+            return;
+
+        }
+
+
+        if (!data.success) {
+
+            message.className =
+                "alert alert-danger";
+
+            message.textContent =
+                data.message ||
+                "Failed to load products.";
+
+            return;
+
+        }
+
+
+        const products =
+            data.products || [];
+
+
+        document.getElementById(
+            "totalProducts"
+        ).textContent =
+            products.length;
+
+
+        if (products.length === 0) {
+
+            message.className =
+                "alert alert-warning";
+
+            message.textContent =
+                "No products listed yet.";
+
+            tableBody.innerHTML = "";
+
+            return;
+
+        }
+
+
+        message.className =
+            "alert alert-success";
+
+        message.textContent =
+            products.length +
+            " product(s) listed.";
+
+
+        tableBody.innerHTML =
+            products
+                .map(
+                    product =>
+                        createProductRow(product)
+                )
+                .join("");
+
+    }
+
+
+    catch (error) {
+
+        console.error(
+            error
+        );
+
+
+        message.className =
+            "alert alert-danger";
+
+        message.textContent =
+            "Unable to connect to the server.";
+
+    }
+
+}
+
+
+
+// ========================================
+// CREATE PRODUCT ROW
+// ========================================
+
+function createProductRow(product) {
+
+
+    let gradeClass =
+        "grade-c";
+
+
+    if (
+        product.grade === "A"
+    ) {
+
+        gradeClass =
+            "grade-a";
+
+    }
+
+    else if (
+        product.grade === "B"
+    ) {
+
+        gradeClass =
+            "grade-b";
+
+    }
+
+
+    return `
+
+        <tr>
+
+            <td>
+                ${escapeHtml(
+                    product.id
+                )}
+            </td>
+
+            <td>
+
+                <strong>
+
+                    ${escapeHtml(
+                        product.product_name
+                    )}
+
+                </strong>
+
+            </td>
+
+            <td>
+                ${escapeHtml(
+                    product.farmer_name
+                )}
+            </td>
+
+            <td>
+                ${escapeHtml(
+                    product.crop_name ||
+                    "-"
+                )}
+            </td>
+
+            <td>
+
+                <span
+                    class="badge ${gradeClass}"
+                >
+
+                    Grade
+                    ${escapeHtml(
+                        product.grade
+                    )}
+
+                </span>
+
+            </td>
+
+            <td>
+
+                ${escapeHtml(
+                    product.quantity
+                )}
+                Kg
+
+            </td>
+
+            <td>
+
+                ₹${escapeHtml(
+                    product.price
+                )}
+
+            </td>
+
+            <td>
+
+                ${escapeHtml(
+                    product.farming_type ||
+                    "-"
+                )}
+
+            </td>
+
+        </tr>
+
+    `;
+
+}
+
+
+
+// ========================================
+// ESCAPE HTML
+// ========================================
+
+function escapeHtml(value) {
+
+    return String(
+        value ?? ""
+    )
+
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
+
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
+
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
+
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
+
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
+
+}
+
+
+
+// ========================================
+// LOGOUT
+// ========================================
+
+function logout() {
+
+    localStorage.removeItem(
+        "agrilinkkToken"
+    );
+
+    localStorage.removeItem(
+        "agrilinkkUser"
+    );
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+
+// ========================================
+// INITIAL LOAD
+// ========================================
+
+loadAdminData();
+
+</script>
+
+
+</body>
+
+</html>

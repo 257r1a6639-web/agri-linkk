@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About Us - AGRI LINKK</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+    <style>
+        :root {
+            --green: #198754;
+            --dark-green: #0b5d35;
+            --light-green: #eaf7ef;
+            --dark: #17351f;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #26372b;
+            background: #fff;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+        }
+
+        .navbar-brand {
+            color: var(--green) !important;
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .nav-link {
+            color: #34463a !important;
+            font-weight: 600;
+            margin: 0 4px;
+        }
+
+        .nav-link:hover {
+            color: var(--green) !important;
+        }
+
+        /* PAGE HERO */
+
+        .page-hero {
+            background:
+                linear-gradient(
+                    135deg,
+                    #0b5d35,
+                    #198754
+                );
+            color: white;
+            padding: 90px 0;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+        }
+
+        .page-hero p {
+            max-width: 700px;
+            margin: 20px auto 0;
+            color: #e5f7eb;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* SECTIONS */
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            color: var(--dark);
+            font-weight: 800;
+        }
+
+        .section-subtitle {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #69766d;
+            line-height: 1.7;
+        }
+
+        /* ABOUT */
+
+        .about-card {
+            background: var(--light-green);
+            border-radius: 25px;
+            padding: 40px;
+            height: 100%;
+        }
+
+        .about-icon {
+            width: 65px;
+            height: 65px;
+            border-radius: 18px;
+            background: white;
+            color: var(--green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.7rem;
+            margin-bottom: 20px;
+        }
+
+        .about-card h3 {
+            color: var(--dark-green);
+            font-weight: 750;
+        }
+
+        .about-card p {
+            color: #59665d;
+            line-height: 1.8;
+        }
+
+        /* VISION */
+
+        .vision-card {
+            border-radius: 22px;
+            padding: 35px;
+            border: 1px solid #e1ebe4;
+            height: 100%;
+            transition: 0.3s;
+        }
+
+        .vision-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+        }
+
+        .vision-icon {
+            font-size: 2rem;
+            color: var(--green);
+            margin-bottom: 15px;
+        }
+
+        /* TEAM */
+
+        .team-section {
+            background: #f7faf8;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 22px;
+            padding: 30px 20px;
+            text-align: center;
+            height: 100%;
+            border: 1px solid #e4ece7;
+            transition: 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.09);
+        }
+
+        .team-avatar {
+            width: 95px;
+            height: 95px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background:
+                linear-gradient(
+                    135deg,
+                    #198754,
+                    #0b5d35
+                );
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+        }
+
+        .team-card h5 {
+            font-weight: 750;
+            color: var(--dark);
+        }
+
+        .team-role {
+            color: var(--green);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .team-card p {
+            color: #68746b;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* ECOSYSTEM */
+
+        .ecosystem-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid #e5eee8;
+            height: 100%;
+            text-align: center;
+        }
+
+        .ecosystem-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--light-green);
+            color: var(--green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 1.5rem;
+        }
+
+        /* CTA */
+
+        .cta {
+            background:
+                linear-gradient(
+                    135deg,
+                    #0b5d35,
+                    #198754
+                );
+            border-radius: 30px;
+            padding: 60px 35px;
+            color: white;
+        }
+
+        .cta h2 {
+            font-weight: 800;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #10251a;
+            color: #cbd8cf;
+            padding: 55px 0 25px;
+        }
+
+        footer h5 {
+            color: white;
+            font-weight: 700;
+        }
+
+        footer a {
+            color: #cbd8cf;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 35px;
+            padding-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 2.4rem;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg sticky-top">
+
+    <div class="container">
+
+        <a class="navbar-brand" href="index.html">
+            🌱 AGRI LINKK
+        </a>
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNav"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNav">
+
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="about.html">
+                        About
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="features.html">
+                        Features
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="services.html">
+                        Services
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="gallery.html">
+                        Gallery
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="careers.html">
+                        Careers
+                    </a>
+                </li>
+
+                <li class="nav-item ms-lg-2">
+                    <a
+                        href="login.html"
+                        class="btn btn-success rounded-pill px-4"
+                    >
+                        Login
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="page-hero">
+
+    <div class="container">
+
+        <h1>
+            About AGRI LINKK
+        </h1>
+
+        <p>
+            Building a connected agricultural ecosystem where
+            farmers, businesses, logistics providers and communities
+            can discover and connect with each other.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- WHO WE ARE -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="row g-4 align-items-stretch">
+
+            <div class="col-lg-6">
+
+                <div class="about-card">
+
+                    <div class="about-icon">
+                        <i class="bi bi-leaf"></i>
+                    </div>
+
+                    <h3>
+                        Who We Are
+                    </h3>
+
+                    <p>
+                        AGRI LINKK is a digital agricultural platform
+                        designed to simplify connections between
+                        farmers and organizations that require
+                        agricultural products.
+                    </p>
+
+                    <p>
+                        Farmers can maintain their farm information,
+                        list products and provide details such as
+                        crop type, farming method, quantity and
+                        product grade.
+                    </p>
+
+                    <p class="mb-0">
+                        MSMEs, logistics providers, communities and
+                        apartments can discover available products
+                        through the marketplace.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-6">
+
+                <div class="about-card">
+
+                    <div class="about-icon">
+                        <i class="bi bi-bullseye"></i>
+                    </div>
+
+                    <h3>
+                        What We Do
+                    </h3>
+
+                    <p>
+                        Our platform provides a common digital space
+                        for participants in the agricultural supply
+                        ecosystem.
+                    </p>
+
+                    <p>
+                        AGRI LINKK supports product listing,
+                        grade-based classification, role-based
+                        dashboards and secure user authentication.
+                    </p>
+
+                    <p class="mb-0">
+                        The goal is to make agricultural information
+                        easier to discover and create direct
+                        connections between participants.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- VISION AND MISSION -->
+
+<section class="section team-section">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h2 class="section-title">
+                Our Vision & Mission
+            </h2>
+
+            <p class="section-subtitle mt-3">
+                Creating a more connected and digitally accessible
+                agricultural ecosystem.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-md-6">
+
+                <div class="vision-card">
+
+                    <div class="vision-icon">
+                        <i class="bi bi-eye"></i>
+                    </div>
+
+                    <h4>
+                        Our Vision
+                    </h4>
+
+                    <p class="text-muted mt-3">
+                        To build a connected agricultural ecosystem
+                        where farmers and buyers can discover
+                        opportunities through simple and accessible
+                        digital technology.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6">
+
+                <div class="vision-card">
+
+                    <div class="vision-icon">
+                        <i class="bi bi-flag"></i>
+                    </div>
+
+                    <h4>
+                        Our Mission
+                    </h4>
+
+                    <p class="text-muted mt-3">
+                        To provide a platform that helps farmers
+                        showcase their products while enabling
+                        businesses and communities to discover
+                        agricultural products efficiently.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- COMPANY STRUCTURE -->
+
+<section class="section team-section">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h2 class="section-title">
+                Our Company Structure
+            </h2>
+
+            <p class="section-subtitle mt-3">
+                A simple leadership structure supporting technology,
+                operations and business development.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4 justify-content-center">
+
+            <!-- CEO -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="team-card">
+
+                    <div class="team-avatar">
+                        <i class="bi bi-person"></i>
+                    </div>
+
+                    <h5>
+                        Team Member 1
+                    </h5>
+
+                    <div class="team-role">
+                        Chief Executive Officer (CEO)
+                    </div>
+
+                    <p>
+                        Leads the overall vision, strategy and
+                        direction of AGRI LINKK.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- CTO -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="team-card">
+
+                    <div class="team-avatar">
+                        <i class="bi bi-code-slash"></i>
+                    </div>
+
+                    <h5>
+                        Team Member 2
+                    </h5>
+
+                    <div class="team-role">
+                        Chief Technology Officer (CTO)
+                    </div>
+
+                    <p>
+                        Oversees the technology, software development
+                        and digital infrastructure of the platform.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- COO -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="team-card">
+
+                    <div class="team-avatar">
+                        <i class="bi bi-briefcase"></i>
+                    </div>
+
+                    <h5>
+                        Team Member 3
+                    </h5>
+
+                    <div class="team-role">
+                        Chief Operating Officer (COO)
+                    </div>
+
+                    <p>
+                        Coordinates platform operations, services
+                        and user ecosystem activities.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="alert alert-success text-center mt-4">
+            <i class="bi bi-info-circle"></i>
+            Replace "Team Member 1, 2 and 3" with your actual
+            team members' names before the final submission.
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ECOSYSTEM -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h2 class="section-title">
+                Our Connected Ecosystem
+            </h2>
+
+            <p class="section-subtitle mt-3">
+                AGRI LINKK brings multiple participants together
+                through one digital platform.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-6 col-lg-2">
+
+                <div class="ecosystem-card">
+
+                    <div class="ecosystem-icon">
+                        <i class="bi bi-person"></i>
+                    </div>
+
+                    <h6>Farmers</h6>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-lg-2">
+
+                <div class="ecosystem-card">
+
+                    <div class="ecosystem-icon">
+                        <i class="bi bi-building"></i>
+                    </div>
+
+                    <h6>MSMEs</h6>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-lg-2">
+
+                <div class="ecosystem-card">
+
+                    <div class="ecosystem-icon">
+                        <i class="bi bi-truck"></i>
+                    </div>
+
+                    <h6>Logistics</h6>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-lg-2">
+
+                <div class="ecosystem-card">
+
+                    <div class="ecosystem-icon">
+                        <i class="bi bi-people"></i>
+                    </div>
+
+                    <h6>Communities</h6>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-lg-2">
+
+                <div class="ecosystem-card">
+
+                    <div class="ecosystem-icon">
+                        <i class="bi bi-house"></i>
+                    </div>
+
+                    <h6>Apartments</h6>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-lg-2">
+
+                <div class="ecosystem-card">
+
+                    <div class="ecosystem-icon">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+
+                    <h6>Admin</h6>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CTA -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="cta text-center">
+
+            <h2>
+                Be Part of the AGRI LINKK Ecosystem
+            </h2>
+
+            <p class="mt-3 mb-4">
+                Connect, discover and participate in a digital
+                agricultural marketplace.
+            </p>
+
+            <a
+                href="register.html"
+                class="btn btn-light btn-lg rounded-pill px-5"
+            >
+                Create Account
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="row g-4">
+
+            <div class="col-lg-5">
+
+                <h5>
+                    🌱 AGRI LINKK
+                </h5>
+
+                <p class="mt-3">
+                    Connecting farmers with MSMEs, logistics,
+                    communities and apartments through a digital
+                    agricultural platform.
+                </p>
+
+            </div>
+
+
+            <div class="col-6 col-lg-2">
+
+                <h5>
+                    Company
+                </h5>
+
+                <div class="d-flex flex-column gap-2 mt-3">
+
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="features.html">Features</a>
+                    <a href="services.html">Services</a>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-lg-2">
+
+                <h5>
+                    Explore
+                </h5>
+
+                <div class="d-flex flex-column gap-2 mt-3">
+
+                    <a href="gallery.html">Gallery</a>
+                    <a href="careers.html">Careers</a>
+                    <a href="register.html">Register</a>
+                    <a href="login.html">Login</a>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3">
+
+                <h5>
+                    Contact
+                </h5>
+
+                <p class="mt-3 mb-2">
+                    <i class="bi bi-envelope"></i>
+                    info@agrilinkk.com
+                </p>
+
+                <p>
+                    <i class="bi bi-telephone"></i>
+                    +91 98765 43210
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom text-center">
+
+            <p class="mb-0">
+                © 2026 AGRI LINKK. All Rights Reserved.
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+</body>
+</html>
+```

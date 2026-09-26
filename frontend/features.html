@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Features - AGRI LINKK</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+    <style>
+        :root {
+            --green: #198754;
+            --dark-green: #0b5d35;
+            --light-green: #eaf7ef;
+            --dark: #17351f;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #26372b;
+            background: #fff;
+        }
+
+        .navbar {
+            background: rgba(255,255,255,0.98);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+        }
+
+        .navbar-brand {
+            color: var(--green) !important;
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .nav-link {
+            color: #34463a !important;
+            font-weight: 600;
+            margin: 0 4px;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--green) !important;
+        }
+
+        /* HERO */
+
+        .page-hero {
+            background: linear-gradient(
+                135deg,
+                #0b5d35,
+                #198754
+            );
+            color: white;
+            padding: 90px 0;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+        }
+
+        .page-hero p {
+            max-width: 720px;
+            margin: 20px auto 0;
+            color: #e6f7eb;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* SECTION */
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            color: var(--dark);
+            font-weight: 800;
+        }
+
+        .section-subtitle {
+            max-width: 700px;
+            margin: auto;
+            color: #68756c;
+            line-height: 1.7;
+        }
+
+        /* FEATURE CARDS */
+
+        .feature-card {
+            background: white;
+            border: 1px solid #e1ebe4;
+            border-radius: 22px;
+            padding: 32px;
+            height: 100%;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 14px 35px rgba(0,0,0,0.09);
+            border-color: #b8dcc5;
+        }
+
+        .feature-icon {
+            width: 65px;
+            height: 65px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--light-green);
+            color: var(--green);
+            font-size: 1.7rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h4 {
+            color: var(--dark);
+            font-weight: 750;
+        }
+
+        .feature-card p {
+            color: #68756c;
+            line-height: 1.7;
+        }
+
+        /* ALTERNATE SECTION */
+
+        .alternate {
+            background: #f7faf8;
+        }
+
+        /* WORKFLOW */
+
+        .workflow-card {
+            background: white;
+            border-radius: 20px;
+            padding: 28px 20px;
+            text-align: center;
+            height: 100%;
+            border: 1px solid #e1ebe4;
+            position: relative;
+        }
+
+        .workflow-number {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 18px;
+            background: var(--green);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+
+        .workflow-card h5 {
+            font-weight: 750;
+            color: var(--dark);
+        }
+
+        .workflow-card p {
+            color: #68756c;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ROLE CARDS */
+
+        .role-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            height: 100%;
+            border: 1px solid #e1ebe4;
+            transition: 0.3s;
+        }
+
+        .role-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .role-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            background: var(--light-green);
+            color: var(--green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .role-card h5 {
+            font-weight: 750;
+            color: var(--dark);
+        }
+
+        .role-card p {
+            color: #68756c;
+            font-size: 0.9rem;
+        }
+
+        /* SECURITY */
+
+        .security-box {
+            background:
+                linear-gradient(
+                    135deg,
+                    #0b5d35,
+                    #198754
+                );
+            border-radius: 28px;
+            padding: 55px 40px;
+            color: white;
+        }
+
+        .security-box h2 {
+            font-weight: 800;
+        }
+
+        .security-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .security-item i {
+            font-size: 1.4rem;
+            color: #bff3d0;
+        }
+
+        /* CTA */
+
+        .cta {
+            background: var(--light-green);
+            border-radius: 28px;
+            padding: 55px 30px;
+            text-align: center;
+        }
+
+        .cta h2 {
+            color: var(--dark);
+            font-weight: 800;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #10251a;
+            color: #cbd8cf;
+            padding: 55px 0 25px;
+        }
+
+        footer h5 {
+            color: white;
+            font-weight: 700;
+        }
+
+        footer a {
+            color: #cbd8cf;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 35px;
+            padding-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 2.4rem;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg sticky-top">
+
+    <div class="container">
+
+        <a class="navbar-brand" href="index.html">
+            🌱 AGRI LINKK
+        </a>
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNav"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNav">
+
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">
+                        About
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="features.html">
+                        Features
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="services.html">
+                        Services
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="gallery.html">
+                        Gallery
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="careers.html">
+                        Careers
+                    </a>
+                </li>
+
+                <li class="nav-item ms-lg-2">
+                    <a
+                        href="login.html"
+                        class="btn btn-success rounded-pill px-4"
+                    >
+                        Login
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="page-hero">
+
+    <div class="container">
+
+        <h1>
+            Powerful Features for Smart Agriculture
+        </h1>
+
+        <p>
+            AGRI LINKK provides digital tools that connect farmers,
+            businesses, logistics providers and communities through
+            one simple agricultural platform.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- MAIN FEATURES -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h2 class="section-title">
+                Key Features
+            </h2>
+
+            <p class="section-subtitle mt-3">
+                Everything needed to make agricultural product
+                discovery and connections simpler.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <!-- 1 -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        <i class="bi bi-link-45deg"></i>
+                    </div>
+
+                    <h4>
+                        Direct Connections
+                    </h4>
+
+                    <p>
+                        Farmers can showcase their products and
+                        connect directly with MSMEs, logistics
+                        providers and communities.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- 2 -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        <i class="bi bi-bar-chart"></i>
+                    </div>
+
+                    <h4>
+                        Grade-Based Pricing
+                    </h4>
+
+                    <p>
+                        Agricultural products can be classified as
+                        Grade A, Grade B or Grade C with a corresponding
+                        price and quantity.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- 3 -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        <i class="bi bi-person-lock"></i>
+                    </div>
+
+                    <h4>
+                        Secure Authentication
+                    </h4>
+
+                    <p>
+                        Login and role-based access help users reach
+                        the dashboard and services relevant to them.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- 4 -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        <i class="bi bi-phone"></i>
+                    </div>
+
+                    <h4>
+                        Responsive Design
+                    </h4>
+
+                    <p>
+                        The platform is designed using Bootstrap so
+                        pages can adapt to laptops, tablets and
+                        smartphones.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- 5 -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        <i class="bi bi-database-check"></i>
+                    </div>
+
+                    <h4>
+                        Digital Farm Records
+                    </h4>
+
+                    <p>
+                        Farmers can maintain information about land,
+                        crop, location and farming method digitally.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- 6 -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        <i class="bi bi-shop"></i>
+                    </div>
+
+                    <h4>
+                        Product Marketplace
+                    </h4>
+
+                    <p>
+                        Eligible users can view available agricultural
+                        products with quantity, grade, price and
+                        farmer information.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- 7 -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        <i class="bi bi-truck"></i>
+                    </div>
+
+                    <h4>
+                        Logistics Connection
+                    </h4>
+
+                    <p>
+                        Logistics users can discover available
+                        products and identify farmers who may require
+                        transportation support.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- 8 -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        <i class="bi bi-flower1"></i>
+                    </div>
+
+                    <h4>
+                        Farming Method Details
+                    </h4>
+
+                    <p>
+                        Product information can include whether
+                        farming is identified as Organic or
+                        Pesticide-based.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- 9 -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+
+                    <h4>
+                        Admin Management
+                    </h4>
+
+                    <p>
+                        Administrators can monitor registered users
+                        and farmer products through a dedicated
+                        dashboard.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- WORKFLOW -->
+
+<section class="section alternate">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h2 class="section-title">
+                How AGRI LINKK Works
+            </h2>
+
+            <p class="section-subtitle mt-3">
+                A simple digital workflow from registration to
+                agricultural product discovery.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="workflow-card">
+
+                    <div class="workflow-number">
+                        1
+                    </div>
+
+                    <h5>
+                        Register
+                    </h5>
+
+                    <p>
+                        Create an account and select the appropriate
+                        user role.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="workflow-card">
+
+                    <div class="workflow-number">
+                        2
+                    </div>
+
+                    <h5>
+                        Add Information
+                    </h5>
+
+                    <p>
+                        Farmers can enter farm details and product
+                        information.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="workflow-card">
+
+                    <div class="workflow-number">
+                        3
+                    </div>
+
+                    <h5>
+                        List Products
+                    </h5>
+
+                    <p>
+                        Products are listed with quantity, grade,
+                        price and description.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="workflow-card">
+
+                    <div class="workflow-number">
+                        4
+                    </div>
+
+                    <h5>
+                        Connect
+                    </h5>
+
+                    <p>
+                        Eligible users can discover products and
+                        contact farmers.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- USER ROLES -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h2 class="section-title">
+                Designed for Every Participant
+            </h2>
+
+            <p class="section-subtitle mt-3">
+                Each role receives access to the functionality
+                relevant to its purpose.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-6 col-md-4 col-lg-2">
+
+                <div class="role-card">
+
+                    <div class="role-icon">
+                        <i class="bi bi-person"></i>
+                    </div>
+
+                    <h5>
+                        Farmer
+                    </h5>
+
+                    <p>
+                        Manage farms and products.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-md-4 col-lg-2">
+
+                <div class="role-card">
+
+                    <div class="role-icon">
+                        <i class="bi bi-building"></i>
+                    </div>
+
+                    <h5>
+                        MSME
+                    </h5>
+
+                    <p>
+                        Discover products for business.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-md-4 col-lg-2">
+
+                <div class="role-card">
+
+                    <div class="role-icon">
+                        <i class="bi bi-truck"></i>
+                    </div>
+
+                    <h5>
+                        Logistics
+                    </h5>
+
+                    <p>
+                        Discover products and farmers.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-md-4 col-lg-2">
+
+                <div class="role-card">
+
+                    <div class="role-icon">
+                        <i class="bi bi-people"></i>
+                    </div>
+
+                    <h5>
+                        Community
+                    </h5>
+
+                    <p>
+                        Find agricultural products.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-md-4 col-lg-2">
+
+                <div class="role-card">
+
+                    <div class="role-icon">
+                        <i class="bi bi-house"></i>
+                    </div>
+
+                    <h5>
+                        Apartment
+                    </h5>
+
+                    <p>
+                        Discover fresh products.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-md-4 col-lg-2">
+
+                <div class="role-card">
+
+                    <div class="role-icon">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+
+                    <h5>
+                        Admin
+                    </h5>
+
+                    <p>
+                        Manage the platform.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SECURITY -->
+
+<section class="section alternate">
+
+    <div class="container">
+
+        <div class="security-box">
+
+            <div class="row align-items-center">
+
+                <div class="col-lg-6">
+
+                    <h2>
+                        Security & Access Control
+                    </h2>
+
+                    <p class="mt-3">
+                        AGRI LINKK uses authentication and
+                        role-based access to separate the
+                        functionality available to different
+                        participants.
+                    </p>
+
+                </div>
+
+
+                <div class="col-lg-6 mt-4 mt-lg-0">
+
+                    <div class="security-item">
+
+                        <i class="bi bi-check-circle-fill"></i>
+
+                        <div>
+                            <strong>JWT Authentication</strong>
+                            <br>
+                            Secure token-based access for
+                            authenticated users.
+                        </div>
+
+                    </div>
+
+
+                    <div class="security-item">
+
+                        <i class="bi bi-check-circle-fill"></i>
+
+                        <div>
+                            <strong>Password Protection</strong>
+                            <br>
+                            Passwords are protected using
+                            secure hashing.
+                        </div>
+
+                    </div>
+
+
+                    <div class="security-item">
+
+                        <i class="bi bi-check-circle-fill"></i>
+
+                        <div>
+                            <strong>Role-Based Dashboards</strong>
+                            <br>
+                            Users are directed to dashboards
+                            based on their role.
+                        </div>
+
+                    </div>
+
+
+                    <div class="security-item mb-0">
+
+                        <i class="bi bi-check-circle-fill"></i>
+
+                        <div>
+                            <strong>Protected APIs</strong>
+                            <br>
+                            Backend routes verify authentication
+                            before providing protected data.
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CTA -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="cta">
+
+            <h2>
+                Experience AGRI LINKK
+            </h2>
+
+            <p class="mt-3 mb-4">
+                Join the platform and explore a connected
+                agricultural ecosystem.
+            </p>
+
+            <a
+                href="register.html"
+                class="btn btn-success btn-lg rounded-pill px-5"
+            >
+                Create Your Account
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="row g-4">
+
+            <div class="col-lg-5">
+
+                <h5>
+                    🌱 AGRI LINKK
+                </h5>
+
+                <p class="mt-3">
+                    Connecting farmers with MSMEs, logistics,
+                    communities and apartments through a digital
+                    agricultural platform.
+                </p>
+
+            </div>
+
+
+            <div class="col-6 col-lg-2">
+
+                <h5>
+                    Company
+                </h5>
+
+                <div class="d-flex flex-column gap-2 mt-3">
+
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="features.html">Features</a>
+                    <a href="services.html">Services</a>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-lg-2">
+
+                <h5>
+                    Explore
+                </h5>
+
+                <div class="d-flex flex-column gap-2 mt-3">
+
+                    <a href="gallery.html">Gallery</a>
+                    <a href="careers.html">Careers</a>
+                    <a href="register.html">Register</a>
+                    <a href="login.html">Login</a>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3">
+
+                <h5>
+                    Contact
+                </h5>
+
+                <p class="mt-3 mb-2">
+                    <i class="bi bi-envelope"></i>
+                    info@agrilinkk.com
+                </p>
+
+                <p>
+                    <i class="bi bi-telephone"></i>
+                    +91 98765 43210
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom text-center">
+
+            <p class="mb-0">
+                © 2026 AGRI LINKK. All Rights Reserved.
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+</body>
+</html>

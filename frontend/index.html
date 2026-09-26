@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AGRI LINKK | Connecting Farmers to the Future</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+    <style>
+        :root {
+            --green: #198754;
+            --dark-green: #0b5d35;
+            --light-green: #eaf7ef;
+            --gold: #f4b400;
+            --dark: #17351f;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #24352a;
+            background: #ffffff;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: rgba(255, 255, 255, 0.97);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .navbar-brand {
+            color: var(--green) !important;
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            color: #34463a !important;
+            margin: 0 4px;
+        }
+
+        .nav-link:hover {
+            color: var(--green) !important;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 650px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(7, 67, 36, 0.96),
+                    rgba(25, 135, 84, 0.88)
+                );
+            color: white;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+            top: -180px;
+            right: -100px;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            bottom: -150px;
+            left: -80px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 9px 18px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .hero h1 {
+            font-size: 3.6rem;
+            font-weight: 800;
+            line-height: 1.15;
+        }
+
+        .hero h1 span {
+            color: #c8f7d8;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            max-width: 650px;
+            color: #e8f8ed;
+        }
+
+        .hero-buttons .btn {
+            padding: 13px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .btn-main {
+            background: white;
+            color: var(--dark-green);
+            border: none;
+        }
+
+        .btn-main:hover {
+            background: #e7f5ec;
+            color: var(--dark-green);
+        }
+
+        .btn-outline-light-custom {
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-outline-light-custom:hover {
+            background: white;
+            color: var(--dark-green);
+        }
+
+        /* HERO CARD */
+        .hero-card {
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 30px;
+        }
+
+        .hero-card-icon {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            color: var(--green);
+            border-radius: 20px;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        /* SECTION */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-weight: 800;
+            color: var(--dark);
+        }
+
+        .section-subtitle {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #68756c;
+            line-height: 1.7;
+        }
+
+        /* FLOW */
+        .flow-section {
+            background: var(--light-green);
+        }
+
+        .flow-card {
+            background: white;
+            border-radius: 20px;
+            padding: 28px 20px;
+            height: 100%;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+            transition: 0.3s;
+            text-align: center;
+        }
+
+        .flow-card:hover {
+            transform: translateY(-7px);
+        }
+
+        .flow-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--light-green);
+            color: var(--green);
+            font-size: 1.8rem;
+        }
+
+        .flow-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--green);
+            font-size: 2rem;
+        }
+
+        /* FEATURE CARDS */
+        .feature-card {
+            border: 1px solid #e5eee8;
+            border-radius: 20px;
+            padding: 30px;
+            height: 100%;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.09);
+            border-color: #b9dfc6;
+        }
+
+        .feature-icon {
+            width: 58px;
+            height: 58px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            background: var(--light-green);
+            color: var(--green);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        /* GRADES */
+        .grade-card {
+            border-radius: 20px;
+            padding: 30px;
+            height: 100%;
+            color: white;
+        }
+
+        .grade-a {
+            background: linear-gradient(135deg, #198754, #0b5d35);
+        }
+
+        .grade-b {
+            background: linear-gradient(135deg, #d89b00, #a96e00);
+        }
+
+        .grade-c {
+            background: linear-gradient(135deg, #6c757d, #495057);
+        }
+
+        .grade-card h3 {
+            font-weight: 800;
+        }
+
+        .grade-letter {
+            font-size: 3rem;
+            font-weight: 900;
+            opacity: 0.25;
+        }
+
+        /* STATS */
+        .stats-section {
+            background: #f7faf8;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 25px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            color: var(--green);
+            font-weight: 800;
+        }
+
+        .stat-label {
+            color: #657067;
+            font-weight: 600;
+        }
+
+        /* CTA */
+        .cta {
+            background:
+                linear-gradient(
+                    135deg,
+                    #0b5d35,
+                    #198754
+                );
+            color: white;
+            border-radius: 30px;
+            padding: 60px 40px;
+        }
+
+        .cta h2 {
+            font-weight: 800;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #10251a;
+            color: #cbd8cf;
+            padding: 55px 0 25px;
+        }
+
+        footer h5 {
+            color: white;
+            font-weight: 700;
+        }
+
+        footer a {
+            color: #cbd8cf;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 35px;
+            padding-top: 20px;
+        }
+
+        @media (max-width: 991px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 90px 0;
+            }
+
+            .hero-card {
+                margin-top: 40px;
+            }
+
+            .flow-arrow {
+                display: none;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+
+        <a class="navbar-brand" href="index.html">
+            🌱 AGRI LINKK
+        </a>
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNav"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNav">
+
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="features.html">Features</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="services.html">Services</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="gallery.html">Gallery</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="careers.html">Careers</a>
+                </li>
+
+                <li class="nav-item ms-lg-2">
+                    <a
+                        class="btn btn-success rounded-pill px-4"
+                        href="login.html"
+                    >
+                        Login
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-7 hero-content">
+
+                <div class="hero-badge">
+                    🌾 Smart Agriculture • Direct Connections
+                </div>
+
+                <h1>
+                    Connecting Farmers
+                    <span>to the Future</span>
+                </h1>
+
+                <p class="mt-4">
+                    AGRI LINKK is a digital agricultural platform that
+                    connects farmers directly with MSMEs, logistics
+                    providers, communities and apartments.
+                </p>
+
+                <p>
+                    Discover fresh agricultural products, transparent
+                    grade-based pricing and reliable connections —
+                    all in one platform.
+                </p>
+
+                <div class="hero-buttons mt-4">
+
+                    <a
+                        href="register.html"
+                        class="btn btn-main"
+                    >
+                        <i class="bi bi-person-plus"></i>
+                        Join AGRI LINKK
+                    </a>
+
+                    <a
+                        href="services.html"
+                        class="btn btn-outline-light-custom"
+                    >
+                        Explore Services
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-5">
+
+                <div class="hero-card">
+
+                    <div class="hero-card-icon">
+                        🌱
+                    </div>
+
+                    <h3>
+                        From Farm to Community
+                    </h3>
+
+                    <p class="mt-3 mb-0">
+                        Farmers can list their products while
+                        businesses and communities can discover
+                        agricultural products directly.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PLATFORM FLOW -->
+<section class="section flow-section">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h2 class="section-title">
+                One Platform. Multiple Connections.
+            </h2>
+
+            <p class="section-subtitle mt-3">
+                AGRI LINKK brings different participants of the
+                agricultural ecosystem together.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4 align-items-center">
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="flow-card">
+
+                    <div class="flow-icon">
+                        <i class="bi bi-person-badge"></i>
+                    </div>
+
+                    <h5>Farmers</h5>
+
+                    <p class="text-muted mb-0">
+                        Add farm details and list agricultural
+                        products for buyers.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="flow-card">
+
+                    <div class="flow-icon">
+                        <i class="bi bi-building"></i>
+                    </div>
+
+                    <h5>MSMEs</h5>
+
+                    <p class="text-muted mb-0">
+                        Discover products directly from farmers
+                        for business requirements.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="flow-card">
+
+                    <div class="flow-icon">
+                        <i class="bi bi-truck"></i>
+                    </div>
+
+                    <h5>Logistics</h5>
+
+                    <p class="text-muted mb-0">
+                        Find agricultural products and support
+                        transportation connections.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="flow-card">
+
+                    <div class="flow-icon">
+                        <i class="bi bi-houses"></i>
+                    </div>
+
+                    <h5>Communities</h5>
+
+                    <p class="text-muted mb-0">
+                        Communities and apartments can discover
+                        fresh products from farmers.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FEATURES -->
+<section class="section">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h2 class="section-title">
+                Why Choose AGRI LINKK?
+            </h2>
+
+            <p class="section-subtitle mt-3">
+                Built to make agricultural connections simpler,
+                more transparent and accessible.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        <i class="bi bi-link-45deg"></i>
+                    </div>
+
+                    <h5>Direct Connections</h5>
+
+                    <p class="text-muted">
+                        Connect farmers directly with businesses
+                        and communities without unnecessary
+                        complexity.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        <i class="bi bi-bar-chart"></i>
+                    </div>
+
+                    <h5>Grade-Based Pricing</h5>
+
+                    <p class="text-muted">
+                        Products can be classified into Grade A,
+                        Grade B and Grade C for clearer pricing.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+
+                    <h5>Secure Login</h5>
+
+                    <p class="text-muted">
+                        Role-based authentication helps users
+                        access the appropriate dashboard.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        <i class="bi bi-phone"></i>
+                    </div>
+
+                    <h5>Responsive Platform</h5>
+
+                    <p class="text-muted">
+                        Designed to work across laptops, tablets
+                        and mobile devices.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        <i class="bi bi-database-check"></i>
+                    </div>
+
+                    <h5>Digital Records</h5>
+
+                    <p class="text-muted">
+                        Farm and product information is maintained
+                        digitally for easier management.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        <i class="bi bi-people"></i>
+                    </div>
+
+                    <h5>Multi-Role Ecosystem</h5>
+
+                    <p class="text-muted">
+                        Farmers, MSMEs, logistics, communities,
+                        apartments and administrators work on
+                        one platform.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- GRADING -->
+<section class="section flow-section">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h2 class="section-title">
+                Simple Grade-Based Product Classification
+            </h2>
+
+            <p class="section-subtitle mt-3">
+                Products can be listed according to quality grades,
+                helping buyers understand the available options.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+
+                <div class="grade-card grade-a">
+
+                    <div class="d-flex justify-content-between">
+
+                        <div>
+
+                            <h3>Grade A</h3>
+
+                            <p>
+                                Premium quality products
+                            </p>
+
+                        </div>
+
+                        <div class="grade-letter">
+                            A
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="grade-card grade-b">
+
+                    <div class="d-flex justify-content-between">
+
+                        <div>
+
+                            <h3>Grade B</h3>
+
+                            <p>
+                                Good quality products
+                            </p>
+
+                        </div>
+
+                        <div class="grade-letter">
+                            B
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="grade-card grade-c">
+
+                    <div class="d-flex justify-content-between">
+
+                        <div>
+
+                            <h3>Grade C</h3>
+
+                            <p>
+                                Standard quality products
+                            </p>
+
+                        </div>
+
+                        <div class="grade-letter">
+                            C
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- STATS -->
+<section class="section stats-section">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-6 col-lg-3">
+
+                <div class="stat-card">
+
+                    <div class="stat-number">
+                        6
+                    </div>
+
+                    <div class="stat-label">
+                        User Roles
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-lg-3">
+
+                <div class="stat-card">
+
+                    <div class="stat-number">
+                        3
+                    </div>
+
+                    <div class="stat-label">
+                        Product Grades
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-lg-3">
+
+                <div class="stat-card">
+
+                    <div class="stat-number">
+                        24/7
+                    </div>
+
+                    <div class="stat-label">
+                        Digital Access
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-lg-3">
+
+                <div class="stat-card">
+
+                    <div class="stat-number">
+                        1
+                    </div>
+
+                    <div class="stat-label">
+                        Connected Platform
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CTA -->
+<section class="section">
+
+    <div class="container">
+
+        <div class="cta text-center">
+
+            <h2>
+                Ready to Connect with AGRI LINKK?
+            </h2>
+
+            <p class="mt-3 mb-4">
+                Create your account and become part of a
+                connected agricultural ecosystem.
+            </p>
+
+            <a
+                href="register.html"
+                class="btn btn-light btn-lg rounded-pill px-5"
+            >
+                Get Started
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="container">
+
+        <div class="row g-4">
+
+            <div class="col-lg-5">
+
+                <h5>
+                    🌱 AGRI LINKK
+                </h5>
+
+                <p class="mt-3">
+                    Connecting farmers with MSMEs, logistics,
+                    communities and apartments through a digital
+                    agricultural platform.
+                </p>
+
+            </div>
+
+
+            <div class="col-6 col-lg-2">
+
+                <h5>Company</h5>
+
+                <div class="d-flex flex-column gap-2 mt-3">
+
+                    <a href="about.html">About</a>
+
+                    <a href="features.html">Features</a>
+
+                    <a href="services.html">Services</a>
+
+                    <a href="careers.html">Careers</a>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-lg-2">
+
+                <h5>Explore</h5>
+
+                <div class="d-flex flex-column gap-2 mt-3">
+
+                    <a href="gallery.html">Gallery</a>
+
+                    <a href="register.html">Register</a>
+
+                    <a href="login.html">Login</a>
+
+                    <a href="contact.html">Contact</a>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3">
+
+                <h5>Connect</h5>
+
+                <p class="mt-3 mb-2">
+                    <i class="bi bi-envelope"></i>
+                    info@agrilinkk.com
+                </p>
+
+                <p>
+                    <i class="bi bi-telephone"></i>
+                    +91 98765 43210
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom text-center">
+
+            <p class="mb-0">
+                © 2026 AGRI LINKK. All Rights Reserved.
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+</body>
+</html>
+```

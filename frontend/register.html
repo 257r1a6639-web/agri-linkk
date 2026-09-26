@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Register - AGRI LINKK</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --green:#198754;
+            --dark-green:#0b5d35;
+            --light-green:#eaf7ef;
+            --dark:#17351f;
+        }
+
+        body {
+            min-height:100vh;
+            font-family:Arial,sans-serif;
+            background:
+                linear-gradient(135deg,#eaf7ef,#ffffff);
+        }
+
+        .navbar {
+            background:white;
+            box-shadow:0 2px 15px rgba(0,0,0,.08);
+        }
+
+        .navbar-brand {
+            color:var(--green)!important;
+            font-size:1.5rem;
+            font-weight:800;
+        }
+
+        .nav-link {
+            font-weight:600;
+        }
+
+        .register-section {
+            min-height:calc(100vh - 72px);
+            padding:60px 0;
+        }
+
+        .register-card {
+            background:white;
+            border:1px solid #dfeae2;
+            border-radius:28px;
+            box-shadow:0 20px 50px rgba(0,0,0,.08);
+            overflow:hidden;
+        }
+
+        .register-info {
+            background:linear-gradient(135deg,#0b5d35,#198754);
+            color:white;
+            padding:50px 40px;
+        }
+
+        .register-info h1 {
+            font-weight:800;
+        }
+
+        .register-info p {
+            color:#e7f7ec;
+            line-height:1.8;
+        }
+
+        .benefit {
+            display:flex;
+            gap:14px;
+            margin-top:22px;
+        }
+
+        .benefit i {
+            font-size:1.3rem;
+            color:#bff3d0;
+        }
+
+        .form-section {
+            padding:50px 40px;
+        }
+
+        .form-section h2 {
+            color:var(--dark);
+            font-weight:800;
+        }
+
+        .form-control,
+        .form-select {
+            padding:13px 15px;
+            border-radius:12px;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color:var(--green);
+            box-shadow:0 0 0 .2rem rgba(25,135,84,.15);
+        }
+
+        .input-group-text {
+            background:#f2f7f3;
+            border-radius:12px 0 0 12px;
+        }
+
+        .btn-success {
+            padding:13px;
+            font-weight:700;
+        }
+
+        .message {
+            display:none;
+            border-radius:10px;
+            padding:12px;
+            margin-bottom:15px;
+        }
+
+        @media(max-width:768px) {
+            .register-info,
+            .form-section {
+                padding:35px 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="container">
+
+        <a class="navbar-brand" href="index.html">
+            🌱 AGRI LINKK
+        </a>
+
+        <a href="login.html"
+           class="btn btn-outline-success rounded-pill px-4">
+            Login
+        </a>
+
+    </div>
+</nav>
+
+
+<section class="register-section">
+
+    <div class="container">
+
+        <div class="register-card">
+
+            <div class="row g-0">
+
+                <div class="col-lg-5">
+
+                    <div class="register-info h-100">
+
+                        <h1>Join AGRI LINKK</h1>
+
+                        <p class="mt-3">
+                            Create your account and become part of
+                            a connected agricultural ecosystem.
+                        </p>
+
+                        <div class="benefit">
+                            <i class="bi bi-check-circle-fill"></i>
+                            <div>
+                                <strong>Multiple User Roles</strong>
+                                <br>
+                                <small>
+                                    Farmer, MSME, Logistics,
+                                    Community and Apartment.
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="benefit">
+                            <i class="bi bi-shop"></i>
+                            <div>
+                                <strong>Digital Marketplace</strong>
+                                <br>
+                                <small>
+                                    Discover agricultural products
+                                    and connect with participants.
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="benefit">
+                            <i class="bi bi-shield-check"></i>
+                            <div>
+                                <strong>Secure Access</strong>
+                                <br>
+                                <small>
+                                    Role-based dashboards and
+                                    protected account access.
+                                </small>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-7">
+
+                    <div class="form-section">
+
+                        <h2>Create Account</h2>
+
+                        <p class="text-muted mb-4">
+                            Enter your details to register.
+                        </p>
+
+                        <div id="message" class="message"></div>
+
+                        <form id="registerForm">
+
+                            <div class="mb-3">
+
+                                <label class="form-label">
+                                    Full Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="fullName"
+                                    class="form-control"
+                                    placeholder="Enter your full name"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="row">
+
+                                <div class="col-md-6 mb-3">
+
+                                    <label class="form-label">
+                                        Email
+                                    </label>
+
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        class="form-control"
+                                        placeholder="name@example.com"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <div class="col-md-6 mb-3">
+
+                                    <label class="form-label">
+                                        Phone
+                                    </label>
+
+                                    <input
+                                        type="tel"
+                                        id="phone"
+                                        class="form-control"
+                                        placeholder="10-digit mobile number"
+                                        maxlength="10"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="mb-3">
+
+                                <label class="form-label">
+                                    Select Role
+                                </label>
+
+                                <select id="role"
+                                        class="form-select"
+                                        required>
+
+                                    <option value="">
+                                        Choose your role
+                                    </option>
+
+                                    <option value="Farmer">Farmer</option>
+                                    <option value="MSME">MSME</option>
+                                    <option value="Logistics">Logistics</option>
+                                    <option value="Community">Community</option>
+                                    <option value="Apartment">Apartment</option>
+                                    <option value="Admin">Admin</option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="mb-3">
+
+                                <label class="form-label">
+                                    Password
+                                </label>
+
+                                <input
+                                    type="password"
+                                    id="password"
+                                    class="form-control"
+                                    placeholder="Minimum 6 characters"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="mb-4">
+
+                                <label class="form-label">
+                                    Confirm Password
+                                </label>
+
+                                <input
+                                    type="password"
+                                    id="confirmPassword"
+                                    class="form-control"
+                                    placeholder="Re-enter password"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <button
+                                type="submit"
+                                class="btn btn-success w-100 rounded-pill"
+                            >
+                                Create Account
+                            </button>
+
+                        </form>
+
+
+                        <p class="text-center text-muted mt-4 mb-0">
+                            Already have an account?
+                            <a href="login.html"
+                               class="text-success fw-bold text-decoration-none">
+                                Login here
+                            </a>
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<script src="js/validation.js"></script>
+
+<script>
+const form = document.getElementById("registerForm");
+const message = document.getElementById("message");
+
+function showMessage(text, success = false) {
+    message.style.display = "block";
+    message.className = success
+        ? "message alert alert-success"
+        : "message alert alert-danger";
+    message.textContent = text;
+}
+
+form.addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+    const fullName = document.getElementById("fullName").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const role = document.getElementById("role").value;
+    const password = document.getElementById("password").value;
+    const confirmPassword =
+        document.getElementById("confirmPassword").value;
+
+    if (!fullName || !email || !phone || !role ||
+        !password || !confirmPassword) {
+
+        showMessage("Please fill all required fields.");
+        return;
+    }
+
+    if (typeof validateEmail === "function" && !validateEmail(email)) {
+        showMessage("Please enter a valid email address.");
+        return;
+    }
+
+    if (typeof validatePhone === "function" && !validatePhone(phone)) {
+        showMessage("Please enter a valid 10-digit phone number.");
+        return;
+    }
+
+    if (password.length < 6) {
+        showMessage("Password must contain at least 6 characters.");
+        return;
+    }
+
+    if (password !== confirmPassword) {
+        showMessage("Passwords do not match.");
+        return;
+    }
+
+    try {
+
+        const response = await fetch(
+            "http://localhost:5000/api/register",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    fullName,
+                    email,
+                    phone,
+                    role,
+                    password
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            showMessage(data.message || "Registration failed.");
+            return;
+        }
+
+        showMessage(
+            "Registration successful! Redirecting to login...",
+            true
+        );
+
+        form.reset();
+
+        setTimeout(() => {
+            window.location.href = "login.html";
+        }, 1500);
+
+    } catch (error) {
+
+        console.error(error);
+
+        showMessage(
+            "Unable to connect to the server. Make sure the backend is running on port 5000."
+        );
+    }
+
+});
+</script>
+
+</body>
+</html>
