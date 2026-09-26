@@ -39,9 +39,7 @@
         .card {
             border: none;
             border-radius: 15px;
-            box-shadow:
-                0 4px 15px
-                rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
         }
 
         .stat-card {
@@ -118,9 +116,7 @@
 <body>
 
 
-<!-- ========================================
-     NAVBAR
-======================================== -->
+<!-- NAVBAR -->
 
 <nav class="navbar navbar-dark bg-dark">
 
@@ -134,18 +130,14 @@
         </a>
 
         <span class="text-white me-auto ms-3">
-
             Admin Panel
-
         </span>
 
         <button
             class="btn btn-outline-light btn-sm"
             onclick="logout()"
         >
-
             Logout
-
         </button>
 
     </div>
@@ -153,49 +145,31 @@
 </nav>
 
 
-
 <div class="container mt-4 mb-5">
 
 
-    <!-- ========================================
-         HEADER
-    ======================================== -->
+    <!-- HEADER -->
 
     <div class="dashboard-header">
 
         <h2>
-
             Welcome Admin 👨‍💼
-
         </h2>
 
         <p class="mb-0">
-
             Manage and monitor the AGRI LINKK platform.
-
         </p>
 
     </div>
 
 
-
-    <!-- ========================================
-         STATISTICS
-    ======================================== -->
+    <!-- STATISTICS -->
 
     <div class="row g-4 mb-4">
 
-
-        <!-- TOTAL USERS -->
-
         <div class="col-md-6 col-lg-3">
 
-            <div
-                class="card
-                stat-card
-                p-4
-                text-center"
-            >
+            <div class="card stat-card p-4 text-center">
 
                 <div style="font-size: 35px;">
                     👥
@@ -217,17 +191,9 @@
         </div>
 
 
-
-        <!-- FARMERS -->
-
         <div class="col-md-6 col-lg-3">
 
-            <div
-                class="card
-                stat-card
-                p-4
-                text-center"
-            >
+            <div class="card stat-card p-4 text-center">
 
                 <div style="font-size: 35px;">
                     👨‍🌾
@@ -249,17 +215,9 @@
         </div>
 
 
-
-        <!-- MSMEs -->
-
         <div class="col-md-6 col-lg-3">
 
-            <div
-                class="card
-                stat-card
-                p-4
-                text-center"
-            >
+            <div class="card stat-card p-4 text-center">
 
                 <div style="font-size: 35px;">
                     🏢
@@ -281,17 +239,9 @@
         </div>
 
 
-
-        <!-- PRODUCTS -->
-
         <div class="col-md-6 col-lg-3">
 
-            <div
-                class="card
-                stat-card
-                p-4
-                text-center"
-            >
+            <div class="card stat-card p-4 text-center">
 
                 <div style="font-size: 35px;">
                     🌾
@@ -315,13 +265,9 @@
     </div>
 
 
-
-    <!-- ========================================
-         OTHER ROLE STATISTICS
-    ======================================== -->
+    <!-- OTHER STATISTICS -->
 
     <div class="row g-4 mb-4">
-
 
         <div class="col-md-4">
 
@@ -353,7 +299,7 @@
 
                 <h3
                     id="totalCommunities"
-                    class="text-purple"
+                    style="color:#6f42c1;"
                 >
                     0
                 </h3>
@@ -385,34 +331,21 @@
     </div>
 
 
-
-    <!-- ========================================
-         USERS TABLE
-    ======================================== -->
+    <!-- USERS TABLE -->
 
     <div class="card p-4 mb-4">
 
-        <div
-            class="d-flex
-            justify-content-between
-            align-items-center
-            mb-3"
-        >
+        <div class="d-flex justify-content-between align-items-center mb-3">
 
             <h4 class="section-title mb-0">
-
                 👥 Registered Users
-
             </h4>
-
 
             <button
                 class="btn btn-primary"
                 onclick="loadAdminData()"
             >
-
                 🔄 Refresh
-
             </button>
 
         </div>
@@ -422,34 +355,23 @@
             id="userMessage"
             class="alert alert-info"
         >
-
             Loading users...
-
         </div>
 
 
         <div class="table-responsive">
 
-            <table
-                class="table
-                table-hover
-                align-middle"
-            >
+            <table class="table table-hover align-middle">
 
                 <thead class="table-dark">
 
                     <tr>
 
                         <th>ID</th>
-
                         <th>Name</th>
-
                         <th>Email</th>
-
                         <th>Phone</th>
-
                         <th>Role</th>
-
                         <th>Registered</th>
 
                     </tr>
@@ -457,9 +379,7 @@
                 </thead>
 
 
-                <tbody
-                    id="usersTableBody"
-                >
+                <tbody id="usersTableBody">
 
                 </tbody>
 
@@ -470,24 +390,14 @@
     </div>
 
 
-
-    <!-- ========================================
-         PRODUCTS TABLE
-    ======================================== -->
+    <!-- PRODUCTS TABLE -->
 
     <div class="card p-4 mb-4">
 
-        <div
-            class="d-flex
-            justify-content-between
-            align-items-center
-            mb-3"
-        >
+        <div class="d-flex justify-content-between align-items-center mb-3">
 
             <h4 class="section-title mb-0">
-
                 🌾 All Farmer Products
-
             </h4>
 
         </div>
@@ -497,38 +407,25 @@
             id="productMessage"
             class="alert alert-info"
         >
-
             Loading products...
-
         </div>
 
 
         <div class="table-responsive">
 
-            <table
-                class="table
-                table-hover
-                align-middle"
-            >
+            <table class="table table-hover align-middle">
 
                 <thead class="table-dark">
 
                     <tr>
 
                         <th>ID</th>
-
                         <th>Product</th>
-
                         <th>Farmer</th>
-
                         <th>Crop</th>
-
                         <th>Grade</th>
-
                         <th>Quantity</th>
-
                         <th>Price</th>
-
                         <th>Farming Type</th>
 
                     </tr>
@@ -536,9 +433,7 @@
                 </thead>
 
 
-                <tbody
-                    id="productsTableBody"
-                >
+                <tbody id="productsTableBody">
 
                 </tbody>
 
@@ -549,42 +444,26 @@
     </div>
 
 
-
-    <!-- ========================================
-         SYSTEM INFORMATION
-    ======================================== -->
+    <!-- SYSTEM INFORMATION -->
 
     <div class="card p-4">
 
         <h4 class="section-title">
-
             ℹ️ System Information
-
         </h4>
-
 
         <div class="row mt-3">
 
             <div class="col-md-6">
 
                 <p>
-
-                    <strong>
-                        Platform:
-                    </strong>
-
+                    <strong>Platform:</strong>
                     AGRI LINKK
-
                 </p>
 
                 <p>
-
-                    <strong>
-                        Purpose:
-                    </strong>
-
+                    <strong>Purpose:</strong>
                     Direct farmer-to-market connection
-
                 </p>
 
             </div>
@@ -593,23 +472,13 @@
             <div class="col-md-6">
 
                 <p>
-
-                    <strong>
-                        Backend:
-                    </strong>
-
+                    <strong>Backend:</strong>
                     Node.js + Express.js
-
                 </p>
 
                 <p>
-
-                    <strong>
-                        Database:
-                    </strong>
-
+                    <strong>Database:</strong>
                     MySQL
-
                 </p>
 
             </div>
@@ -621,8 +490,15 @@
 </div>
 
 
-
 <script>
+
+
+// ========================================
+// RAILWAY BACKEND URL
+// ========================================
+
+const API_URL =
+    "https://agri-linkk-production.up.railway.app";
 
 
 // ========================================
@@ -634,7 +510,6 @@ const token =
         "agrilinkkToken"
     );
 
-
 const userData =
     localStorage.getItem(
         "agrilinkkUser"
@@ -645,10 +520,7 @@ const userData =
 // LOGIN CHECK
 // ========================================
 
-if (
-    !token ||
-    !userData
-) {
+if (!token || !userData) {
 
     alert(
         "Please login first."
@@ -717,19 +589,16 @@ async function loadAdminData() {
 }
 
 
-
 // ========================================
 // LOAD USERS
 // ========================================
 
 async function loadUsers() {
 
-
     const message =
         document.getElementById(
             "userMessage"
         );
-
 
     const tableBody =
         document.getElementById(
@@ -741,18 +610,17 @@ async function loadUsers() {
 
         const response =
             await fetch(
-                "http://localhost:5000/api/admin/users",
+                API_URL + "/api/admin/users",
                 {
-
                     method: "GET",
 
                     headers: {
-
                         "Authorization":
-                            "Bearer " + token
+                            "Bearer " + token,
 
+                        "Content-Type":
+                            "application/json"
                     }
-
                 }
             );
 
@@ -796,9 +664,7 @@ async function loadUsers() {
             data.users || [];
 
 
-        // ========================================
         // UPDATE COUNTS
-        // ========================================
 
         document.getElementById(
             "totalUsers"
@@ -810,7 +676,8 @@ async function loadUsers() {
             "totalFarmers"
         ).textContent =
             users.filter(
-                user => user.role === "Farmer"
+                user =>
+                    user.role === "Farmer"
             ).length;
 
 
@@ -818,7 +685,8 @@ async function loadUsers() {
             "totalMsmes"
         ).textContent =
             users.filter(
-                user => user.role === "MSME"
+                user =>
+                    user.role === "MSME"
             ).length;
 
 
@@ -826,7 +694,8 @@ async function loadUsers() {
             "totalLogistics"
         ).textContent =
             users.filter(
-                user => user.role === "Logistics"
+                user =>
+                    user.role === "Logistics"
             ).length;
 
 
@@ -834,7 +703,8 @@ async function loadUsers() {
             "totalCommunities"
         ).textContent =
             users.filter(
-                user => user.role === "Community"
+                user =>
+                    user.role === "Community"
             ).length;
 
 
@@ -842,14 +712,12 @@ async function loadUsers() {
             "totalApartments"
         ).textContent =
             users.filter(
-                user => user.role === "Apartment"
+                user =>
+                    user.role === "Apartment"
             ).length;
 
 
-
-        // ========================================
         // EMPTY USERS
-        // ========================================
 
         if (users.length === 0) {
 
@@ -866,7 +734,6 @@ async function loadUsers() {
         }
 
 
-
         message.className =
             "alert alert-success";
 
@@ -875,10 +742,7 @@ async function loadUsers() {
             " user(s) registered.";
 
 
-
-        // ========================================
         // USER TABLE
-        // ========================================
 
         tableBody.innerHTML =
             users
@@ -890,13 +754,12 @@ async function loadUsers() {
 
     }
 
-
     catch (error) {
 
         console.error(
+            "Admin users error:",
             error
         );
-
 
         message.className =
             "alert alert-danger";
@@ -909,13 +772,11 @@ async function loadUsers() {
 }
 
 
-
 // ========================================
 // CREATE USER ROW
 // ========================================
 
 function createUserRow(user) {
-
 
     const roleClass =
         getRoleClass(
@@ -984,7 +845,6 @@ function createUserRow(user) {
 }
 
 
-
 // ========================================
 // ROLE BADGE
 // ========================================
@@ -1019,19 +879,16 @@ function getRoleClass(role) {
 }
 
 
-
 // ========================================
 // LOAD PRODUCTS
 // ========================================
 
 async function loadProducts() {
 
-
     const message =
         document.getElementById(
             "productMessage"
         );
-
 
     const tableBody =
         document.getElementById(
@@ -1043,18 +900,17 @@ async function loadProducts() {
 
         const response =
             await fetch(
-                "https://agri-linkk-production.up.railway.app/api/admin/products",
+                API_URL + "/api/admin/products",
                 {
-
                     method: "GET",
 
                     headers: {
-
                         "Authorization":
-                            "Bearer " + token
+                            "Bearer " + token,
 
+                        "Content-Type":
+                            "application/json"
                     }
-
                 }
             );
 
@@ -1137,13 +993,12 @@ async function loadProducts() {
 
     }
 
-
     catch (error) {
 
         console.error(
+            "Admin products error:",
             error
         );
-
 
         message.className =
             "alert alert-danger";
@@ -1156,13 +1011,11 @@ async function loadProducts() {
 }
 
 
-
 // ========================================
 // CREATE PRODUCT ROW
 // ========================================
 
 function createProductRow(product) {
-
 
     let gradeClass =
         "grade-c";
@@ -1270,7 +1123,6 @@ function createProductRow(product) {
 }
 
 
-
 // ========================================
 // ESCAPE HTML
 // ========================================
@@ -1309,7 +1161,6 @@ function escapeHtml(value) {
 }
 
 
-
 // ========================================
 // LOGOUT
 // ========================================
@@ -1328,7 +1179,6 @@ function logout() {
         "login.html";
 
 }
-
 
 
 // ========================================
