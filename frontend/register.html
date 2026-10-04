@@ -1,470 +1,823 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Register - AGRI LINKK</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
 
     <style>
-        :root {
-            --green:#198754;
-            --dark-green:#0b5d35;
-            --light-green:#eaf7ef;
-            --dark:#17351f;
-        }
 
         body {
-            min-height:100vh;
-            font-family:Arial,sans-serif;
-            background:
-                linear-gradient(135deg,#eaf7ef,#ffffff);
-        }
+            background: linear-gradient(
+                135deg,
+                #e8f5e9,
+                #f8fff9
+            );
 
-        .navbar {
-            background:white;
-            box-shadow:0 2px 15px rgba(0,0,0,.08);
-        }
-
-        .navbar-brand {
-            color:var(--green)!important;
-            font-size:1.5rem;
-            font-weight:800;
-        }
-
-        .nav-link {
-            font-weight:600;
-        }
-
-        .register-section {
-            min-height:calc(100vh - 72px);
-            padding:60px 0;
+            min-height: 100vh;
         }
 
         .register-card {
-            background:white;
-            border:1px solid #dfeae2;
-            border-radius:28px;
-            box-shadow:0 20px 50px rgba(0,0,0,.08);
-            overflow:hidden;
+
+            max-width: 600px;
+
+            margin: 50px auto;
+
+            border: none;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 10px 30px
+                rgba(0, 0, 0, 0.10);
+
         }
 
-        .register-info {
-            background:linear-gradient(135deg,#0b5d35,#198754);
-            color:white;
-            padding:50px 40px;
-        }
+        .brand {
 
-        .register-info h1 {
-            font-weight:800;
-        }
+            color: #198754;
 
-        .register-info p {
-            color:#e7f7ec;
-            line-height:1.8;
-        }
+            font-weight: bold;
 
-        .benefit {
-            display:flex;
-            gap:14px;
-            margin-top:22px;
-        }
+            font-size: 28px;
 
-        .benefit i {
-            font-size:1.3rem;
-            color:#bff3d0;
-        }
-
-        .form-section {
-            padding:50px 40px;
-        }
-
-        .form-section h2 {
-            color:var(--dark);
-            font-weight:800;
         }
 
         .form-control,
         .form-select {
-            padding:13px 15px;
-            border-radius:12px;
+
+            border-radius: 10px;
+
+            padding: 12px;
+
         }
 
-        .form-control:focus,
-        .form-select:focus {
-            border-color:var(--green);
-            box-shadow:0 0 0 .2rem rgba(25,135,84,.15);
+        .btn-register {
+
+            background-color: #198754;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 10px;
+
+            padding: 12px;
+
+            font-weight: 600;
+
         }
 
-        .input-group-text {
-            background:#f2f7f3;
-            border-radius:12px 0 0 12px;
+        .btn-register:hover {
+
+            background-color: #146c43;
+
+            color: white;
+
         }
 
-        .btn-success {
-            padding:13px;
-            font-weight:700;
-        }
-
-        .message {
-            display:none;
-            border-radius:10px;
-            padding:12px;
-            margin-bottom:15px;
-        }
-
-        @media(max-width:768px) {
-            .register-info,
-            .form-section {
-                padding:35px 25px;
-            }
-        }
     </style>
+
 </head>
+
 
 <body>
 
-<nav class="navbar">
-    <div class="container">
 
-        <a class="navbar-brand" href="index.html">
-            🌱 AGRI LINKK
-        </a>
+<!-- NAVBAR -->
 
-        <a href="login.html"
-           class="btn btn-outline-success rounded-pill px-4">
-            Login
-        </a>
-
-    </div>
-</nav>
-
-
-<section class="register-section">
+<nav class="navbar navbar-expand-lg navbar-dark bg-success">
 
     <div class="container">
 
-        <div class="register-card">
+        <a
+            class="navbar-brand fw-bold"
+            href="index.html"
+        >
+            🌾 AGRI LINKK
+        </a>
 
-            <div class="row g-0">
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+        >
 
-                <div class="col-lg-5">
+            <span class="navbar-toggler-icon"></span>
 
-                    <div class="register-info h-100">
-
-                        <h1>Join AGRI LINKK</h1>
-
-                        <p class="mt-3">
-                            Create your account and become part of
-                            a connected agricultural ecosystem.
-                        </p>
-
-                        <div class="benefit">
-                            <i class="bi bi-check-circle-fill"></i>
-                            <div>
-                                <strong>Multiple User Roles</strong>
-                                <br>
-                                <small>
-                                    Farmer, MSME, Logistics,
-                                    Community and Apartment.
-                                </small>
-                            </div>
-                        </div>
-
-                        <div class="benefit">
-                            <i class="bi bi-shop"></i>
-                            <div>
-                                <strong>Digital Marketplace</strong>
-                                <br>
-                                <small>
-                                    Discover agricultural products
-                                    and connect with participants.
-                                </small>
-                            </div>
-                        </div>
-
-                        <div class="benefit">
-                            <i class="bi bi-shield-check"></i>
-                            <div>
-                                <strong>Secure Access</strong>
-                                <br>
-                                <small>
-                                    Role-based dashboards and
-                                    protected account access.
-                                </small>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
+        </button>
 
 
-                <div class="col-lg-7">
+        <div
+            class="collapse navbar-collapse"
+            id="navbarNav"
+        >
 
-                    <div class="form-section">
+            <ul class="navbar-nav ms-auto">
 
-                        <h2>Create Account</h2>
+                <li class="nav-item">
 
-                        <p class="text-muted mb-4">
-                            Enter your details to register.
-                        </p>
+                    <a
+                        class="nav-link"
+                        href="index.html"
+                    >
+                        Home
+                    </a>
 
-                        <div id="message" class="message"></div>
+                </li>
 
-                        <form id="registerForm">
+                <li class="nav-item">
 
-                            <div class="mb-3">
+                    <a
+                        class="nav-link"
+                        href="about.html"
+                    >
+                        About
+                    </a>
 
-                                <label class="form-label">
-                                    Full Name
-                                </label>
+                </li>
 
-                                <input
-                                    type="text"
-                                    id="fullName"
-                                    class="form-control"
-                                    placeholder="Enter your full name"
-                                    required
-                                >
+                <li class="nav-item">
 
-                            </div>
+                    <a
+                        class="nav-link"
+                        href="services.html"
+                    >
+                        Services
+                    </a>
 
+                </li>
 
-                            <div class="row">
+                <li class="nav-item">
 
-                                <div class="col-md-6 mb-3">
+                    <a
+                        class="nav-link"
+                        href="contact.html"
+                    >
+                        Contact
+                    </a>
 
-                                    <label class="form-label">
-                                        Email
-                                    </label>
+                </li>
 
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        class="form-control"
-                                        placeholder="name@example.com"
-                                        required
-                                    >
+                <li class="nav-item">
 
-                                </div>
+                    <a
+                        class="nav-link"
+                        href="login.html"
+                    >
+                        Login
+                    </a>
 
+                </li>
 
-                                <div class="col-md-6 mb-3">
-
-                                    <label class="form-label">
-                                        Phone
-                                    </label>
-
-                                    <input
-                                        type="tel"
-                                        id="phone"
-                                        class="form-control"
-                                        placeholder="10-digit mobile number"
-                                        maxlength="10"
-                                        required
-                                    >
-
-                                </div>
-
-                            </div>
-
-
-                            <div class="mb-3">
-
-                                <label class="form-label">
-                                    Select Role
-                                </label>
-
-                                <select id="role"
-                                        class="form-select"
-                                        required>
-
-                                    <option value="">
-                                        Choose your role
-                                    </option>
-
-                                    <option value="Farmer">Farmer</option>
-                                    <option value="MSME">MSME</option>
-                                    <option value="Logistics">Logistics</option>
-                                    <option value="Community">Community</option>
-                                    <option value="Apartment">Apartment</option>
-                                    <option value="Admin">Admin</option>
-
-                                </select>
-
-                            </div>
-
-
-                            <div class="mb-3">
-
-                                <label class="form-label">
-                                    Password
-                                </label>
-
-                                <input
-                                    type="password"
-                                    id="password"
-                                    class="form-control"
-                                    placeholder="Minimum 6 characters"
-                                    required
-                                >
-
-                            </div>
-
-
-                            <div class="mb-4">
-
-                                <label class="form-label">
-                                    Confirm Password
-                                </label>
-
-                                <input
-                                    type="password"
-                                    id="confirmPassword"
-                                    class="form-control"
-                                    placeholder="Re-enter password"
-                                    required
-                                >
-
-                            </div>
-
-
-                            <button
-                                type="submit"
-                                class="btn btn-success w-100 rounded-pill"
-                            >
-                                Create Account
-                            </button>
-
-                        </form>
-
-
-                        <p class="text-center text-muted mt-4 mb-0">
-                            Already have an account?
-                            <a href="login.html"
-                               class="text-success fw-bold text-decoration-none">
-                                Login here
-                            </a>
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
+            </ul>
 
         </div>
 
     </div>
 
-</section>
+</nav>
 
 
-<script src="js/validation.js"></script>
+<!-- REGISTER CARD -->
+
+<div class="container">
+
+    <div class="card register-card">
+
+        <div class="card-body p-4 p-md-5">
+
+
+            <div class="text-center mb-4">
+
+                <div class="brand">
+                    🌾 AGRI LINKK
+                </div>
+
+                <h3 class="mt-2">
+                    Create Account
+                </h3>
+
+                <p class="text-muted">
+                    Join the AGRI LINKK community
+                </p>
+
+            </div>
+
+
+            <!-- MESSAGE -->
+
+            <div
+                id="message"
+                class="alert d-none"
+            ></div>
+
+
+            <!-- REGISTER FORM -->
+
+            <form
+                id="registerForm"
+                novalidate
+            >
+
+
+                <!-- FULL NAME -->
+
+                <div class="mb-3">
+
+                    <label
+                        for="fullName"
+                        class="form-label"
+                    >
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="fullName"
+                        name="fullName"
+                        placeholder="Enter your full name"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="mb-3">
+
+                    <label
+                        for="email"
+                        class="form-label"
+                    >
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        class="form-control"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- PHONE -->
+
+                <div class="mb-3">
+
+                    <label
+                        for="phone"
+                        class="form-label"
+                    >
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        class="form-control"
+                        id="phone"
+                        name="phone"
+                        placeholder="Enter 10-digit phone number"
+                        maxlength="10"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- ROLE -->
+
+                <div class="mb-3">
+
+                    <label
+                        for="role"
+                        class="form-label"
+                    >
+                        Select Role
+                    </label>
+
+                    <select
+                        class="form-select"
+                        id="role"
+                        name="role"
+                        required
+                    >
+
+                        <option
+                            value=""
+                        >
+                            Select your role
+                        </option>
+
+                        <option
+                            value="Farmer"
+                        >
+                            Farmer
+                        </option>
+
+                        <option
+                            value="MSME"
+                        >
+                            MSME
+                        </option>
+
+                        <option
+                            value="Logistics"
+                        >
+                            Logistics
+                        </option>
+
+                        <option
+                            value="Community"
+                        >
+                            Community
+                        </option>
+
+                        <option
+                            value="Apartment"
+                        >
+                            Apartment
+                        </option>
+
+                        <option
+                            value="Admin"
+                        >
+                            Admin
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="mb-3">
+
+                    <label
+                        for="password"
+                        class="form-label"
+                    >
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        class="form-control"
+                        id="password"
+                        name="password"
+                        placeholder="Minimum 6 characters"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- CONFIRM PASSWORD -->
+
+                <div class="mb-4">
+
+                    <label
+                        for="confirmPassword"
+                        class="form-label"
+                    >
+                        Confirm Password
+                    </label>
+
+                    <input
+                        type="password"
+                        class="form-control"
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        placeholder="Re-enter password"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- SUBMIT -->
+
+                <button
+                    type="submit"
+                    class="btn btn-register w-100"
+                    id="registerButton"
+                >
+                    Create Account
+                </button>
+
+
+            </form>
+
+
+            <div class="text-center mt-4">
+
+                <span class="text-muted">
+                    Already have an account?
+                </span>
+
+                <a
+                    href="login.html"
+                    class="text-success fw-bold text-decoration-none"
+                >
+                    Login here
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- BOOTSTRAP -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+></script>
+
 
 <script>
-const form = document.getElementById("registerForm");
-const message = document.getElementById("message");
 
-function showMessage(text, success = false) {
-    message.style.display = "block";
-    message.className = success
-        ? "message alert alert-success"
-        : "message alert alert-danger";
-    message.textContent = text;
+
+// ========================================
+// RAILWAY BACKEND
+// ========================================
+
+const API_URL =
+    "https://agri-linkk-production.up.railway.app";
+
+
+// ========================================
+// ELEMENTS
+// ========================================
+
+const registerForm =
+    document.getElementById(
+        "registerForm"
+    );
+
+const message =
+    document.getElementById(
+        "message"
+    );
+
+const registerButton =
+    document.getElementById(
+        "registerButton"
+    );
+
+
+// ========================================
+// SHOW MESSAGE
+// ========================================
+
+function showMessage(
+    text,
+    type
+) {
+
+    message.className =
+        "alert alert-" + type;
+
+    message.textContent =
+        text;
+
 }
 
-form.addEventListener("submit", async function(event) {
 
-    event.preventDefault();
+// ========================================
+// REGISTER
+// ========================================
 
-    const fullName = document.getElementById("fullName").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const phone = document.getElementById("phone").value.trim();
-    const role = document.getElementById("role").value;
-    const password = document.getElementById("password").value;
-    const confirmPassword =
-        document.getElementById("confirmPassword").value;
+registerForm.addEventListener(
+    "submit",
 
-    if (!fullName || !email || !phone || !role ||
-        !password || !confirmPassword) {
+    async function (event) {
 
-        showMessage("Please fill all required fields.");
-        return;
-    }
+        event.preventDefault();
 
-    if (typeof validateEmail === "function" && !validateEmail(email)) {
-        showMessage("Please enter a valid email address.");
-        return;
-    }
 
-    if (typeof validatePhone === "function" && !validatePhone(phone)) {
-        showMessage("Please enter a valid 10-digit phone number.");
-        return;
-    }
+        // --------------------------------
+        // GET VALUES
+        // --------------------------------
 
-    if (password.length < 6) {
-        showMessage("Password must contain at least 6 characters.");
-        return;
-    }
+        const fullName =
+            document
+                .getElementById(
+                    "fullName"
+                )
+                .value
+                .trim();
 
-    if (password !== confirmPassword) {
-        showMessage("Passwords do not match.");
-        return;
-    }
 
-    try {
+        const email =
+            document
+                .getElementById(
+                    "email"
+                )
+                .value
+                .trim();
 
-        const response = await fetch(
-            "https://agri-linkk-production.up.railway.app/api/register",
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    fullName,
-                    email,
-                    phone,
-                    role,
-                    password
-                })
-            }
-        );
 
-        const data = await response.json();
+        const phone =
+            document
+                .getElementById(
+                    "phone"
+                )
+                .value
+                .trim();
 
-        if (!response.ok) {
-            showMessage(data.message || "Registration failed.");
+
+        const role =
+            document
+                .getElementById(
+                    "role"
+                )
+                .value;
+
+
+        const password =
+            document
+                .getElementById(
+                    "password"
+                )
+                .value;
+
+
+        const confirmPassword =
+            document
+                .getElementById(
+                    "confirmPassword"
+                )
+                .value;
+
+
+        // --------------------------------
+        // FRONTEND VALIDATION
+        // --------------------------------
+
+        if (
+            !fullName ||
+            !email ||
+            !phone ||
+            !role ||
+            !password ||
+            !confirmPassword
+        ) {
+
+            showMessage(
+                "Please fill in all fields.",
+                "danger"
+            );
+
             return;
+
         }
 
-        showMessage(
-            "Registration successful! Redirecting to login...",
-            true
-        );
 
-        form.reset();
+        // --------------------------------
+        // EMAIL VALIDATION
+        // --------------------------------
 
-        setTimeout(() => {
-            window.location.href = "login.html";
-        }, 1500);
+        const emailPattern =
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    } catch (error) {
 
-        console.error(error);
+        if (
+            !emailPattern.test(email)
+        ) {
 
-        showMessage(
-            "Unable to connect to the server. Make sure the backend is running on port 5000."
-        );
+            showMessage(
+                "Please enter a valid email address.",
+                "danger"
+            );
+
+            return;
+
+        }
+
+
+        // --------------------------------
+        // PHONE VALIDATION
+        // --------------------------------
+
+        const phonePattern =
+            /^[0-9]{10}$/;
+
+
+        if (
+            !phonePattern.test(phone)
+        ) {
+
+            showMessage(
+                "Phone number must contain exactly 10 digits.",
+                "danger"
+            );
+
+            return;
+
+        }
+
+
+        // --------------------------------
+        // PASSWORD VALIDATION
+        // --------------------------------
+
+        if (
+            password.length < 6
+        ) {
+
+            showMessage(
+                "Password must contain at least 6 characters.",
+                "danger"
+            );
+
+            return;
+
+        }
+
+
+        // --------------------------------
+        // CONFIRM PASSWORD
+        // --------------------------------
+
+        if (
+            password !==
+            confirmPassword
+        ) {
+
+            showMessage(
+                "Passwords do not match.",
+                "danger"
+            );
+
+            return;
+
+        }
+
+
+        // --------------------------------
+        // DISABLE BUTTON
+        // --------------------------------
+
+        registerButton.disabled =
+            true;
+
+        registerButton.textContent =
+            "Creating Account...";
+
+
+        try {
+
+
+            // ========================================
+            // IMPORTANT:
+            // BACKEND EXPECTS full_name
+            // NOT fullName
+            // ========================================
+
+            const response =
+                await fetch(
+                    API_URL +
+                    "/api/register",
+                    {
+
+                        method: "POST",
+
+                        headers: {
+
+                            "Content-Type":
+                                "application/json"
+
+                        },
+
+                        body:
+                            JSON.stringify({
+
+                                full_name:
+                                    fullName,
+
+                                email:
+                                    email,
+
+                                phone:
+                                    phone,
+
+                                role:
+                                    role,
+
+                                password:
+                                    password
+
+                            })
+
+                    }
+                );
+
+
+            const data =
+                await response.json();
+
+
+            // --------------------------------
+            // ERROR
+            // --------------------------------
+
+            if (
+                !response.ok ||
+                !data.success
+            ) {
+
+                showMessage(
+                    data.message ||
+                    "Registration failed.",
+                    "danger"
+                );
+
+                return;
+
+            }
+
+
+            // --------------------------------
+            // SUCCESS
+            // --------------------------------
+
+            showMessage(
+                "Registration successful! Redirecting to login...",
+                "success"
+            );
+
+
+            registerForm.reset();
+
+
+            setTimeout(
+                function () {
+
+                    window.location.href =
+                        "login.html";
+
+                },
+
+                1500
+            );
+
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Registration error:",
+                error
+            );
+
+
+            showMessage(
+                "Unable to connect to the server. Please try again.",
+                "danger"
+            );
+
+        }
+
+        finally {
+
+            registerButton.disabled =
+                false;
+
+            registerButton.textContent =
+                "Create Account";
+
+        }
+
     }
 
-});
+);
+
 </script>
 
+
 </body>
+
 </html>
