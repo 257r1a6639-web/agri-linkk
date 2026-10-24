@@ -1,88 +1,166 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b5d35">
+    <meta name="description" content="Learn about AGRI LINKK, a digital agricultural platform connecting farmers, businesses, logistics providers and communities.">
 
-    <title>About Us - AGRI LINKK</title>
+    <title>About Us | AGRI LINKK</title>
 
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-    >
-
-    <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-    >
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
     <style>
         :root {
             --green: #198754;
             --dark-green: #0b5d35;
+            --deep-green: #073c24;
             --light-green: #eaf7ef;
             --dark: #17351f;
+            --text: #526158;
+            --white: #ffffff;
+            --border: #e1ebe4;
+            --shadow: 0 12px 35px rgba(11, 93, 53, 0.09);
+        }
+
+        * {
+            box-sizing: border-box;
         }
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 85px;
         }
 
         body {
-            font-family: Arial, sans-serif;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
             color: #26372b;
-            background: #fff;
+            background: var(--white);
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
         }
 
         .navbar {
-            background: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            background: rgba(255, 255, 255, 0.97);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.07);
+            padding: 14px 0;
         }
 
         .navbar-brand {
             color: var(--green) !important;
-            font-size: 1.5rem;
+            font-size: 1.45rem;
             font-weight: 800;
+            letter-spacing: -0.5px;
         }
 
         .nav-link {
             color: #34463a !important;
             font-weight: 600;
             margin: 0 4px;
+            transition: color 0.25s ease;
         }
 
-        .nav-link:hover {
+        .nav-link:hover,
+        .nav-link.active {
             color: var(--green) !important;
         }
 
-        /* PAGE HERO */
+        .navbar-toggler {
+            border-color: #dce9df;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.2);
+        }
+
+        .btn-success {
+            background: var(--green);
+            border-color: var(--green);
+        }
+
+        .btn-success:hover {
+            background: var(--dark-green);
+            border-color: var(--dark-green);
+        }
+
+        .rounded-pill {
+            font-weight: 700;
+        }
+
+        /* HERO */
 
         .page-hero {
-            background:
-                linear-gradient(
-                    135deg,
-                    #0b5d35,
-                    #198754
-                );
+            position: relative;
+            overflow: hidden;
+            padding: 100px 0 95px;
             color: white;
-            padding: 90px 0;
             text-align: center;
+            background: linear-gradient(135deg, var(--deep-green), var(--green));
+        }
+
+        .page-hero::before,
+        .page-hero::after {
+            content: "";
+            position: absolute;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .page-hero::before {
+            width: 340px;
+            height: 340px;
+            top: -170px;
+            left: -100px;
+        }
+
+        .page-hero::after {
+            width: 420px;
+            height: 420px;
+            right: -150px;
+            bottom: -250px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 7px 16px;
+            margin-bottom: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            color: #e3f8e9;
+            background: rgba(255, 255, 255, 0.08);
+            font-size: 0.9rem;
+            font-weight: 700;
         }
 
         .page-hero h1 {
-            font-size: 3.2rem;
+            margin: 0;
+            font-size: clamp(2.3rem, 5vw, 3.7rem);
             font-weight: 800;
+            letter-spacing: -1px;
         }
 
         .page-hero p {
-            max-width: 700px;
-            margin: 20px auto 0;
+            max-width: 740px;
+            margin: 22px auto 0;
             color: #e5f7eb;
             font-size: 1.1rem;
-            line-height: 1.8;
+            line-height: 1.9;
         }
 
-        /* SECTIONS */
+        /* GENERAL SECTIONS */
 
         .section {
             padding: 80px 0;
@@ -91,201 +169,388 @@
         .section-title {
             color: var(--dark);
             font-weight: 800;
+            letter-spacing: -0.5px;
         }
 
         .section-subtitle {
-            max-width: 700px;
+            max-width: 720px;
             margin: 0 auto;
             color: #69766d;
-            line-height: 1.7;
+            line-height: 1.8;
         }
 
-        /* ABOUT */
+        .eyebrow {
+            display: inline-block;
+            margin-bottom: 12px;
+            color: var(--green);
+            font-size: 0.82rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ABOUT CARDS */
 
         .about-card {
-            background: var(--light-green);
-            border-radius: 25px;
-            padding: 40px;
             height: 100%;
+            padding: 38px;
+            background: var(--light-green);
+            border: 1px solid #e1f0e6;
+            border-radius: 24px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
         }
 
         .about-icon {
-            width: 65px;
-            height: 65px;
-            border-radius: 18px;
-            background: white;
-            color: var(--green);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.7rem;
-            margin-bottom: 20px;
+            width: 64px;
+            height: 64px;
+            margin-bottom: 22px;
+            border-radius: 18px;
+            background: white;
+            color: var(--green);
+            font-size: 1.8rem;
+            box-shadow: 0 5px 15px rgba(11, 93, 53, 0.06);
         }
 
         .about-card h3 {
+            margin-bottom: 18px;
             color: var(--dark-green);
-            font-weight: 750;
+            font-weight: 800;
         }
 
         .about-card p {
             color: #59665d;
-            line-height: 1.8;
+            line-height: 1.9;
         }
 
-        /* VISION */
-
-        .vision-card {
-            border-radius: 22px;
-            padding: 35px;
-            border: 1px solid #e1ebe4;
-            height: 100%;
-            transition: 0.3s;
+        .about-highlight {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-top: 20px;
+            color: var(--dark-green);
+            font-weight: 700;
         }
 
-        .vision-card:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-        }
-
-        .vision-icon {
-            font-size: 2rem;
+        .about-highlight i {
+            margin-top: 3px;
             color: var(--green);
-            margin-bottom: 15px;
         }
 
-        /* TEAM */
+        /* VISION AND MISSION */
 
-        .team-section {
+        .soft-section {
             background: #f7faf8;
         }
 
-        .team-card {
-            background: white;
-            border-radius: 22px;
-            padding: 30px 20px;
-            text-align: center;
+        .vision-card {
             height: 100%;
-            border: 1px solid #e4ece7;
-            transition: 0.3s;
+            padding: 35px;
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            background: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .team-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.09);
+        .vision-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow);
         }
 
-        .team-avatar {
-            width: 95px;
-            height: 95px;
-            margin: 0 auto 20px;
-            border-radius: 50%;
-            background:
-                linear-gradient(
-                    135deg,
-                    #198754,
-                    #0b5d35
-                );
-            color: white;
+        .vision-icon {
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.2rem;
+            width: 60px;
+            height: 60px;
+            margin-bottom: 20px;
+            border-radius: 17px;
+            background: var(--light-green);
+            color: var(--green);
+            font-size: 1.8rem;
         }
 
-        .team-card h5 {
-            font-weight: 750;
+        .vision-card h3 {
+            color: var(--dark-green);
+            font-weight: 800;
+        }
+
+        .vision-card p {
+            margin-bottom: 0;
+            color: var(--text);
+        }
+
+        /* COMPANY STRUCTURE */
+
+        .team-card {
+            height: 100%;
+            padding: 32px 22px;
+            text-align: center;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-7px);
+            box-shadow: var(--shadow);
+        }
+
+        .team-avatar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 88px;
+            height: 88px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            color: white;
+            background: linear-gradient(135deg, var(--green), var(--dark-green));
+            font-size: 2rem;
+        }
+
+        .team-card h3 {
+            margin-bottom: 8px;
             color: var(--dark);
+            font-size: 1.2rem;
+            font-weight: 800;
         }
 
         .team-role {
+            margin-bottom: 14px;
             color: var(--green);
+            font-size: 0.92rem;
             font-weight: 700;
-            margin-bottom: 12px;
         }
 
         .team-card p {
+            margin-bottom: 0;
             color: #68746b;
-            line-height: 1.7;
             font-size: 0.95rem;
+        }
+
+        .team-name-note {
+            color: #68746b;
+            font-size: 0.9rem;
         }
 
         /* ECOSYSTEM */
 
         .ecosystem-card {
-            background: white;
-            border-radius: 20px;
-            padding: 25px;
-            border: 1px solid #e5eee8;
             height: 100%;
+            padding: 25px 12px;
             text-align: center;
+            background: white;
+            border: 1px solid #e5eee8;
+            border-radius: 20px;
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .ecosystem-card:hover {
+            transform: translateY(-5px);
+            border-color: #9bcdae;
         }
 
         .ecosystem-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--light-green);
-            color: var(--green);
-            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            width: 60px;
+            height: 60px;
             margin: 0 auto 15px;
-            font-size: 1.5rem;
+            border-radius: 50%;
+            background: var(--light-green);
+            color: var(--green);
+            font-size: 1.55rem;
         }
 
-        /* CTA */
+        .ecosystem-card h3 {
+            margin: 0;
+            color: var(--dark);
+            font-size: 1rem;
+            font-weight: 800;
+        }
+
+        /* CALL TO ACTION */
 
         .cta {
-            background:
-                linear-gradient(
-                    135deg,
-                    #0b5d35,
-                    #198754
-                );
-            border-radius: 30px;
-            padding: 60px 35px;
+            position: relative;
+            overflow: hidden;
+            padding: 60px 30px;
+            border-radius: 28px;
             color: white;
+            background: linear-gradient(135deg, var(--deep-green), var(--green));
         }
 
         .cta h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
             font-weight: 800;
+        }
+
+        .cta p {
+            max-width: 650px;
+            margin-right: auto;
+            margin-left: auto;
+            color: #e5f7eb;
+        }
+
+        .cta .btn {
+            padding: 13px 30px;
+            color: var(--dark-green);
+            font-weight: 800;
+            transition: transform 0.25s ease;
+        }
+
+        .cta .btn:hover {
+            transform: translateY(-3px);
         }
 
         /* FOOTER */
 
         footer {
-            background: #10251a;
-            color: #cbd8cf;
             padding: 55px 0 25px;
+            color: #cbd8cf;
+            background: #10251a;
         }
 
-        footer h5 {
+        footer h2,
+        footer h3 {
             color: white;
-            font-weight: 700;
+            font-size: 1.1rem;
+            font-weight: 800;
+        }
+
+        .footer-brand {
+            color: white;
+            font-size: 1.45rem;
+            font-weight: 800;
+        }
+
+        footer p {
+            line-height: 1.8;
         }
 
         footer a {
             color: #cbd8cf;
-            text-decoration: none;
+            transition: color 0.2s ease;
         }
 
         footer a:hover {
             color: white;
         }
 
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            margin-top: 35px;
-            padding-top: 20px;
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 18px;
         }
 
-        @media (max-width: 768px) {
-            .page-hero h1 {
-                font-size: 2.4rem;
+        .footer-bottom {
+            margin-top: 35px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* BACK TO TOP */
+
+        .back-to-top {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border: none;
+            border-radius: 50%;
+            color: white;
+            background: var(--green);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.25s ease, visibility 0.25s ease;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--dark-green);
+        }
+
+        /* ACCESSIBILITY */
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid #77c993;
+            outline-offset: 3px;
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar-nav {
+                padding-top: 12px;
+            }
+
+            .nav-link {
+                padding: 9px 0;
+            }
+
+            .navbar .btn {
+                margin-top: 8px;
+                margin-bottom: 8px;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .page-hero {
+                padding: 75px 0;
+            }
+
+            .page-hero p {
+                font-size: 1rem;
             }
 
             .section {
-                padding: 60px 0;
+                padding: 58px 0;
+            }
+
+            .about-card,
+            .vision-card {
+                padding: 28px;
+            }
+
+            .cta {
+                padding: 45px 22px;
+                border-radius: 22px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
         }
     </style>
@@ -293,13 +558,12 @@
 
 <body>
 
-<!-- NAVBAR -->
+<!-- NAVIGATION -->
 
-<nav class="navbar navbar-expand-lg sticky-top">
-
+<nav class="navbar navbar-expand-lg sticky-top" aria-label="Main navigation">
     <div class="container">
 
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="index.html" aria-label="AGRI LINKK home">
             🌱 AGRI LINKK
         </a>
 
@@ -308,613 +572,536 @@
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#mainNav"
+            aria-controls="mainNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
         >
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="mainNav">
-
             <ul class="navbar-nav ms-auto align-items-lg-center">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">
-                        Home
-                    </a>
+                    <a class="nav-link" href="index.html">Home</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active" href="about.html">
-                        About
-                    </a>
+                    <a class="nav-link active" href="about.html" aria-current="page">About</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="features.html">
-                        Features
-                    </a>
+                    <a class="nav-link" href="features.html">Features</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="services.html">
-                        Services
-                    </a>
+                    <a class="nav-link" href="services.html">Services</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="gallery.html">
-                        Gallery
-                    </a>
+                    <a class="nav-link" href="gallery.html">Gallery</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="careers.html">
-                        Careers
-                    </a>
+                    <a class="nav-link" href="careers.html">Careers</a>
                 </li>
 
                 <li class="nav-item ms-lg-2">
-                    <a
-                        href="login.html"
-                        class="btn btn-success rounded-pill px-4"
-                    >
-                        Login
+                    <a href="login.html" class="btn btn-success rounded-pill px-4">
+                        Login <i class="bi bi-arrow-right-short" aria-hidden="true"></i>
                     </a>
                 </li>
 
             </ul>
-
         </div>
-
     </div>
-
 </nav>
 
 
-<!-- HERO -->
+<main>
 
-<section class="page-hero">
+    <!-- HERO -->
 
-    <div class="container">
+    <section class="page-hero">
+        <div class="container hero-content">
 
-        <h1>
-            About AGRI LINKK
-        </h1>
+            <span class="hero-badge">
+                <i class="bi bi-leaf" aria-hidden="true"></i>
+                Growing Together
+            </span>
 
-        <p>
-            Building a connected agricultural ecosystem where
-            farmers, businesses, logistics providers and communities
-            can discover and connect with each other.
-        </p>
+            <h1>About AGRI LINKK</h1>
 
-    </div>
-
-</section>
-
-
-<!-- WHO WE ARE -->
-
-<section class="section">
-
-    <div class="container">
-
-        <div class="row g-4 align-items-stretch">
-
-            <div class="col-lg-6">
-
-                <div class="about-card">
-
-                    <div class="about-icon">
-                        <i class="bi bi-leaf"></i>
-                    </div>
-
-                    <h3>
-                        Who We Are
-                    </h3>
-
-                    <p>
-                        AGRI LINKK is a digital agricultural platform
-                        designed to simplify connections between
-                        farmers and organizations that require
-                        agricultural products.
-                    </p>
-
-                    <p>
-                        Farmers can maintain their farm information,
-                        list products and provide details such as
-                        crop type, farming method, quantity and
-                        product grade.
-                    </p>
-
-                    <p class="mb-0">
-                        MSMEs, logistics providers, communities and
-                        apartments can discover available products
-                        through the marketplace.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="col-lg-6">
-
-                <div class="about-card">
-
-                    <div class="about-icon">
-                        <i class="bi bi-bullseye"></i>
-                    </div>
-
-                    <h3>
-                        What We Do
-                    </h3>
-
-                    <p>
-                        Our platform provides a common digital space
-                        for participants in the agricultural supply
-                        ecosystem.
-                    </p>
-
-                    <p>
-                        AGRI LINKK supports product listing,
-                        grade-based classification, role-based
-                        dashboards and secure user authentication.
-                    </p>
-
-                    <p class="mb-0">
-                        The goal is to make agricultural information
-                        easier to discover and create direct
-                        connections between participants.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- VISION AND MISSION -->
-
-<section class="section team-section">
-
-    <div class="container">
-
-        <div class="text-center mb-5">
-
-            <h2 class="section-title">
-                Our Vision & Mission
-            </h2>
-
-            <p class="section-subtitle mt-3">
-                Creating a more connected and digitally accessible
-                agricultural ecosystem.
+            <p>
+                Connecting farmers, businesses, logistics providers and
+                communities through a digital agricultural ecosystem
+                designed to make product discovery easier.
             </p>
 
         </div>
+    </section>
 
 
-        <div class="row g-4">
+    <!-- WHO WE ARE -->
 
-            <div class="col-md-6">
+    <section class="section" aria-labelledby="about-heading">
+        <div class="container">
 
-                <div class="vision-card">
+            <div class="text-center mb-5">
+                <span class="eyebrow">Get to know us</span>
+                <h2 class="section-title" id="about-heading">Who We Are</h2>
+                <p class="section-subtitle mt-3">
+                    We aim to make agricultural connections simpler,
+                    more accessible and more organized through technology.
+                </p>
+            </div>
 
-                    <div class="vision-icon">
-                        <i class="bi bi-eye"></i>
-                    </div>
+            <div class="row g-4">
 
-                    <h4>
-                        Our Vision
-                    </h4>
+                <div class="col-lg-6">
+                    <article class="about-card">
 
-                    <p class="text-muted mt-3">
-                        To build a connected agricultural ecosystem
-                        where farmers and buyers can discover
-                        opportunities through simple and accessible
-                        digital technology.
-                    </p>
+                        <div class="about-icon" aria-hidden="true">
+                            <i class="bi bi-leaf"></i>
+                        </div>
 
+                        <h3>Who We Are</h3>
+
+                        <p>
+                            AGRI LINKK is a digital agricultural platform
+                            designed to simplify connections between
+                            farmers and organizations looking for
+                            agricultural products.
+                        </p>
+
+                        <p>
+                            Farmers can maintain their farm information
+                            and list products with details such as crop
+                            type, farming method, quantity, grade and price.
+                        </p>
+
+                        <p class="mb-0">
+                            Businesses, logistics providers, communities
+                            and apartments can use the platform to discover
+                            available agricultural products.
+                        </p>
+
+                        <div class="about-highlight">
+                            <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                            <span>One platform for agricultural connections</span>
+                        </div>
+
+                    </article>
+                </div>
+
+                <div class="col-lg-6">
+                    <article class="about-card">
+
+                        <div class="about-icon" aria-hidden="true">
+                            <i class="bi bi-bullseye"></i>
+                        </div>
+
+                        <h3>What We Do</h3>
+
+                        <p>
+                            We provide a common digital space for
+                            participants across the agricultural supply
+                            ecosystem to connect and discover opportunities.
+                        </p>
+
+                        <p>
+                            The platform is designed to support product
+                            listings, grade-based classification,
+                            role-based dashboards and user authentication.
+                        </p>
+
+                        <p class="mb-0">
+                            Our goal is to make agricultural product
+                            information easier to discover and help
+                            participants find relevant connections.
+                        </p>
+
+                        <div class="about-highlight">
+                            <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                            <span>Technology designed around agriculture</span>
+                        </div>
+
+                    </article>
                 </div>
 
             </div>
-
-
-            <div class="col-md-6">
-
-                <div class="vision-card">
-
-                    <div class="vision-icon">
-                        <i class="bi bi-flag"></i>
-                    </div>
-
-                    <h4>
-                        Our Mission
-                    </h4>
-
-                    <p class="text-muted mt-3">
-                        To provide a platform that helps farmers
-                        showcase their products while enabling
-                        businesses and communities to discover
-                        agricultural products efficiently.
-                    </p>
-
-                </div>
-
-            </div>
-
         </div>
-
-    </div>
-
-</section>
+    </section>
 
 
-<!-- COMPANY STRUCTURE -->
+    <!-- VISION AND MISSION -->
 
-<section class="section team-section">
+    <section class="section soft-section" aria-labelledby="vision-heading">
+        <div class="container">
 
-    <div class="container">
+            <div class="text-center mb-5">
+                <span class="eyebrow">Our purpose</span>
+                <h2 class="section-title" id="vision-heading">
+                    Our Vision &amp; Mission
+                </h2>
+                <p class="section-subtitle mt-3">
+                    Working toward a more connected and digitally accessible
+                    agricultural ecosystem.
+                </p>
+            </div>
 
-        <div class="text-center mb-5">
+            <div class="row g-4">
 
-            <h2 class="section-title">
-                Our Company Structure
-            </h2>
+                <div class="col-md-6">
+                    <article class="vision-card">
 
-            <p class="section-subtitle mt-3">
-                A simple leadership structure supporting technology,
-                operations and business development.
+                        <div class="vision-icon" aria-hidden="true">
+                            <i class="bi bi-eye"></i>
+                        </div>
+
+                        <h3>Our Vision</h3>
+
+                        <p class="mt-3">
+                            To build a connected agricultural ecosystem
+                            where farmers and buyers can discover
+                            opportunities through simple and accessible
+                            digital technology.
+                        </p>
+
+                    </article>
+                </div>
+
+                <div class="col-md-6">
+                    <article class="vision-card">
+
+                        <div class="vision-icon" aria-hidden="true">
+                            <i class="bi bi-flag"></i>
+                        </div>
+
+                        <h3>Our Mission</h3>
+
+                        <p class="mt-3">
+                            To provide a platform that helps farmers
+                            showcase their products while enabling
+                            businesses and communities to discover
+                            agricultural products more efficiently.
+                        </p>
+
+                    </article>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- COMPANY STRUCTURE -->
+
+    <section class="section" aria-labelledby="team-heading">
+        <div class="container">
+
+            <div class="text-center mb-5">
+                <span class="eyebrow">The people behind the platform</span>
+                <h2 class="section-title" id="team-heading">
+                    Our Company Structure
+                </h2>
+                <p class="section-subtitle mt-3">
+                    Leadership responsibilities supporting technology,
+                    operations and the overall direction of AGRI LINKK.
+                </p>
+            </div>
+
+            <div class="row g-4 justify-content-center">
+
+                <div class="col-sm-6 col-lg-4">
+                    <article class="team-card">
+
+                        <div class="team-avatar" aria-hidden="true">
+                            <i class="bi bi-person-badge"></i>
+                        </div>
+
+                        <!-- Replace with the actual CEO name -->
+                        <h3>CEO Name</h3>
+
+                        <div class="team-role">
+                            Chief Executive Officer
+                        </div>
+
+                        <p>
+                            Leads the overall vision, strategy and
+                            direction of AGRI LINKK.
+                        </p>
+
+                    </article>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <article class="team-card">
+
+                        <div class="team-avatar" aria-hidden="true">
+                            <i class="bi bi-code-slash"></i>
+                        </div>
+
+                        <!-- Replace with the actual CTO name -->
+                        <h3>CTO Name</h3>
+
+                        <div class="team-role">
+                            Chief Technology Officer
+                        </div>
+
+                        <p>
+                            Oversees software development, technology
+                            decisions and the digital infrastructure
+                            of the platform.
+                        </p>
+
+                    </article>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <article class="team-card">
+
+                        <div class="team-avatar" aria-hidden="true">
+                            <i class="bi bi-briefcase"></i>
+                        </div>
+
+                        <!-- Replace with the actual COO name -->
+                        <h3>COO Name</h3>
+
+                        <div class="team-role">
+                            Chief Operating Officer
+                        </div>
+
+                        <p>
+                            Coordinates platform operations, services
+                            and activities across the user ecosystem.
+                        </p>
+
+                    </article>
+                </div>
+
+            </div>
+
+            <p class="team-name-note text-center mt-4">
+                Update the three names above with your actual team members
+                before publishing the website.
             </p>
 
         </div>
+    </section>
 
 
-        <div class="row g-4 justify-content-center">
+    <!-- ECOSYSTEM -->
 
-            <!-- CEO -->
+    <section class="section soft-section" aria-labelledby="ecosystem-heading">
+        <div class="container">
 
-            <div class="col-md-6 col-lg-4">
+            <div class="text-center mb-5">
+                <span class="eyebrow">One connected platform</span>
+                <h2 class="section-title" id="ecosystem-heading">
+                    Our Connected Ecosystem
+                </h2>
+                <p class="section-subtitle mt-3">
+                    AGRI LINKK is designed to bring different participants
+                    together through a shared digital marketplace.
+                </p>
+            </div>
 
-                <div class="team-card">
+            <div class="row g-3">
 
-                    <div class="team-avatar">
-                        <i class="bi bi-person"></i>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="ecosystem-card">
+                        <div class="ecosystem-icon" aria-hidden="true">
+                            <i class="bi bi-person"></i>
+                        </div>
+                        <h3>Farmers</h3>
                     </div>
+                </div>
 
-                    <h5>
-                        Team Member 1
-                    </h5>
-
-                    <div class="team-role">
-                        Chief Executive Officer (CEO)
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="ecosystem-card">
+                        <div class="ecosystem-icon" aria-hidden="true">
+                            <i class="bi bi-building"></i>
+                        </div>
+                        <h3>MSMEs</h3>
                     </div>
+                </div>
 
-                    <p>
-                        Leads the overall vision, strategy and
-                        direction of AGRI LINKK.
-                    </p>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="ecosystem-card">
+                        <div class="ecosystem-icon" aria-hidden="true">
+                            <i class="bi bi-truck"></i>
+                        </div>
+                        <h3>Logistics</h3>
+                    </div>
+                </div>
 
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="ecosystem-card">
+                        <div class="ecosystem-icon" aria-hidden="true">
+                            <i class="bi bi-people"></i>
+                        </div>
+                        <h3>Communities</h3>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="ecosystem-card">
+                        <div class="ecosystem-icon" aria-hidden="true">
+                            <i class="bi bi-house"></i>
+                        </div>
+                        <h3>Apartments</h3>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="ecosystem-card">
+                        <div class="ecosystem-icon" aria-hidden="true">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <h3>Admin</h3>
+                    </div>
                 </div>
 
             </div>
-
-
-            <!-- CTO -->
-
-            <div class="col-md-6 col-lg-4">
-
-                <div class="team-card">
-
-                    <div class="team-avatar">
-                        <i class="bi bi-code-slash"></i>
-                    </div>
-
-                    <h5>
-                        Team Member 2
-                    </h5>
-
-                    <div class="team-role">
-                        Chief Technology Officer (CTO)
-                    </div>
-
-                    <p>
-                        Oversees the technology, software development
-                        and digital infrastructure of the platform.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <!-- COO -->
-
-            <div class="col-md-6 col-lg-4">
-
-                <div class="team-card">
-
-                    <div class="team-avatar">
-                        <i class="bi bi-briefcase"></i>
-                    </div>
-
-                    <h5>
-                        Team Member 3
-                    </h5>
-
-                    <div class="team-role">
-                        Chief Operating Officer (COO)
-                    </div>
-
-                    <p>
-                        Coordinates platform operations, services
-                        and user ecosystem activities.
-                    </p>
-
-                </div>
-
-            </div>
-
         </div>
+    </section>
 
-        <div class="alert alert-success text-center mt-4">
-            <i class="bi bi-info-circle"></i>
-            Replace "Team Member 1, 2 and 3" with your actual
-            team members' names before the final submission.
+
+    <!-- CALL TO ACTION -->
+
+    <section class="section" aria-labelledby="cta-heading">
+        <div class="container">
+
+            <div class="cta text-center">
+
+                <h2 id="cta-heading">
+                    Be Part of the AGRI LINKK Ecosystem
+                </h2>
+
+                <p class="mt-3 mb-4">
+                    Create an account to get started and explore a
+                    digital platform built around agricultural connections.
+                </p>
+
+                <a href="register.html" class="btn btn-light btn-lg rounded-pill">
+                    Create an Account
+                    <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i>
+                </a>
+
+            </div>
         </div>
+    </section>
 
-    </div>
-
-</section>
-
-
-<!-- ECOSYSTEM -->
-
-<section class="section">
-
-    <div class="container">
-
-        <div class="text-center mb-5">
-
-            <h2 class="section-title">
-                Our Connected Ecosystem
-            </h2>
-
-            <p class="section-subtitle mt-3">
-                AGRI LINKK brings multiple participants together
-                through one digital platform.
-            </p>
-
-        </div>
-
-
-        <div class="row g-4">
-
-            <div class="col-6 col-lg-2">
-
-                <div class="ecosystem-card">
-
-                    <div class="ecosystem-icon">
-                        <i class="bi bi-person"></i>
-                    </div>
-
-                    <h6>Farmers</h6>
-
-                </div>
-
-            </div>
-
-
-            <div class="col-6 col-lg-2">
-
-                <div class="ecosystem-card">
-
-                    <div class="ecosystem-icon">
-                        <i class="bi bi-building"></i>
-                    </div>
-
-                    <h6>MSMEs</h6>
-
-                </div>
-
-            </div>
-
-
-            <div class="col-6 col-lg-2">
-
-                <div class="ecosystem-card">
-
-                    <div class="ecosystem-icon">
-                        <i class="bi bi-truck"></i>
-                    </div>
-
-                    <h6>Logistics</h6>
-
-                </div>
-
-            </div>
-
-
-            <div class="col-6 col-lg-2">
-
-                <div class="ecosystem-card">
-
-                    <div class="ecosystem-icon">
-                        <i class="bi bi-people"></i>
-                    </div>
-
-                    <h6>Communities</h6>
-
-                </div>
-
-            </div>
-
-
-            <div class="col-6 col-lg-2">
-
-                <div class="ecosystem-card">
-
-                    <div class="ecosystem-icon">
-                        <i class="bi bi-house"></i>
-                    </div>
-
-                    <h6>Apartments</h6>
-
-                </div>
-
-            </div>
-
-
-            <div class="col-6 col-lg-2">
-
-                <div class="ecosystem-card">
-
-                    <div class="ecosystem-icon">
-                        <i class="bi bi-shield-check"></i>
-                    </div>
-
-                    <h6>Admin</h6>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- CTA -->
-
-<section class="section">
-
-    <div class="container">
-
-        <div class="cta text-center">
-
-            <h2>
-                Be Part of the AGRI LINKK Ecosystem
-            </h2>
-
-            <p class="mt-3 mb-4">
-                Connect, discover and participate in a digital
-                agricultural marketplace.
-            </p>
-
-            <a
-                href="register.html"
-                class="btn btn-light btn-lg rounded-pill px-5"
-            >
-                Create Account
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
+</main>
 
 
 <!-- FOOTER -->
 
 <footer>
-
     <div class="container">
 
         <div class="row g-4">
 
             <div class="col-lg-5">
 
-                <h5>
+                <a class="footer-brand" href="index.html">
                     🌱 AGRI LINKK
-                </h5>
+                </a>
 
-                <p class="mt-3">
-                    Connecting farmers with MSMEs, logistics,
-                    communities and apartments through a digital
+                <p class="mt-3 mb-0">
+                    Connecting farmers with businesses, logistics
+                    providers and communities through a digital
                     agricultural platform.
                 </p>
 
             </div>
 
-
             <div class="col-6 col-lg-2">
+                <h2>Company</h2>
 
-                <h5>
-                    Company
-                </h5>
-
-                <div class="d-flex flex-column gap-2 mt-3">
-
+                <div class="footer-links">
                     <a href="index.html">Home</a>
-                    <a href="about.html">About</a>
+                    <a href="about.html" aria-current="page">About</a>
                     <a href="features.html">Features</a>
                     <a href="services.html">Services</a>
-
                 </div>
-
             </div>
 
-
             <div class="col-6 col-lg-2">
+                <h2>Explore</h2>
 
-                <h5>
-                    Explore
-                </h5>
-
-                <div class="d-flex flex-column gap-2 mt-3">
-
+                <div class="footer-links">
                     <a href="gallery.html">Gallery</a>
                     <a href="careers.html">Careers</a>
                     <a href="register.html">Register</a>
                     <a href="login.html">Login</a>
-
                 </div>
-
             </div>
 
-
             <div class="col-lg-3">
+                <h2>Contact</h2>
 
-                <h5>
-                    Contact
-                </h5>
-
+                <!-- Replace these sample contact details with verified details -->
                 <p class="mt-3 mb-2">
-                    <i class="bi bi-envelope"></i>
-                    info@agrilinkk.com
+                    <i class="bi bi-envelope me-2" aria-hidden="true"></i>
+                    <a href="mailto:info@agrilinkk.com">info@agrilinkk.com</a>
                 </p>
 
-                <p>
-                    <i class="bi bi-telephone"></i>
-                    +91 98765 43210
+                <p class="mb-0">
+                    <i class="bi bi-telephone me-2" aria-hidden="true"></i>
+                    <a href="tel:+919876543210">+91 98765 43210</a>
                 </p>
-
             </div>
 
         </div>
 
-
-        <div class="footer-bottom text-center">
-
+        <div class="footer-bottom">
             <p class="mb-0">
-                © 2026 AGRI LINKK. All Rights Reserved.
+                &copy; <span id="currentYear">2026</span> AGRI LINKK.
+                All Rights Reserved.
             </p>
-
         </div>
 
     </div>
-
 </footer>
 
 
-<script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+<!-- BACK TO TOP BUTTON -->
+
+<button
+    type="button"
+    class="back-to-top"
+    id="backToTop"
+    aria-label="Back to top"
+    title="Back to top"
+>
+    <i class="bi bi-arrow-up" aria-hidden="true"></i>
+</button>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Keep the footer year current.
+    document.getElementById("currentYear").textContent =
+        new Date().getFullYear();
+
+    // Show the back-to-top button after scrolling.
+    const backToTopButton = document.getElementById("backToTop");
+
+    window.addEventListener("scroll", function () {
+        backToTopButton.classList.toggle("show", window.scrollY > 350);
+    });
+
+    backToTopButton.addEventListener("click", function () {
+        window.scrollTo({
+            top: 0,
+            behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+                ? "auto"
+                : "smooth"
+        });
+    });
 </script>
 
 </body>

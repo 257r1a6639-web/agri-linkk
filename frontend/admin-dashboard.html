@@ -2,11 +2,8 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Admin Dashboard - AGRI LINKK</title>
 
     <link
@@ -15,7 +12,6 @@
     >
 
     <style>
-
         body {
             background-color: #f4f7f5;
         }
@@ -25,11 +21,7 @@
         }
 
         .dashboard-header {
-            background: linear-gradient(
-                135deg,
-                #212529,
-                #0d6efd
-            );
+            background: linear-gradient(135deg, #212529, #0d6efd);
             color: white;
             padding: 35px;
             border-radius: 15px;
@@ -43,7 +35,7 @@
         }
 
         .stat-card {
-            transition: 0.2s;
+            transition: transform 0.2s;
         }
 
         .stat-card:hover {
@@ -108,1088 +100,501 @@
             padding: 30px;
         }
 
+        .table th,
+        .table td {
+            white-space: nowrap;
+            vertical-align: middle;
+        }
+
+        .dashboard-header p {
+            opacity: 0.9;
+        }
+
+        .refresh-button:disabled {
+            cursor: wait;
+            opacity: 0.7;
+        }
     </style>
-
 </head>
-
 
 <body>
 
-
-<!-- NAVBAR -->
-
-<nav class="navbar navbar-dark bg-dark">
-
-    <div class="container">
-
-        <a
-            class="navbar-brand"
-            href="index.html"
-        >
-            🌾 AGRI LINKK
-        </a>
-
-        <span class="text-white me-auto ms-3">
-            Admin Panel
-        </span>
-
-        <button
-            class="btn btn-outline-light btn-sm"
-            onclick="logout()"
-        >
-            Logout
-        </button>
-
-    </div>
-
-</nav>
-
-
-<div class="container mt-4 mb-5">
-
-
-    <!-- HEADER -->
-
-    <div class="dashboard-header">
-
-        <h2>
-            Welcome Admin 👨‍💼
-        </h2>
-
-        <p class="mb-0">
-            Manage and monitor the AGRI LINKK platform.
-        </p>
-
-    </div>
-
-
-    <!-- STATISTICS -->
-
-    <div class="row g-4 mb-4">
-
-        <div class="col-md-6 col-lg-3">
-
-            <div class="card stat-card p-4 text-center">
-
-                <div style="font-size: 35px;">
-                    👥
-                </div>
-
-                <h6 class="text-muted">
-                    Total Users
-                </h6>
-
-                <div
-                    id="totalUsers"
-                    class="stat-number text-primary"
-                >
-                    0
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="col-md-6 col-lg-3">
-
-            <div class="card stat-card p-4 text-center">
-
-                <div style="font-size: 35px;">
-                    👨‍🌾
-                </div>
-
-                <h6 class="text-muted">
-                    Farmers
-                </h6>
-
-                <div
-                    id="totalFarmers"
-                    class="stat-number text-success"
-                >
-                    0
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="col-md-6 col-lg-3">
-
-            <div class="card stat-card p-4 text-center">
-
-                <div style="font-size: 35px;">
-                    🏢
-                </div>
-
-                <h6 class="text-muted">
-                    MSMEs
-                </h6>
-
-                <div
-                    id="totalMsmes"
-                    class="stat-number text-primary"
-                >
-                    0
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="col-md-6 col-lg-3">
-
-            <div class="card stat-card p-4 text-center">
-
-                <div style="font-size: 35px;">
-                    🌾
-                </div>
-
-                <h6 class="text-muted">
-                    Products
-                </h6>
-
-                <div
-                    id="totalProducts"
-                    class="stat-number text-warning"
-                >
-                    0
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- OTHER STATISTICS -->
-
-    <div class="row g-4 mb-4">
-
-        <div class="col-md-4">
-
-            <div class="card p-4 text-center">
-
-                <h6>
-                    🚚 Logistics
-                </h6>
-
-                <h3
-                    id="totalLogistics"
-                    class="text-warning"
-                >
-                    0
-                </h3>
-
-            </div>
-
-        </div>
-
-
-        <div class="col-md-4">
-
-            <div class="card p-4 text-center">
-
-                <h6>
-                    🏘️ Communities
-                </h6>
-
-                <h3
-                    id="totalCommunities"
-                    style="color:#6f42c1;"
-                >
-                    0
-                </h3>
-
-            </div>
-
-        </div>
-
-
-        <div class="col-md-4">
-
-            <div class="card p-4 text-center">
-
-                <h6>
-                    🏠 Apartments
-                </h6>
-
-                <h3
-                    id="totalApartments"
-                    class="text-success"
-                >
-                    0
-                </h3>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- USERS TABLE -->
-
-    <div class="card p-4 mb-4">
-
-        <div class="d-flex justify-content-between align-items-center mb-3">
-
-            <h4 class="section-title mb-0">
-                👥 Registered Users
-            </h4>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                🌾 AGRI LINKK
+            </a>
+
+            <span class="text-white me-auto ms-3">
+                Admin Panel
+            </span>
 
             <button
-                class="btn btn-primary"
-                onclick="loadAdminData()"
+                class="btn btn-outline-light btn-sm"
+                type="button"
+                onclick="logout()"
             >
-                🔄 Refresh
+                Logout
             </button>
+        </div>
+    </nav>
 
+    <main class="container mt-4 mb-5">
+
+        <!-- HEADER -->
+        <div class="dashboard-header">
+            <h2>Welcome Admin 👨‍💼</h2>
+            <p class="mb-0">
+                Manage and monitor the AGRI LINKK platform.
+            </p>
         </div>
 
+        <!-- STATISTICS -->
+        <div class="row g-4 mb-4">
 
-        <div
-            id="userMessage"
-            class="alert alert-info"
-        >
-            Loading users...
-        </div>
-
-
-        <div class="table-responsive">
-
-            <table class="table table-hover align-middle">
-
-                <thead class="table-dark">
-
-                    <tr>
-
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Role</th>
-                        <th>Registered</th>
-
-                    </tr>
-
-                </thead>
-
-
-                <tbody id="usersTableBody">
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-    </div>
-
-
-    <!-- PRODUCTS TABLE -->
-
-    <div class="card p-4 mb-4">
-
-        <div class="d-flex justify-content-between align-items-center mb-3">
-
-            <h4 class="section-title mb-0">
-                🌾 All Farmer Products
-            </h4>
-
-        </div>
-
-
-        <div
-            id="productMessage"
-            class="alert alert-info"
-        >
-            Loading products...
-        </div>
-
-
-        <div class="table-responsive">
-
-            <table class="table table-hover align-middle">
-
-                <thead class="table-dark">
-
-                    <tr>
-
-                        <th>ID</th>
-                        <th>Product</th>
-                        <th>Farmer</th>
-                        <th>Crop</th>
-                        <th>Grade</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                        <th>Farming Type</th>
-
-                    </tr>
-
-                </thead>
-
-
-                <tbody id="productsTableBody">
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-    </div>
-
-
-    <!-- SYSTEM INFORMATION -->
-
-    <div class="card p-4">
-
-        <h4 class="section-title">
-            ℹ️ System Information
-        </h4>
-
-        <div class="row mt-3">
-
-            <div class="col-md-6">
-
-                <p>
-                    <strong>Platform:</strong>
-                    AGRI LINKK
-                </p>
-
-                <p>
-                    <strong>Purpose:</strong>
-                    Direct farmer-to-market connection
-                </p>
-
+            <div class="col-md-6 col-lg-3">
+                <div class="card stat-card p-4 text-center h-100">
+                    <div style="font-size: 35px;">👥</div>
+                    <h6 class="text-muted">Total Users</h6>
+                    <div id="totalUsers" class="stat-number text-primary">0</div>
+                </div>
             </div>
 
+            <div class="col-md-6 col-lg-3">
+                <div class="card stat-card p-4 text-center h-100">
+                    <div style="font-size: 35px;">👨‍🌾</div>
+                    <h6 class="text-muted">Farmers</h6>
+                    <div id="totalFarmers" class="stat-number text-success">0</div>
+                </div>
+            </div>
 
-            <div class="col-md-6">
+            <div class="col-md-6 col-lg-3">
+                <div class="card stat-card p-4 text-center h-100">
+                    <div style="font-size: 35px;">🏢</div>
+                    <h6 class="text-muted">MSMEs</h6>
+                    <div id="totalMsmes" class="stat-number text-primary">0</div>
+                </div>
+            </div>
 
-                <p>
-                    <strong>Backend:</strong>
-                    Node.js + Express.js
-                </p>
-
-                <p>
-                    <strong>Database:</strong>
-                    MySQL
-                </p>
-
+            <div class="col-md-6 col-lg-3">
+                <div class="card stat-card p-4 text-center h-100">
+                    <div style="font-size: 35px;">🌾</div>
+                    <h6 class="text-muted">Products</h6>
+                    <div id="totalProducts" class="stat-number text-warning">0</div>
+                </div>
             </div>
 
         </div>
 
-    </div>
-
-</div>
-
-
-<script>
-
-
-// ========================================
-// RAILWAY BACKEND URL
-// ========================================
-
-const API_URL =
-    "https://agri-linkk-production.up.railway.app";
-
-
-// ========================================
-// LOGIN DATA
-// ========================================
-
-const token =
-    localStorage.getItem(
-        "agrilinkkToken"
-    );
-
-const userData =
-    localStorage.getItem(
-        "agrilinkkUser"
-    );
-
-
-// ========================================
-// LOGIN CHECK
-// ========================================
-
-if (!token || !userData) {
-
-    alert(
-        "Please login first."
-    );
-
-    window.location.href =
-        "login.html";
-
-}
-
-
-let user;
-
-try {
-
-    user =
-        JSON.parse(userData);
-
-}
-
-catch (error) {
-
-    localStorage.removeItem(
-        "agrilinkkToken"
-    );
-
-    localStorage.removeItem(
-        "agrilinkkUser"
-    );
-
-    window.location.href =
-        "login.html";
-
-}
-
-
-// ========================================
-// ADMIN ROLE CHECK
-// ========================================
-
-if (
-    user &&
-    user.role !== "Admin"
-) {
-
-    alert(
-        "Access denied. Admin account required."
-    );
-
-    window.location.href =
-        "login.html";
-
-}
-
-
-// ========================================
-// LOAD ADMIN DATA
-// ========================================
-
-async function loadAdminData() {
-
-    await loadUsers();
-
-    await loadProducts();
-
-}
-
-
-// ========================================
-// LOAD USERS
-// ========================================
-
-async function loadUsers() {
-
-    const message =
-        document.getElementById(
-            "userMessage"
-        );
-
-    const tableBody =
-        document.getElementById(
-            "usersTableBody"
-        );
-
-
-    try {
-
-        const response =
-            await fetch(
-                API_URL + "/api/admin/users",
-                {
-                    method: "GET",
-
-                    headers: {
-                        "Authorization":
-                            "Bearer " + token,
-
-                        "Content-Type":
-                            "application/json"
-                    }
-                }
-            );
-
-
-        const data =
-            await response.json();
-
-
-        if (
-            response.status === 401 ||
-            response.status === 403
-        ) {
-
-            alert(
-                data.message ||
-                "Admin access required."
-            );
-
-            logout();
-
-            return;
-
-        }
-
-
-        if (!data.success) {
-
-            message.className =
-                "alert alert-danger";
-
-            message.textContent =
-                data.message ||
-                "Failed to load users.";
-
-            return;
-
-        }
-
-
-        const users =
-            data.users || [];
-
-
-        // UPDATE COUNTS
-
-        document.getElementById(
-            "totalUsers"
-        ).textContent =
-            users.length;
-
-
-        document.getElementById(
-            "totalFarmers"
-        ).textContent =
-            users.filter(
-                user =>
-                    user.role === "Farmer"
-            ).length;
-
-
-        document.getElementById(
-            "totalMsmes"
-        ).textContent =
-            users.filter(
-                user =>
-                    user.role === "MSME"
-            ).length;
-
-
-        document.getElementById(
-            "totalLogistics"
-        ).textContent =
-            users.filter(
-                user =>
-                    user.role === "Logistics"
-            ).length;
-
-
-        document.getElementById(
-            "totalCommunities"
-        ).textContent =
-            users.filter(
-                user =>
-                    user.role === "Community"
-            ).length;
-
-
-        document.getElementById(
-            "totalApartments"
-        ).textContent =
-            users.filter(
-                user =>
-                    user.role === "Apartment"
-            ).length;
-
-
-        // EMPTY USERS
-
-        if (users.length === 0) {
-
-            message.className =
-                "alert alert-warning";
-
-            message.textContent =
-                "No users registered yet.";
-
-            tableBody.innerHTML = "";
-
-            return;
-
-        }
-
-
-        message.className =
-            "alert alert-success";
-
-        message.textContent =
-            users.length +
-            " user(s) registered.";
-
-
-        // USER TABLE
-
-        tableBody.innerHTML =
-            users
-                .map(
-                    user =>
-                        createUserRow(user)
-                )
-                .join("");
-
-    }
-
-    catch (error) {
-
-        console.error(
-            "Admin users error:",
-            error
-        );
-
-        message.className =
-            "alert alert-danger";
-
-        message.textContent =
-            "Unable to connect to the server.";
-
-    }
-
-}
-
-
-// ========================================
-// CREATE USER ROW
-// ========================================
-
-function createUserRow(user) {
-
-    const roleClass =
-        getRoleClass(
-            user.role
-        );
-
-
-    const date =
-        user.created_at
-            ? new Date(
-                user.created_at
-            ).toLocaleDateString()
-            : "-";
-
-
-    return `
-
-        <tr>
-
-            <td>
-                ${escapeHtml(user.id)}
-            </td>
-
-            <td>
-                <strong>
-                    ${escapeHtml(
-                        user.full_name
-                    )}
-                </strong>
-            </td>
-
-            <td>
-                ${escapeHtml(
-                    user.email
-                )}
-            </td>
-
-            <td>
-                ${escapeHtml(
-                    user.phone
-                )}
-            </td>
-
-            <td>
-
-                <span
-                    class="badge ${roleClass}"
+        <!-- OTHER STATISTICS -->
+        <div class="row g-4 mb-4">
+
+            <div class="col-md-4">
+                <div class="card p-4 text-center h-100">
+                    <h6>🚚 Logistics</h6>
+                    <h3 id="totalLogistics" class="text-warning">0</h3>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card p-4 text-center h-100">
+                    <h6>🏘️ Communities</h6>
+                    <h3 id="totalCommunities" style="color:#6f42c1;">0</h3>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card p-4 text-center h-100">
+                    <h6>🏠 Apartments</h6>
+                    <h3 id="totalApartments" class="text-success">0</h3>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- USERS TABLE -->
+        <div class="card p-4 mb-4">
+
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+                <h4 class="section-title mb-0">👥 Registered Users</h4>
+
+                <button
+                    id="refreshButton"
+                    class="btn btn-primary refresh-button"
+                    type="button"
+                    onclick="loadAdminData()"
                 >
+                    🔄 Refresh
+                </button>
+            </div>
 
-                    ${escapeHtml(
-                        user.role
-                    )}
+            <div id="userMessage" class="alert alert-info" role="status">
+                Loading users...
+            </div>
 
-                </span>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Role</th>
+                            <th>Registered</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersTableBody"></tbody>
+                </table>
+            </div>
 
-            </td>
+        </div>
 
-            <td>
-                ${escapeHtml(date)}
-            </td>
+        <!-- PRODUCTS TABLE -->
+        <div class="card p-4 mb-4">
 
-        </tr>
+            <h4 class="section-title mb-3">🌾 All Farmer Products</h4>
 
-    `;
+            <div id="productMessage" class="alert alert-info" role="status">
+                Loading products...
+            </div>
 
-}
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Product</th>
+                            <th>Farmer</th>
+                            <th>Crop</th>
+                            <th>Grade</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Farming Type</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productsTableBody"></tbody>
+                </table>
+            </div>
 
+        </div>
 
-// ========================================
-// ROLE BADGE
-// ========================================
+        <!-- SYSTEM INFORMATION -->
+        <div class="card p-4">
+            <h4 class="section-title">ℹ️ System Information</h4>
 
-function getRoleClass(role) {
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <p>
+                        <strong>Platform:</strong>
+                        AGRI LINKK
+                    </p>
+                    <p>
+                        <strong>Purpose:</strong>
+                        Direct farmer-to-market connection
+                    </p>
+                </div>
 
-    switch (role) {
+                <div class="col-md-6">
+                    <p>
+                        <strong>Backend:</strong>
+                        Node.js + Express.js
+                    </p>
+                    <p>
+                        <strong>Database:</strong>
+                        MySQL
+                    </p>
+                </div>
+            </div>
+        </div>
 
-        case "Farmer":
-            return "badge-farmer";
+    </main>
 
-        case "MSME":
-            return "badge-msme";
+    <script>
+        // BACKEND URL
+        const API_URL = "https://agri-linkk-api.onrender.com";
 
-        case "Logistics":
-            return "badge-logistics";
+        // LOGIN DATA
+        const token = localStorage.getItem("agrilinkkToken");
+        const userData = localStorage.getItem("agrilinkkUser");
 
-        case "Community":
-            return "badge-community";
+        let user = null;
+        let isLoading = false;
+        let sessionInvalid = false;
 
-        case "Apartment":
-            return "badge-apartment";
+        // LOGIN CHECK
+        if (!token || !userData) {
+            alert("Please login first.");
+            window.location.replace("login.html");
+        } else {
+            try {
+                user = JSON.parse(userData);
+            } catch (error) {
+                localStorage.removeItem("agrilinkkToken");
+                localStorage.removeItem("agrilinkkUser");
+                alert("Your login session is invalid. Please login again.");
+                window.location.replace("login.html");
+            }
+        }
 
-        case "Admin":
-            return "badge-admin";
+        // ADMIN ROLE CHECK
+        if (user && user.role !== "Admin") {
+            alert("Access denied. Admin account required.");
+            window.location.replace("login.html");
+        }
 
-        default:
-            return "bg-secondary";
+        // Only load the dashboard for a valid admin session.
+        if (token && user && user.role === "Admin") {
+            loadAdminData();
+        }
 
-    }
+        // LOAD ADMIN DATA
+        async function loadAdminData() {
+            if (isLoading || sessionInvalid || !token || !user || user.role !== "Admin") {
+                return;
+            }
 
-}
+            isLoading = true;
 
+            const refreshButton = document.getElementById("refreshButton");
+            refreshButton.disabled = true;
+            refreshButton.textContent = "Loading...";
 
-// ========================================
-// LOAD PRODUCTS
-// ========================================
+            try {
+                await Promise.all([
+                    loadUsers(),
+                    loadProducts()
+                ]);
+            } finally {
+                isLoading = false;
+                refreshButton.disabled = false;
+                refreshButton.textContent = "🔄 Refresh";
+            }
+        }
 
-async function loadProducts() {
-
-    const message =
-        document.getElementById(
-            "productMessage"
-        );
-
-    const tableBody =
-        document.getElementById(
-            "productsTableBody"
-        );
-
-
-    try {
-
-        const response =
-            await fetch(
-                API_URL + "/api/admin/products",
-                {
-                    method: "GET",
-
-                    headers: {
-                        "Authorization":
-                            "Bearer " + token,
-
-                        "Content-Type":
-                            "application/json"
-                    }
+        // API REQUEST HELPER
+        async function apiRequest(endpoint) {
+            const response = await fetch(API_URL + endpoint, {
+                method: "GET",
+                headers: {
+                    "Authorization": "Bearer " + token,
+                    "Accept": "application/json"
                 }
-            );
+            });
 
+            let data;
 
-        const data =
-            await response.json();
+            try {
+                data = await response.json();
+            } catch (error) {
+                throw new Error("The server returned an invalid response.");
+            }
 
+            if (response.status === 401 || response.status === 403) {
+                sessionInvalid = true;
+                alert(data.message || "Your session is invalid or admin access is required.");
+                logout();
+                throw new Error("Authentication failed.");
+            }
 
-        if (
-            response.status === 401 ||
-            response.status === 403
-        ) {
+            if (!response.ok) {
+                throw new Error(
+                    data.message ||
+                    "Request failed with status " + response.status
+                );
+            }
 
-            alert(
-                data.message ||
-                "Admin access required."
-            );
-
-            logout();
-
-            return;
-
+            return data;
         }
 
+        // LOAD USERS
+        async function loadUsers() {
+            const message = document.getElementById("userMessage");
+            const tableBody = document.getElementById("usersTableBody");
 
-        if (!data.success) {
+            message.className = "alert alert-info";
+            message.textContent = "Loading users...";
 
-            message.className =
-                "alert alert-danger";
+            try {
+                const data = await apiRequest("/api/admin/users");
 
-            message.textContent =
-                data.message ||
-                "Failed to load products.";
+                if (data.success !== true) {
+                    throw new Error(data.message || "Failed to load users.");
+                }
 
-            return;
+                const users = Array.isArray(data.users) ? data.users : [];
 
+                // UPDATE COUNTS
+                document.getElementById("totalUsers").textContent = users.length;
+                document.getElementById("totalFarmers").textContent =
+                    users.filter(item => item.role === "Farmer").length;
+                document.getElementById("totalMsmes").textContent =
+                    users.filter(item => item.role === "MSME").length;
+                document.getElementById("totalLogistics").textContent =
+                    users.filter(item => item.role === "Logistics").length;
+                document.getElementById("totalCommunities").textContent =
+                    users.filter(item => item.role === "Community").length;
+                document.getElementById("totalApartments").textContent =
+                    users.filter(item => item.role === "Apartment").length;
+
+                if (users.length === 0) {
+                    message.className = "alert alert-warning";
+                    message.textContent = "No users registered yet.";
+                    tableBody.innerHTML = "";
+                    return;
+                }
+
+                message.className = "alert alert-success";
+                message.textContent = users.length + " user(s) registered.";
+
+                tableBody.innerHTML = users.map(createUserRow).join("");
+
+            } catch (error) {
+                if (sessionInvalid) return;
+
+                console.error("Admin users error:", error);
+
+                message.className = "alert alert-danger";
+                message.textContent =
+                    "Unable to load users. " + error.message;
+            }
         }
 
+        // CREATE USER ROW
+        function createUserRow(item) {
+            const roleClass = getRoleClass(item.role);
 
-        const products =
-            data.products || [];
+            const date = item.created_at
+                ? new Date(item.created_at).toLocaleDateString()
+                : "-";
 
-
-        document.getElementById(
-            "totalProducts"
-        ).textContent =
-            products.length;
-
-
-        if (products.length === 0) {
-
-            message.className =
-                "alert alert-warning";
-
-            message.textContent =
-                "No products listed yet.";
-
-            tableBody.innerHTML = "";
-
-            return;
-
+            return `
+                <tr>
+                    <td>${escapeHtml(item.id)}</td>
+                    <td><strong>${escapeHtml(item.full_name || "-")}</strong></td>
+                    <td>${escapeHtml(item.email || "-")}</td>
+                    <td>${escapeHtml(item.phone || "-")}</td>
+                    <td>
+                        <span class="badge ${roleClass}">
+                            ${escapeHtml(item.role || "Unknown")}
+                        </span>
+                    </td>
+                    <td>${escapeHtml(date)}</td>
+                </tr>
+            `;
         }
 
-
-        message.className =
-            "alert alert-success";
-
-        message.textContent =
-            products.length +
-            " product(s) listed.";
-
-
-        tableBody.innerHTML =
-            products
-                .map(
-                    product =>
-                        createProductRow(product)
-                )
-                .join("");
-
-    }
-
-    catch (error) {
-
-        console.error(
-            "Admin products error:",
-            error
-        );
-
-        message.className =
-            "alert alert-danger";
-
-        message.textContent =
-            "Unable to connect to the server.";
-
-    }
-
-}
-
-
-// ========================================
-// CREATE PRODUCT ROW
-// ========================================
-
-function createProductRow(product) {
-
-    let gradeClass =
-        "grade-c";
-
-
-    if (
-        product.grade === "A"
-    ) {
-
-        gradeClass =
-            "grade-a";
-
-    }
-
-    else if (
-        product.grade === "B"
-    ) {
-
-        gradeClass =
-            "grade-b";
-
-    }
-
-
-    return `
-
-        <tr>
-
-            <td>
-                ${escapeHtml(
-                    product.id
-                )}
-            </td>
-
-            <td>
-
-                <strong>
-
-                    ${escapeHtml(
-                        product.product_name
-                    )}
-
-                </strong>
-
-            </td>
-
-            <td>
-                ${escapeHtml(
-                    product.farmer_name
-                )}
-            </td>
-
-            <td>
-                ${escapeHtml(
-                    product.crop_name ||
-                    "-"
-                )}
-            </td>
-
-            <td>
-
-                <span
-                    class="badge ${gradeClass}"
-                >
-
-                    Grade
-                    ${escapeHtml(
-                        product.grade
-                    )}
-
-                </span>
-
-            </td>
-
-            <td>
-
-                ${escapeHtml(
-                    product.quantity
-                )}
-                Kg
-
-            </td>
-
-            <td>
-
-                ₹${escapeHtml(
-                    product.price
-                )}
-
-            </td>
-
-            <td>
-
-                ${escapeHtml(
-                    product.farming_type ||
-                    "-"
-                )}
-
-            </td>
-
-        </tr>
-
-    `;
-
-}
-
-
-// ========================================
-// ESCAPE HTML
-// ========================================
-
-function escapeHtml(value) {
-
-    return String(
-        value ?? ""
-    )
-
-        .replaceAll(
-            "&",
-            "&amp;"
-        )
-
-        .replaceAll(
-            "<",
-            "&lt;"
-        )
-
-        .replaceAll(
-            ">",
-            "&gt;"
-        )
-
-        .replaceAll(
-            '"',
-            "&quot;"
-        )
-
-        .replaceAll(
-            "'",
-            "&#039;"
-        );
-
-}
-
-
-// ========================================
-// LOGOUT
-// ========================================
-
-function logout() {
-
-    localStorage.removeItem(
-        "agrilinkkToken"
-    );
-
-    localStorage.removeItem(
-        "agrilinkkUser"
-    );
-
-    window.location.href =
-        "login.html";
-
-}
-
-
-// ========================================
-// INITIAL LOAD
-// ========================================
-
-loadAdminData();
-
-</script>
-
+        // ROLE BADGE
+        function getRoleClass(role) {
+            switch (role) {
+                case "Farmer":
+                    return "badge-farmer";
+                case "MSME":
+                    return "badge-msme";
+                case "Logistics":
+                    return "badge-logistics";
+                case "Community":
+                    return "badge-community";
+                case "Apartment":
+                    return "badge-apartment";
+                case "Admin":
+                    return "badge-admin";
+                default:
+                    return "bg-secondary";
+            }
+        }
+
+        // LOAD PRODUCTS
+        async function loadProducts() {
+            const message = document.getElementById("productMessage");
+            const tableBody = document.getElementById("productsTableBody");
+
+            message.className = "alert alert-info";
+            message.textContent = "Loading products...";
+
+            try {
+                const data = await apiRequest("/api/admin/products");
+
+                if (data.success !== true) {
+                    throw new Error(data.message || "Failed to load products.");
+                }
+
+                const products = Array.isArray(data.products) ? data.products : [];
+
+                document.getElementById("totalProducts").textContent = products.length;
+
+                if (products.length === 0) {
+                    message.className = "alert alert-warning";
+                    message.textContent = "No products listed yet.";
+                    tableBody.innerHTML = "";
+                    return;
+                }
+
+                message.className = "alert alert-success";
+                message.textContent = products.length + " product(s) listed.";
+
+                tableBody.innerHTML = products.map(createProductRow).join("");
+
+            } catch (error) {
+                if (sessionInvalid) return;
+
+                console.error("Admin products error:", error);
+
+                message.className = "alert alert-danger";
+                message.textContent =
+                    "Unable to load products. " + error.message;
+            }
+        }
+
+        // CREATE PRODUCT ROW
+        function createProductRow(product) {
+            let gradeClass = "grade-c";
+
+            if (String(product.grade).toUpperCase() === "A") {
+                gradeClass = "grade-a";
+            } else if (String(product.grade).toUpperCase() === "B") {
+                gradeClass = "grade-b";
+            }
+
+            const quantity = product.quantity ?? "-";
+            const price = product.price ?? "-";
+
+            return `
+                <tr>
+                    <td>${escapeHtml(product.id)}</td>
+                    <td><strong>${escapeHtml(product.product_name || "-")}</strong></td>
+                    <td>${escapeHtml(product.farmer_name || "-")}</td>
+                    <td>${escapeHtml(product.crop_name || "-")}</td>
+                    <td>
+                        <span class="badge ${gradeClass}">
+                            ${product.grade ? "Grade " + escapeHtml(product.grade) : "-"}
+                        </span>
+                    </td>
+                    <td>${escapeHtml(quantity)} Kg</td>
+                    <td>₹${escapeHtml(price)}</td>
+                    <td>${escapeHtml(product.farming_type || "-")}</td>
+                </tr>
+            `;
+        }
+
+        // ESCAPE HTML
+        function escapeHtml(value) {
+            return String(value ?? "")
+                .replaceAll("&", "&amp;")
+                .replaceAll("<", "&lt;")
+                .replaceAll(">", "&gt;")
+                .replaceAll('"', "&quot;")
+                .replaceAll("'", "&#039;");
+        }
+
+        // LOGOUT
+        function logout() {
+            localStorage.removeItem("agrilinkkToken");
+            localStorage.removeItem("agrilinkkUser");
+            window.location.replace("login.html");
+        }
+    </script>
 
 </body>
-
 </html>

@@ -1,21 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Logistics Dashboard - AGRI LINKK</title>
 
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-    >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
-
         body {
             background-color: #f4f7f5;
         }
@@ -25,12 +17,7 @@
         }
 
         .dashboard-header {
-            background: linear-gradient(
-                135deg,
-                #198754,
-                #0d6efd
-            );
-
+            background: linear-gradient(135deg, #198754, #0d6efd);
             color: white;
             padding: 35px;
             border-radius: 15px;
@@ -40,10 +27,7 @@
         .card {
             border: none;
             border-radius: 15px;
-
-            box-shadow:
-                0 4px 15px
-                rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
         }
 
         .section-title {
@@ -52,15 +36,12 @@
         }
 
         .product-card {
-            transition: 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .product-card:hover {
             transform: translateY(-4px);
-
-            box-shadow:
-                0 8px 20px
-                rgba(0, 0, 0, 0.12);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
         }
 
         .grade-a {
@@ -95,1043 +76,479 @@
             color: #198754;
         }
 
+        .product-card p {
+            overflow-wrap: anywhere;
+        }
+
+        @media (max-width: 576px) {
+            .dashboard-header {
+                padding: 22px;
+            }
+
+            .dashboard-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .refresh-button {
+                width: 100%;
+            }
+        }
     </style>
-
 </head>
-
 
 <body>
 
-
-<!-- ========================================
-     NAVBAR
-======================================== -->
-
 <nav class="navbar navbar-dark bg-success">
-
     <div class="container">
-
-        <a
-            class="navbar-brand"
-            href="index.html"
-        >
-            🌾 AGRI LINKK
-        </a>
-
-
-        <button
-            class="btn btn-light btn-sm"
-            onclick="logout()"
-        >
-            Logout
-        </button>
-
+        <a class="navbar-brand" href="index.html">🌾 AGRI LINKK</a>
+        <button class="btn btn-light btn-sm" onclick="logout()">Logout</button>
     </div>
-
 </nav>
-
-
 
 <div class="container mt-4">
 
-
-    <!-- ========================================
-         HEADER
-    ======================================== -->
-
     <div class="dashboard-header">
-
         <h2>
-
-            Welcome,
-
-            <span id="logisticsName">
-                Logistics
-            </span>
-
-            🚚
-
+            Welcome, <span id="logisticsName">Logistics</span> 🚚
         </h2>
-
-
         <p class="mb-0">
-
-            Connect farmers with reliable
-            transportation and delivery services.
-
+            Connect farmers with reliable transportation and delivery services.
         </p>
-
     </div>
 
-
-
-    <!-- ========================================
-         PROFILE
-    ======================================== -->
-
+    <!-- PROFILE -->
     <div class="card p-4 mb-4">
-
-        <h4 class="section-title mb-3">
-
-            🚚 Logistics Profile
-
-        </h4>
-
+        <h4 class="section-title mb-3">🚚 Logistics Profile</h4>
 
         <div class="row">
-
             <div class="col-md-6">
-
-                <p>
-
-                    <strong>
-                        Name:
-                    </strong>
-
-                    <span id="profileName"></span>
-
-                </p>
-
-
-                <p>
-
-                    <strong>
-                        Email:
-                    </strong>
-
-                    <span id="profileEmail"></span>
-
-                </p>
-
-
-                <p>
-
-                    <strong>
-                        Phone:
-                    </strong>
-
-                    <span id="profilePhone"></span>
-
-                </p>
-
+                <p><strong>Name:</strong> <span id="profileName">Not provided</span></p>
+                <p><strong>Email:</strong> <span id="profileEmail">Not provided</span></p>
+                <p><strong>Phone:</strong> <span id="profilePhone">Not provided</span></p>
             </div>
 
-
             <div class="col-md-6">
-
-                <p>
-
-                    <strong>
-                        Role:
-                    </strong>
-
-                    <span id="profileRole"></span>
-
-                </p>
-
-
-                <p>
-
-                    <strong>
-                        Company:
-                    </strong>
-
-                    <span id="companyName">
-                        Not provided
-                    </span>
-
-                </p>
-
-
-                <p>
-
-                    <strong>
-                        Service Area:
-                    </strong>
-
-                    <span id="serviceArea">
-                        Not provided
-                    </span>
-
-                </p>
-
+                <p><strong>Role:</strong> <span id="profileRole">Logistics</span></p>
+                <p><strong>Company:</strong> <span id="companyName">Not provided</span></p>
+                <p><strong>Service Area:</strong> <span id="serviceArea">Not provided</span></p>
             </div>
-
         </div>
-
     </div>
 
-
-
-    <!-- ========================================
-         STATISTICS
-    ======================================== -->
-
+    <!-- STATISTICS -->
     <div class="row g-4 mb-4">
-
-
         <div class="col-md-4">
-
-            <div class="card stat-card">
-
-                <div
-                    class="stat-number"
-                    id="productCount"
-                >
-                    0
-                </div>
-
-                <p class="mb-0">
-                    Available Products
-                </p>
-
+            <div class="card stat-card h-100">
+                <div class="stat-number" id="productCount">0</div>
+                <p class="mb-0">Available Products</p>
             </div>
-
         </div>
 
-
         <div class="col-md-4">
-
-            <div class="card stat-card">
-
-                <div
-                    class="stat-number"
-                    id="farmerCount"
-                >
-                    0
-                </div>
-
-                <p class="mb-0">
-                    Farmers
-                </p>
-
+            <div class="card stat-card h-100">
+                <div class="stat-number" id="farmerCount">0</div>
+                <p class="mb-0">Farmers</p>
             </div>
-
         </div>
 
-
         <div class="col-md-4">
-
-            <div class="card stat-card">
-
-                <div
-                    class="stat-number"
-                    id="totalQuantity"
-                >
-                    0 Kg
-                </div>
-
-                <p class="mb-0">
-                    Total Quantity
-                </p>
-
+            <div class="card stat-card h-100">
+                <div class="stat-number" id="totalQuantity">0 Kg</div>
+                <p class="mb-0">Total Quantity</p>
             </div>
-
         </div>
-
     </div>
 
-
-
-    <!-- ========================================
-         AVAILABLE PRODUCTS
-    ======================================== -->
-
+    <!-- PRODUCTS -->
     <div class="card p-4 mb-5">
+        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3 mb-4">
+            <h4 class="section-title mb-0">🌾 Products Requiring Logistics</h4>
 
-        <div
-            class="d-flex
-            justify-content-between
-            align-items-center
-            mb-4"
-        >
-
-            <h4 class="section-title mb-0">
-
-                🌾 Products Requiring Logistics
-
-            </h4>
-
-
-            <button
-                class="btn btn-success"
-                onclick="loadProducts()"
-            >
-
+            <button class="btn btn-success refresh-button" id="refreshButton" onclick="loadProducts()">
                 🔄 Refresh
-
             </button>
-
         </div>
 
-
-        <div
-            id="messageBox"
-            class="alert alert-info"
-        >
-
+        <div id="messageBox" class="alert alert-info" role="status" aria-live="polite">
             Loading products...
-
         </div>
 
-
-        <div
-            class="row g-4"
-            id="productsContainer"
-        >
-
-        </div>
-
+        <div class="row g-4" id="productsContainer"></div>
     </div>
-
 
 </div>
 
-
-
 <script>
+"use strict";
 
+// ==================================================
+// BACKEND CONFIGURATION
+// ==================================================
 
-// ========================================
+const API_BASE_URL = "https://agri-linkk-api.onrender.com";
+
+// ==================================================
 // LOGIN DATA
-// ========================================
+// ==================================================
 
-const token =
-    localStorage.getItem(
-        "agrilinkkToken"
-    );
+const token = localStorage.getItem("agrilinkkToken");
+const userData = localStorage.getItem("agrilinkkUser");
 
+let user = null;
 
-const userData =
-    localStorage.getItem(
-        "agrilinkkUser"
-    );
+// ==================================================
+// LOGIN AND ROLE CHECK
+// ==================================================
 
+if (!token || !userData) {
+    alert("Please login first.");
+    window.location.href = "login.html";
+} else {
+    try {
+        user = JSON.parse(userData);
 
-// ========================================
-// LOGIN CHECK
-// ========================================
+        if (!user || typeof user !== "object") {
+            throw new Error("Invalid user data");
+        }
 
-if (
-    !token ||
-    !userData
-) {
-
-    alert(
-        "Please login first."
-    );
-
-    window.location.href =
-        "login.html";
-
+        if (user.role && user.role.toLowerCase() !== "logistics") {
+            alert("Access denied. Logistics account required.");
+            window.location.href = "login.html";
+        }
+    } catch (error) {
+        localStorage.removeItem("agrilinkkToken");
+        localStorage.removeItem("agrilinkkUser");
+        alert("Your login information is invalid. Please log in again.");
+        window.location.href = "login.html";
+    }
 }
 
-
-let user;
-
-try {
-
-    user =
-        JSON.parse(userData);
-
-}
-
-catch (error) {
-
-    localStorage.removeItem(
-        "agrilinkkToken"
-    );
-
-    localStorage.removeItem(
-        "agrilinkkUser"
-    );
-
-    window.location.href =
-        "login.html";
-
-}
-
-
-// ========================================
-// ROLE CHECK
-// ========================================
-
-if (
-    user &&
-    user.role !== "Logistics"
-) {
-
-    alert(
-        "Access denied. Logistics account required."
-    );
-
-    window.location.href =
-        "login.html";
-
-}
-
-
-// ========================================
+// ==================================================
 // DISPLAY USER INFORMATION
-// ========================================
+// ==================================================
 
 if (user) {
+    document.getElementById("logisticsName").textContent =
+        user.full_name || user.name || "Logistics";
 
-    document.getElementById(
-        "logisticsName"
-    ).textContent =
-        user.full_name;
+    document.getElementById("profileName").textContent =
+        user.full_name || user.name || "Not provided";
 
+    document.getElementById("profileEmail").textContent =
+        user.email || "Not provided";
 
-    document.getElementById(
-        "profileName"
-    ).textContent =
-        user.full_name;
+    document.getElementById("profilePhone").textContent =
+        user.phone || user.phone_number || "Not provided";
 
+    document.getElementById("profileRole").textContent =
+        user.role || "Logistics";
 
-    document.getElementById(
-        "profileEmail"
-    ).textContent =
-        user.email;
+    document.getElementById("companyName").textContent =
+        user.company_name || user.company || "Not provided";
 
-
-    document.getElementById(
-        "profilePhone"
-    ).textContent =
-        user.phone;
-
-
-    document.getElementById(
-        "profileRole"
-    ).textContent =
-        user.role;
-
+    document.getElementById("serviceArea").textContent =
+        user.service_area || "Not provided";
 }
 
-
-
-// ========================================
+// ==================================================
 // LOAD PRODUCTS
-// ========================================
+// Requires GET /api/market-products on your backend.
+// ==================================================
 
 async function loadProducts() {
+    const container = document.getElementById("productsContainer");
+    const messageBox = document.getElementById("messageBox");
+    const refreshButton = document.getElementById("refreshButton");
 
+    container.replaceChildren();
 
-    const container =
-        document.getElementById(
-            "productsContainer"
-        );
+    messageBox.className = "alert alert-info";
+    messageBox.textContent = "Loading agricultural products...";
+    refreshButton.disabled = true;
 
-
-    const messageBox =
-        document.getElementById(
-            "messageBox"
-        );
-
-
-    container.innerHTML = `
-
-        <div
-            class="col-12
-            text-center
-            p-4"
-        >
-
-            <div
-                class="spinner-border
-                text-success"
-            ></div>
-
-            <p class="mt-2">
-
-                Loading agricultural products...
-
-            </p>
-
+    const spinnerColumn = document.createElement("div");
+    spinnerColumn.className = "col-12 text-center p-4";
+    spinnerColumn.innerHTML = `
+        <div class="spinner-border text-success" role="status">
+            <span class="visually-hidden">Loading...</span>
         </div>
-
+        <p class="mt-2">Loading available products...</p>
     `;
-
+    container.appendChild(spinnerColumn);
 
     try {
+        const response = await fetch(`${API_BASE_URL}/api/market-products`, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Accept": "application/json"
+            }
+        });
 
-        const response =
-            await fetch(
-                "https://agri-linkk-production.up.railway.app/api/market-products",
-                {
+        const data = await response.json().catch(() => ({}));
 
-                    method: "GET",
-
-                    headers: {
-
-                        "Authorization":
-                            "Bearer " + token
-
-                    }
-
-                }
-            );
-
-
-        const data =
-            await response.json();
-
-
-        if (
-            response.status === 401 ||
-            response.status === 403
-        ) {
-
-            alert(
-                data.message ||
-                "Your session has expired."
-            );
+        if (response.status === 401 || response.status === 403) {
+            messageBox.className = "alert alert-danger";
+            messageBox.textContent =
+                data.message || "Your session has expired. Please log in again.";
 
             logout();
-
             return;
-
         }
 
-
-        if (!data.success) {
-
-            messageBox.className =
-                "alert alert-danger";
-
-            messageBox.textContent =
-                data.message ||
-                "Failed to load products";
-
-            container.innerHTML = "";
-
-            return;
-
+        if (!response.ok) {
+            throw new Error(
+                data.message || `The server returned status ${response.status}.`
+            );
         }
 
-
-        const products =
-            data.products || [];
-
-
-        // ========================================
-        // NO PRODUCTS
-        // ========================================
-
-        if (products.length === 0) {
-
-            messageBox.className =
-                "alert alert-warning";
-
-            messageBox.textContent =
-                "No agricultural products are currently available.";
-
-            container.innerHTML = "";
-
-            updateStatistics([]);
-
-            return;
-
+        if (data.success === false) {
+            throw new Error(data.message || "Unable to load products.");
         }
 
+        // Support common response formats:
+        // { success: true, products: [...] }
+        // { products: [...] }
+        // [...]
 
-        // ========================================
-        // SUCCESS
-        // ========================================
+        let products = [];
 
-        messageBox.className =
-            "alert alert-success";
-
-        messageBox.textContent =
-            products.length +
-            " product(s) available for logistics";
-
-
-        container.innerHTML =
-            products
-                .map(
-                    product =>
-                        createProductCard(product)
-                )
-                .join("");
-
+        if (Array.isArray(data)) {
+            products = data;
+        } else if (Array.isArray(data.products)) {
+            products = data.products;
+        } else if (Array.isArray(data.data)) {
+            products = data.data;
+        } else {
+            throw new Error(
+                "The server response did not contain a products list. Check the backend API response."
+            );
+        }
 
         updateStatistics(products);
+        container.replaceChildren();
 
-    }
+        if (products.length === 0) {
+            messageBox.className = "alert alert-warning";
+            messageBox.textContent =
+                "No agricultural products are currently available.";
+            return;
+        }
 
-
-    catch (error) {
-
-        console.error(
-            "Loading error:",
-            error
-        );
-
-
-        messageBox.className =
-            "alert alert-danger";
-
+        messageBox.className = "alert alert-success";
         messageBox.textContent =
-            "Unable to connect to the AGRI LINKK server.";
+            `${products.length} product(s) available for logistics.`;
 
+        products.forEach(product => {
+            container.appendChild(createProductCard(product));
+        });
 
-        container.innerHTML = `
+    } catch (error) {
+        console.error("Product loading error:", error);
 
-            <div class="col-12">
+        container.replaceChildren();
+        messageBox.className = "alert alert-danger";
+        messageBox.textContent =
+            "Unable to load products. Please check your internet connection and try again.";
 
-                <div
-                    class="text-center
-                    text-danger
-                    p-4"
-                >
+        const errorColumn = document.createElement("div");
+        errorColumn.className = "col-12";
 
-                    <h5>
-                        Server Connection Error
-                    </h5>
+        const errorCard = document.createElement("div");
+        errorCard.className = "text-center text-danger p-4";
 
-                    <p>
+        const heading = document.createElement("h5");
+        heading.textContent = "Unable to Load Products";
 
-                        Make sure the backend
-                        server is running on port 5000.
+        const description = document.createElement("p");
+        description.className = "text-muted";
+        description.textContent =
+            error.message ||
+            "Check that the Render backend is running and the /api/market-products endpoint exists.";
 
-                    </p>
+        const retryButton = document.createElement("button");
+        retryButton.className = "btn btn-outline-success";
+        retryButton.textContent = "Try Again";
+        retryButton.addEventListener("click", loadProducts);
 
-                </div>
+        errorCard.append(heading, description, retryButton);
+        errorColumn.appendChild(errorCard);
+        container.appendChild(errorColumn);
 
-            </div>
+        updateStatistics([]);
 
-        `;
-
+    } finally {
+        refreshButton.disabled = false;
     }
-
 }
 
-
-
-// ========================================
-// PRODUCT CARD
-// ========================================
+// ==================================================
+// CREATE PRODUCT CARD
+// ==================================================
 
 function createProductCard(product) {
-
-
-    let gradeClass =
-        "grade-c";
-
-
-    if (
-        product.grade === "A"
-    ) {
-
-        gradeClass =
-            "grade-a";
-
-    }
-
-    else if (
-        product.grade === "B"
-    ) {
-
-        gradeClass =
-            "grade-b";
-
-    }
-
-
-    return `
-
-        <div class="col-md-6 col-lg-4">
-
-            <div
-                class="card
-                product-card
-                h-100
-                p-3"
-            >
-
-
-                <div
-                    class="d-flex
-                    justify-content-between
-                    align-items-center"
-                >
-
-                    <h5 class="mb-0">
-
-                        🌱
-
-                        ${escapeHtml(
-                            product.product_name
-                        )}
-
-                    </h5>
-
-
-                    <span
-                        class="
-                        badge
-                        ${gradeClass}
-                        "
-                    >
-
-                        Grade
-                        ${escapeHtml(
-                            product.grade
-                        )}
-
-                    </span>
-
-                </div>
-
-
-                <hr>
-
-
-
-                <!-- FARMER -->
-
-                <div class="info-box mb-3">
-
-                    <strong>
-                        👨‍🌾 Farmer
-                    </strong>
-
-                    <br>
-
-                    ${escapeHtml(
-                        product.farmer_name
-                    )}
-
-                    <br>
-
-                    <small>
-
-                        📍
-
-                        ${escapeHtml(
-                            product.land_location ||
-                            "Location not provided"
-                        )}
-
-                    </small>
-
-                </div>
-
-
-
-                <!-- PRODUCT -->
-
-                <p>
-
-                    <strong>
-                        🌾 Product:
-                    </strong>
-
-                    ${escapeHtml(
-                        product.product_name
-                    )}
-
-                </p>
-
-
-
-                <!-- CROP -->
-
-                <p>
-
-                    <strong>
-                        🌱 Crop:
-                    </strong>
-
-                    ${escapeHtml(
-                        product.crop_name ||
-                        product.product_name
-                    )}
-
-                </p>
-
-
-
-                <!-- FARMING TYPE -->
-
-                <p>
-
-                    <strong>
-                        🌿 Farming Type:
-                    </strong>
-
-                    ${escapeHtml(
-                        product.farming_type ||
-                        "Not specified"
-                    )}
-
-                </p>
-
-
-
-                <!-- QUANTITY -->
-
-                <p>
-
-                    <strong>
-                        📦 Quantity:
-                    </strong>
-
-                    <span class="text-success fw-bold">
-
-                        ${escapeHtml(
-                            product.quantity
-                        )}
-                        Kg
-
-                    </span>
-
-                </p>
-
-
-
-                <!-- PRICE -->
-
-                <p>
-
-                    <strong>
-                        💰 Farmer Price:
-                    </strong>
-
-                    ₹${escapeHtml(
-                        product.price
-                    )}
-                    / Kg
-
-                </p>
-
-
-
-                <!-- DESCRIPTION -->
-
-                <p>
-
-                    <strong>
-                        📝 Description:
-                    </strong>
-
-                    <br>
-
-                    ${escapeHtml(
-                        product.description ||
-                        "No description provided"
-                    )}
-
-                </p>
-
-
-
-                <hr>
-
-
-
-                <!-- CONTACT -->
-
-                <button
-                    class="btn btn-outline-success w-100"
-                    onclick="contactFarmer(
-                        '${escapeHtml(
-                            product.farmer_name
-                        )}',
-                        '${escapeHtml(
-                            product.farmer_phone
-                        )}'
-                    )"
-                >
-
-                    📞 Contact Farmer
-
-                </button>
-
-
-            </div>
-
-        </div>
-
-    `;
-
+    const column = document.createElement("div");
+    column.className = "col-md-6 col-lg-4";
+
+    const card = document.createElement("div");
+    card.className = "card product-card h-100 p-3";
+
+    const grade = String(product.grade || "C").toUpperCase();
+    const gradeClass =
+        grade === "A" ? "grade-a" :
+        grade === "B" ? "grade-b" : "grade-c";
+
+    const titleRow = document.createElement("div");
+    titleRow.className =
+        "d-flex justify-content-between align-items-center gap-2";
+
+    const title = document.createElement("h5");
+    title.className = "mb-0";
+    title.textContent = `🌱 ${product.product_name || product.crop_name || "Unnamed Product"}`;
+
+    const gradeBadge = document.createElement("span");
+    gradeBadge.className = `badge ${gradeClass}`;
+    gradeBadge.textContent = `Grade ${grade}`;
+
+    titleRow.append(title, gradeBadge);
+    card.appendChild(titleRow);
+    card.appendChild(document.createElement("hr"));
+
+    // Farmer details
+    const farmerBox = document.createElement("div");
+    farmerBox.className = "info-box mb-3";
+
+    const farmerLabel = document.createElement("strong");
+    farmerLabel.textContent = "👨‍🌾 Farmer";
+
+    const farmerName = document.createElement("div");
+    farmerName.textContent = product.farmer_name || "Farmer name not provided";
+
+    const location = document.createElement("small");
+    location.textContent =
+        `📍 ${product.land_location || product.location || "Location not provided"}`;
+
+    farmerBox.append(farmerLabel, farmerName, location);
+    card.appendChild(farmerBox);
+
+    addProductDetail(card, "🌾 Product:", product.product_name || "Not provided");
+    addProductDetail(card, "🌱 Crop:", product.crop_name || product.product_name || "Not provided");
+    addProductDetail(card, "🌿 Farming Type:", product.farming_type || "Not specified");
+    addProductDetail(card, "📦 Quantity:", `${formatNumber(product.quantity)} Kg`);
+    addProductDetail(card, "💰 Farmer Price:", `₹${formatNumber(product.price)} / Kg`);
+    addProductDetail(card, "📝 Description:", product.description || "No description provided");
+
+    card.appendChild(document.createElement("hr"));
+
+    const contactButton = document.createElement("button");
+    contactButton.type = "button";
+    contactButton.className = "btn btn-outline-success w-100";
+    contactButton.textContent = "📞 Contact Farmer";
+
+    contactButton.addEventListener("click", () => {
+        contactFarmer(
+            product.farmer_name || "Farmer",
+            product.farmer_phone || product.phone || ""
+        );
+    });
+
+    card.appendChild(contactButton);
+    column.appendChild(card);
+
+    return column;
 }
 
+function addProductDetail(card, label, value) {
+    const paragraph = document.createElement("p");
+    paragraph.className = "mb-2";
 
+    const strong = document.createElement("strong");
+    strong.textContent = label + " ";
 
-// ========================================
+    const text = document.createElement("span");
+    text.textContent = value == null || value === ""
+        ? "Not provided"
+        : String(value);
+
+    paragraph.append(strong, text);
+    card.appendChild(paragraph);
+}
+
+function formatNumber(value) {
+    const number = Number(value);
+
+    if (!Number.isFinite(number)) {
+        return "0";
+    }
+
+    return number.toLocaleString("en-IN", {
+        maximumFractionDigits: 2
+    });
+}
+
+// ==================================================
 // UPDATE STATISTICS
-// ========================================
+// ==================================================
 
 function updateStatistics(products) {
+    document.getElementById("productCount").textContent = products.length;
 
+    const farmers = new Set(
+        products
+            .map(product => product.farmer_name)
+            .filter(name => name && String(name).trim() !== "")
+    );
 
-    document.getElementById(
-        "productCount"
-    ).textContent =
-        products.length;
+    document.getElementById("farmerCount").textContent = farmers.size;
 
+    const totalQuantity = products.reduce((sum, product) => {
+        const quantity = Number(product.quantity || 0);
+        return sum + (Number.isFinite(quantity) ? quantity : 0);
+    }, 0);
 
-    const farmers =
-        new Set(
-            products.map(
-                product =>
-                    product.farmer_name
-            )
-        );
-
-
-    document.getElementById(
-        "farmerCount"
-    ).textContent =
-        farmers.size;
-
-
-    const total =
-        products.reduce(
-            (sum, product) =>
-                sum +
-                Number(
-                    product.quantity || 0
-                ),
-            0
-        );
-
-
-    document.getElementById(
-        "totalQuantity"
-    ).textContent =
-        total.toFixed(2) +
-        " Kg";
-
+    document.getElementById("totalQuantity").textContent =
+        `${formatNumber(totalQuantity)} Kg`;
 }
 
-
-
-// ========================================
+// ==================================================
 // CONTACT FARMER
-// ========================================
+// ==================================================
 
-function contactFarmer(
-    farmerName,
-    farmerPhone
-) {
+function contactFarmer(farmerName, farmerPhone) {
+    const phone = String(farmerPhone || "").trim();
 
-
-    if (
-        !farmerPhone ||
-        farmerPhone === "undefined"
-    ) {
-
-        alert(
-            "Farmer phone number is not available."
-        );
-
+    if (!phone) {
+        alert("The farmer's phone number is not available.");
         return;
-
     }
 
-
-    const confirmed =
-        confirm(
-
-            "Farmer: " +
-            farmerName +
-            "\n\n" +
-
-            "Phone: " +
-            farmerPhone +
-            "\n\n" +
-
-            "Do you want to call this farmer?"
-
-        );
-
-
-    if (confirmed) {
-
-        window.location.href =
-            "tel:" +
-            farmerPhone;
-
+    if (!confirm(
+        `Farmer: ${farmerName}\n\nPhone: ${phone}\n\nDo you want to call this farmer?`
+    )) {
+        return;
     }
 
+    window.location.href = `tel:${phone}`;
 }
 
-
-
-// ========================================
-// HTML ESCAPE
-// ========================================
-
-function escapeHtml(value) {
-
-    return String(
-        value ?? ""
-    )
-
-        .replaceAll(
-            "&",
-            "&amp;"
-        )
-
-        .replaceAll(
-            "<",
-            "&lt;"
-        )
-
-        .replaceAll(
-            ">",
-            "&gt;"
-        )
-
-        .replaceAll(
-            '"',
-            "&quot;"
-        )
-
-        .replaceAll(
-            "'",
-            "&#039;"
-        );
-
-}
-
-
-
-// ========================================
+// ==================================================
 // LOGOUT
-// ========================================
+// ==================================================
 
 function logout() {
-
-    localStorage.removeItem(
-        "agrilinkkToken"
-    );
-
-
-    localStorage.removeItem(
-        "agrilinkkUser"
-    );
-
-
-    window.location.href =
-        "login.html";
-
+    localStorage.removeItem("agrilinkkToken");
+    localStorage.removeItem("agrilinkkUser");
+    window.location.href = "login.html";
 }
 
+// ==================================================
+// INITIAL LOAD
+// ==================================================
 
-
-// ========================================
-// LOAD PRODUCTS
-// ========================================
-
-loadProducts();
-
+if (token && userData && user) {
+    loadProducts();
+}
 </script>
 
-
 </body>
-
 </html>

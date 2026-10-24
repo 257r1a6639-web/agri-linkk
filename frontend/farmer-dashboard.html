@@ -2,9 +2,7 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Farmer Dashboard - AGRI LINKK</title>
@@ -15,7 +13,6 @@
     >
 
     <style>
-
         body {
             background-color: #f4f7f5;
         }
@@ -25,46 +22,32 @@
         }
 
         .dashboard-header {
-            background: linear-gradient(
-                135deg,
-                #198754,
-                #20c997
-            );
-
+            background: linear-gradient(135deg, #198754, #20c997);
             color: white;
-
             padding: 35px;
-
             border-radius: 15px;
-
             margin-bottom: 25px;
         }
 
         .card {
             border: none;
-
             border-radius: 15px;
-
-            box-shadow:
-                0 4px 15px
-                rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
         }
 
         .stat-card {
             text-align: center;
-
             padding: 25px;
         }
 
         .stat-card h3 {
             color: #198754;
-
             font-weight: bold;
+            overflow-wrap: anywhere;
         }
 
         .section-title {
             color: #198754;
-
             font-weight: bold;
         }
 
@@ -72,169 +55,101 @@
             vertical-align: middle;
         }
 
+        .form-label {
+            font-weight: 600;
+        }
+
+        .status-message {
+            margin-top: 15px;
+        }
+
+        .loading-spinner {
+            width: 1rem;
+            height: 1rem;
+        }
     </style>
-
 </head>
-
 
 <body>
 
-
-<!-- ========================================
-     NAVBAR
-======================================== -->
-
+<!-- NAVBAR -->
 <nav class="navbar navbar-dark bg-success">
-
     <div class="container">
+        <a class="navbar-brand" href="index.html">🌾 AGRI LINKK</a>
 
-        <a
-            class="navbar-brand"
-            href="index.html"
-        >
-            🌾 AGRI LINKK
-        </a>
-
-        <button
-            class="btn btn-light btn-sm"
-            onclick="logout()"
-        >
+        <button class="btn btn-light btn-sm" onclick="logout()">
             Logout
         </button>
-
     </div>
-
 </nav>
-
 
 <div class="container mt-4">
 
-
-    <!-- ========================================
-         DASHBOARD HEADER
-    ======================================== -->
-
+    <!-- DASHBOARD HEADER -->
     <div class="dashboard-header">
-
         <h2>
-
             Welcome,
-
-            <span id="farmerName">
-                Farmer
-            </span>
-
+            <span id="farmerName">Farmer</span>
             👨‍🌾
-
         </h2>
 
         <p class="mb-0">
-
-            Manage your farm details
-            and agricultural products.
-
+            Manage your farm details and agricultural products.
         </p>
-
     </div>
 
-
-    <!-- ========================================
-         STAT CARDS
-    ======================================== -->
-
+    <!-- STAT CARDS -->
     <div class="row g-4 mb-4">
 
         <div class="col-md-4">
-
-            <div class="card stat-card">
-
-                <h6>
-                    Land Area
-                </h6>
-
-                <h3 id="landArea">
-                    -
-                </h3>
-
-                <p class="text-muted">
-                    Acres
-                </p>
-
+            <div class="card stat-card h-100">
+                <h6>Land Area</h6>
+                <h3 id="landArea">-</h3>
+                <p class="text-muted mb-0">Acres</p>
             </div>
-
         </div>
 
-
         <div class="col-md-4">
-
-            <div class="card stat-card">
-
-                <h6>
-                    Current Crop
-                </h6>
-
-                <h3 id="cropName">
-                    -
-                </h3>
-
+            <div class="card stat-card h-100">
+                <h6>Current Crop</h6>
+                <h3 id="cropName">-</h3>
             </div>
-
         </div>
 
-
         <div class="col-md-4">
-
-            <div class="card stat-card">
-
-                <h6>
-                    Farming Type
-                </h6>
-
-                <h3 id="farmingType">
-                    -
-                </h3>
-
+            <div class="card stat-card h-100">
+                <h6>Farming Type</h6>
+                <h3 id="farmingType">-</h3>
             </div>
-
         </div>
 
     </div>
 
-
-    <!-- ========================================
-         FARM DETAILS
-    ======================================== -->
-
+    <!-- FARM DETAILS -->
     <div class="card p-4 mb-4">
 
-        <h4 class="section-title mb-3">
-            🌱 Farm Details
-        </h4>
+        <h4 class="section-title mb-3">🌱 Farm Details</h4>
 
         <form id="farmForm">
-
             <div class="row">
 
                 <div class="col-md-6 mb-3">
-
-                    <label class="form-label">
+                    <label for="landAreaInput" class="form-label">
                         Land Area (Acres)
                     </label>
 
                     <input
                         type="number"
+                        min="0.01"
                         step="0.01"
                         class="form-control"
                         id="landAreaInput"
                         required
                     >
-
                 </div>
 
-
                 <div class="col-md-6 mb-3">
-
-                    <label class="form-label">
+                    <label for="landLocation" class="form-label">
                         Land Location
                     </label>
 
@@ -242,15 +157,13 @@
                         type="text"
                         class="form-control"
                         id="landLocation"
+                        maxlength="255"
                         required
                     >
-
                 </div>
 
-
                 <div class="col-md-6 mb-3">
-
-                    <label class="form-label">
+                    <label for="cropInput" class="form-label">
                         Crop Name
                     </label>
 
@@ -258,81 +171,43 @@
                         type="text"
                         class="form-control"
                         id="cropInput"
+                        maxlength="100"
                         required
                     >
-
                 </div>
 
-
                 <div class="col-md-6 mb-3">
-
-                    <label class="form-label">
+                    <label for="farmingInput" class="form-label">
                         Farming Type
                     </label>
 
-                    <select
-                        class="form-select"
-                        id="farmingInput"
-                        required
-                    >
-
-                        <option value="">
-                            Select Type
-                        </option>
-
-                        <option value="Organic">
-                            Organic
-                        </option>
-
-                        <option value="Pesticide">
-                            Pesticide
-                        </option>
-
+                    <select class="form-select" id="farmingInput" required>
+                        <option value="">Select Type</option>
+                        <option value="Organic">Organic</option>
+                        <option value="Pesticide">Pesticide</option>
                     </select>
-
                 </div>
 
             </div>
 
-
-            <button
-                type="submit"
-                class="btn btn-success"
-            >
-
+            <button type="submit" class="btn btn-success" id="saveFarmButton">
                 Save Farm Details
-
             </button>
-
         </form>
 
-
-        <div
-            id="farmMessage"
-            class="mt-3"
-        ></div>
-
+        <div id="farmMessage" class="status-message" role="status" aria-live="polite"></div>
     </div>
 
-
-    <!-- ========================================
-         ADD PRODUCT
-    ======================================== -->
-
+    <!-- ADD PRODUCT -->
     <div class="card p-4 mb-4">
 
-        <h4 class="section-title mb-3">
-            🥕 Add Agricultural Product
-        </h4>
-
+        <h4 class="section-title mb-3">🥕 Add Agricultural Product</h4>
 
         <form id="productForm">
-
             <div class="row">
 
                 <div class="col-md-6 mb-3">
-
-                    <label class="form-label">
+                    <label for="productName" class="form-label">
                         Product Name
                     </label>
 
@@ -341,67 +216,42 @@
                         class="form-control"
                         id="productName"
                         placeholder="Example: Tomato"
+                        maxlength="150"
                         required
                     >
-
                 </div>
 
-
                 <div class="col-md-6 mb-3">
-
-                    <label class="form-label">
+                    <label for="quantity" class="form-label">
                         Quantity (Kg)
                     </label>
 
                     <input
                         type="number"
-                        min="1"
+                        min="0.01"
                         step="0.01"
                         class="form-control"
                         id="quantity"
                         placeholder="Example: 500"
                         required
                     >
-
                 </div>
 
-
                 <div class="col-md-6 mb-3">
-
-                    <label class="form-label">
+                    <label for="grade" class="form-label">
                         Product Grade
                     </label>
 
-                    <select
-                        class="form-select"
-                        id="grade"
-                        required
-                    >
-
-                        <option value="">
-                            Select Grade
-                        </option>
-
-                        <option value="A">
-                            Grade A
-                        </option>
-
-                        <option value="B">
-                            Grade B
-                        </option>
-
-                        <option value="C">
-                            Grade C
-                        </option>
-
+                    <select class="form-select" id="grade" required>
+                        <option value="">Select Grade</option>
+                        <option value="A">Grade A</option>
+                        <option value="B">Grade B</option>
+                        <option value="C">Grade C</option>
                     </select>
-
                 </div>
 
-
                 <div class="col-md-6 mb-3">
-
-                    <label class="form-label">
+                    <label for="price" class="form-label">
                         Price (₹ per Kg)
                     </label>
 
@@ -414,13 +264,10 @@
                         placeholder="Example: 50"
                         required
                     >
-
                 </div>
 
-
                 <div class="col-12 mb-3">
-
-                    <label class="form-label">
+                    <label for="description" class="form-label">
                         Description
                     </label>
 
@@ -428,1098 +275,571 @@
                         class="form-control"
                         id="description"
                         rows="3"
+                        maxlength="2000"
                         placeholder="Enter product details..."
                     ></textarea>
-
                 </div>
 
             </div>
 
-
-            <button
-                type="submit"
-                class="btn btn-success"
-            >
-
+            <button type="submit" class="btn btn-success" id="addProductButton">
                 Add Product
-
             </button>
-
         </form>
 
-
-        <div
-            id="productMessage"
-            class="mt-3"
-        ></div>
-
+        <div id="productMessage" class="status-message" role="status" aria-live="polite"></div>
     </div>
 
-
-    <!-- ========================================
-         MY PRODUCTS
-    ======================================== -->
-
+    <!-- MY PRODUCTS -->
     <div class="card p-4 mb-4">
 
-        <h4 class="section-title mb-3">
-            📦 My Products
-        </h4>
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+            <h4 class="section-title mb-0">📦 My Products</h4>
 
+            <button class="btn btn-outline-success btn-sm" onclick="loadProducts()">
+                🔄 Refresh Products
+            </button>
+        </div>
 
         <div class="table-responsive">
-
             <table class="table table-bordered table-hover">
 
                 <thead class="table-success">
-
                     <tr>
-
-                        <th>
-                            Product
-                        </th>
-
-                        <th>
-                            Quantity (Kg)
-                        </th>
-
-                        <th>
-                            Grade
-                        </th>
-
-                        <th>
-                            Price (₹/Kg)
-                        </th>
-
-                        <th>
-                            Description
-                        </th>
-
-                        <th>
-                            Action
-                        </th>
-
+                        <th>Product</th>
+                        <th>Quantity (Kg)</th>
+                        <th>Grade</th>
+                        <th>Price (₹/Kg)</th>
+                        <th>Description</th>
+                        <th>Action</th>
                     </tr>
-
                 </thead>
 
-
                 <tbody id="productsTable">
-
                     <tr>
-
-                        <td
-                            colspan="6"
-                            class="text-center"
-                        >
+                        <td colspan="6" class="text-center">
                             Loading products...
                         </td>
-
                     </tr>
-
                 </tbody>
 
             </table>
-
         </div>
-
     </div>
 
-
-    <!-- ========================================
-         FARMER PROFILE
-    ======================================== -->
-
+    <!-- FARMER PROFILE -->
     <div class="card p-4 mb-5">
 
-        <h4 class="section-title mb-3">
-            👤 Farmer Profile
-        </h4>
-
+        <h4 class="section-title mb-3">👤 Farmer Profile</h4>
 
         <p>
-
-            <strong>
-                Name:
-            </strong>
-
+            <strong>Name:</strong>
             <span id="profileName"></span>
-
         </p>
 
-
         <p>
-
-            <strong>
-                Email:
-            </strong>
-
+            <strong>Email:</strong>
             <span id="profileEmail"></span>
-
         </p>
 
-
         <p>
-
-            <strong>
-                Phone:
-            </strong>
-
+            <strong>Phone:</strong>
             <span id="profilePhone"></span>
-
         </p>
 
-
         <p>
-
-            <strong>
-                Role:
-            </strong>
-
+            <strong>Role:</strong>
             <span id="profileRole"></span>
-
         </p>
 
     </div>
-
 
 </div>
 
-
 <script>
+    // ========================================
+    // API CONFIGURATION
+    // ========================================
 
+    const API_URL = "https://agri-linkk-api.onrender.com";
 
-// ========================================
-// API URL
-// ========================================
+    // ========================================
+    // AUTHENTICATION
+    // ========================================
 
-const API_URL =
-    "https://agri-linkk-production.up.railway.app";
+    const token = localStorage.getItem("agrilinkkToken");
+    const userData = localStorage.getItem("agrilinkkUser");
 
+    let user = null;
+    let currentProducts = [];
 
-// ========================================
-// LOGIN CHECK
-// ========================================
+    if (!token || !userData) {
+        alert("Please login first.");
+        window.location.href = "login.html";
+    } else {
+        try {
+            user = JSON.parse(userData);
 
-const token =
-    localStorage.getItem(
-        "agrilinkkToken"
-    );
+            if (!user || typeof user !== "object") {
+                throw new Error("Invalid user data");
+            }
 
+            if (user.role !== "Farmer") {
+                alert("Access denied. Farmer account required.");
+                window.location.href = "login.html";
+            }
+        } catch (error) {
+            localStorage.removeItem("agrilinkkToken");
+            localStorage.removeItem("agrilinkkUser");
+            window.location.href = "login.html";
+        }
+    }
 
-const userData =
-    localStorage.getItem(
-        "agrilinkkUser"
-    );
+    // ========================================
+    // API HELPER
+    // ========================================
 
+    async function apiRequest(path, options = {}) {
+        const headers = {
+            "Authorization": `Bearer ${token}`,
+            "Accept": "application/json",
+            ...(options.headers || {})
+        };
 
-if (!token || !userData) {
+        const response = await fetch(`${API_URL}${path}`, {
+            ...options,
+            headers
+        });
 
-    alert(
-        "Please login first."
-    );
+        let data;
 
-    window.location.href =
-        "login.html";
+        try {
+            data = await response.json();
+        } catch {
+            data = {};
+        }
 
-}
+        if (response.status === 401 || response.status === 403) {
+            logout();
+            throw new Error(data.message || "Your session has expired. Please log in again.");
+        }
 
+        if (!response.ok) {
+            throw new Error(data.message || `Request failed (${response.status}).`);
+        }
 
-let user;
+        return data;
+    }
 
-try {
+    // ========================================
+    // PROFILE DISPLAY
+    // ========================================
 
-    user = JSON.parse(userData);
+    if (user && user.role === "Farmer") {
+        document.getElementById("farmerName").textContent =
+            user.full_name || "Farmer";
 
-}
-catch (error) {
+        document.getElementById("profileName").textContent =
+            user.full_name || "Not provided";
 
-    localStorage.removeItem(
-        "agrilinkkToken"
-    );
+        document.getElementById("profileEmail").textContent =
+            user.email || "Not provided";
 
-    localStorage.removeItem(
-        "agrilinkkUser"
-    );
+        document.getElementById("profilePhone").textContent =
+            user.phone || "Not provided";
 
-    window.location.href =
-        "login.html";
+        document.getElementById("profileRole").textContent =
+            user.role || "Farmer";
+    }
 
-}
+    // ========================================
+    // LOAD FARM DETAILS
+    // ========================================
 
+    async function loadFarmDetails() {
+        const message = document.getElementById("farmMessage");
 
-// ========================================
-// FARMER ROLE CHECK
-// ========================================
+        try {
+            const data = await apiRequest("/api/farm-details");
 
-if (user.role !== "Farmer") {
+            if (!data.success || !data.farm) {
+                document.getElementById("landArea").textContent = "-";
+                document.getElementById("cropName").textContent = "-";
+                document.getElementById("farmingType").textContent = "-";
+                return;
+            }
 
-    alert(
-        "Access denied. Farmer account required."
-    );
+            const farm = data.farm;
 
-    window.location.href =
-        "login.html";
+            document.getElementById("landArea").textContent =
+                farm.land_area ?? "-";
 
-}
+            document.getElementById("cropName").textContent =
+                farm.crop_name || "-";
 
+            document.getElementById("farmingType").textContent =
+                farm.farming_type || "-";
 
-// ========================================
-// DISPLAY PROFILE
-// ========================================
+            document.getElementById("landAreaInput").value =
+                farm.land_area ?? "";
 
-document.getElementById(
-    "farmerName"
-).textContent =
-    user.full_name;
+            document.getElementById("landLocation").value =
+                farm.land_location || "";
 
+            document.getElementById("cropInput").value =
+                farm.crop_name || "";
 
-document.getElementById(
-    "profileName"
-).textContent =
-    user.full_name;
+            document.getElementById("farmingInput").value =
+                farm.farming_type || "";
 
+        } catch (error) {
+            console.error("Farm details error:", error);
 
-document.getElementById(
-    "profileEmail"
-).textContent =
-    user.email;
+            message.innerHTML = "";
 
+            const alert = document.createElement("div");
+            alert.className = "alert alert-warning";
+            alert.textContent =
+                error.message || "Unable to load farm details.";
 
-document.getElementById(
-    "profilePhone"
-).textContent =
-    user.phone;
+            message.appendChild(alert);
+        }
+    }
 
+    // ========================================
+    // SAVE FARM DETAILS
+    // ========================================
 
-document.getElementById(
-    "profileRole"
-).textContent =
-    user.role;
+    document.getElementById("farmForm").addEventListener("submit", async function (event) {
+        event.preventDefault();
 
+        const button = document.getElementById("saveFarmButton");
+        const message = document.getElementById("farmMessage");
 
-// ========================================
-// LOAD FARM DETAILS
-// ========================================
-
-async function loadFarmDetails() {
-
-    try {
-
-        const response =
-            await fetch(
-                API_URL +
-                "/api/farm-details",
-                {
-                    method: "GET",
-
-                    headers: {
-                        "Authorization":
-                            "Bearer " + token
-                    }
-                }
-            );
-
-
-        const data =
-            await response.json();
-
+        const landArea = document.getElementById("landAreaInput").value.trim();
+        const landLocation = document.getElementById("landLocation").value.trim();
+        const cropName = document.getElementById("cropInput").value.trim();
+        const farmingType = document.getElementById("farmingInput").value;
 
         if (
-            !data.success ||
-            !data.farm
+            !landArea ||
+            Number(landArea) <= 0 ||
+            !landLocation ||
+            !cropName ||
+            !farmingType
         ) {
-
+            showMessage(message, "Please enter valid details in every field.", "warning");
             return;
-
         }
 
+        button.disabled = true;
+        button.textContent = "Saving...";
 
-        const farm =
-            data.farm;
+        try {
+            const data = await apiRequest("/api/farm-details", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    land_area: Number(landArea),
+                    land_location: landLocation,
+                    crop_name: cropName,
+                    farming_type: farmingType
+                })
+            });
 
-
-        // Update dashboard cards
-
-        document.getElementById(
-            "landArea"
-        ).textContent =
-            farm.land_area;
-
-
-        document.getElementById(
-            "cropName"
-        ).textContent =
-            farm.crop_name;
-
-
-        document.getElementById(
-            "farmingType"
-        ).textContent =
-            farm.farming_type;
-
-
-        // Fill form automatically
-
-        document.getElementById(
-            "landAreaInput"
-        ).value =
-            farm.land_area;
-
-
-        document.getElementById(
-            "landLocation"
-        ).value =
-            farm.land_location;
-
-
-        document.getElementById(
-            "cropInput"
-        ).value =
-            farm.crop_name;
-
-
-        document.getElementById(
-            "farmingInput"
-        ).value =
-            farm.farming_type;
-
-    }
-
-    catch (error) {
-
-        console.error(
-            "Farm details error:",
-            error
-        );
-
-    }
-
-}
-
-
-// ========================================
-// SAVE FARM DETAILS
-// ========================================
-
-document
-    .getElementById("farmForm")
-    .addEventListener(
-        "submit",
-        async function(event) {
-
-            event.preventDefault();
-
-
-            const landArea =
-                document.getElementById(
-                    "landAreaInput"
-                ).value.trim();
-
-
-            const landLocation =
-                document.getElementById(
-                    "landLocation"
-                ).value.trim();
-
-
-            const cropName =
-                document.getElementById(
-                    "cropInput"
-                ).value.trim();
-
-
-            const farmingType =
-                document.getElementById(
-                    "farmingInput"
-                ).value;
-
-
-            if (
-                !landArea ||
-                !landLocation ||
-                !cropName ||
-                !farmingType
-            ) {
-
-                document.getElementById(
-                    "farmMessage"
-                ).innerHTML = `
-
-                    <div class="alert alert-warning">
-                        Please fill all farm details.
-                    </div>
-
-                `;
-
-                return;
-
+            if (!data.success) {
+                throw new Error(data.message || "Failed to save farm details.");
             }
 
-
-            try {
-
-                const response =
-                    await fetch(
-                        API_URL +
-                        "/api/farm-details",
-                        {
-
-                            method: "POST",
-
-                            headers: {
-
-                                "Content-Type":
-                                    "application/json",
-
-                                "Authorization":
-                                    "Bearer " + token
-
-                            },
-
-
-                            // IMPORTANT:
-                            // Backend field names
-
-                            body: JSON.stringify({
-
-                                land_area:
-                                    landArea,
-
-                                land_location:
-                                    landLocation,
-
-                                crop_name:
-                                    cropName,
-
-                                farming_type:
-                                    farmingType
-
-                            })
-
-                        }
-                    );
-
-
-                const data =
-                    await response.json();
-
-
-                if (data.success) {
-
-                    document.getElementById(
-                        "farmMessage"
-                    ).innerHTML = `
-
-                        <div class="alert alert-success">
-
-                            ${escapeHtml(
-                                data.message ||
-                                "Farm details saved successfully!"
-                            )}
-
-                        </div>
-
-                    `;
-
-
-                    // Update dashboard cards
-
-                    document.getElementById(
-                        "landArea"
-                    ).textContent =
-                        landArea;
-
-
-                    document.getElementById(
-                        "cropName"
-                    ).textContent =
-                        cropName;
-
-
-                    document.getElementById(
-                        "farmingType"
-                    ).textContent =
-                        farmingType;
-
-                }
-
-                else {
-
-                    document.getElementById(
-                        "farmMessage"
-                    ).innerHTML = `
-
-                        <div class="alert alert-danger">
-
-                            ${escapeHtml(
-                                data.message ||
-                                "Failed to save farm details."
-                            )}
-
-                        </div>
-
-                    `;
-
-                }
-
-            }
-
-            catch (error) {
-
-                console.error(
-                    "Save farm details error:",
-                    error
-                );
-
-
-                document.getElementById(
-                    "farmMessage"
-                ).innerHTML = `
-
-                    <div class="alert alert-danger">
-
-                        Server connection failed.
-
-                    </div>
-
-                `;
-
-            }
-
-        }
-    );
-
-
-// ========================================
-// ADD PRODUCT
-// ========================================
-
-document
-    .getElementById("productForm")
-    .addEventListener(
-        "submit",
-        async function(event) {
-
-            event.preventDefault();
-
-
-            const productName =
-                document.getElementById(
-                    "productName"
-                ).value.trim();
-
-
-            const quantity =
-                document.getElementById(
-                    "quantity"
-                ).value.trim();
-
-
-            const grade =
-                document.getElementById(
-                    "grade"
-                ).value;
-
-
-            const price =
-                document.getElementById(
-                    "price"
-                ).value.trim();
-
-
-            const description =
-                document.getElementById(
-                    "description"
-                ).value.trim();
-
-
-            if (
-                !productName ||
-                !quantity ||
-                !grade ||
-                !price
-            ) {
-
-                document.getElementById(
-                    "productMessage"
-                ).innerHTML = `
-
-                    <div class="alert alert-warning">
-
-                        Please fill all required product fields.
-
-                    </div>
-
-                `;
-
-                return;
-
-            }
-
-
-            try {
-
-                const response =
-                    await fetch(
-                        API_URL +
-                        "/api/products",
-                        {
-
-                            method: "POST",
-
-                            headers: {
-
-                                "Content-Type":
-                                    "application/json",
-
-                                "Authorization":
-                                    "Bearer " + token
-
-                            },
-
-
-                            // IMPORTANT:
-                            // Backend expects product_name
-
-                            body: JSON.stringify({
-
-                                product_name:
-                                    productName,
-
-                                quantity:
-                                    quantity,
-
-                                grade:
-                                    grade,
-
-                                price:
-                                    price,
-
-                                description:
-                                    description
-
-                            })
-
-                        }
-                    );
-
-
-                const data =
-                    await response.json();
-
-
-                if (data.success) {
-
-                    document.getElementById(
-                        "productMessage"
-                    ).innerHTML = `
-
-                        <div class="alert alert-success">
-
-                            ${escapeHtml(
-                                data.message ||
-                                "Product added successfully!"
-                            )}
-
-                        </div>
-
-                    `;
-
-
-                    document.getElementById(
-                        "productForm"
-                    ).reset();
-
-
-                    loadProducts();
-
-                }
-
-                else {
-
-                    document.getElementById(
-                        "productMessage"
-                    ).innerHTML = `
-
-                        <div class="alert alert-danger">
-
-                            ${escapeHtml(
-                                data.message ||
-                                "Failed to add product."
-                            )}
-
-                        </div>
-
-                    `;
-
-                }
-
-            }
-
-            catch (error) {
-
-                console.error(
-                    "Add product error:",
-                    error
-                );
-
-
-                document.getElementById(
-                    "productMessage"
-                ).innerHTML = `
-
-                    <div class="alert alert-danger">
-
-                        Server connection failed.
-
-                    </div>
-
-                `;
-
-            }
-
-        }
-    );
-
-
-// ========================================
-// LOAD PRODUCTS
-// ========================================
-
-async function loadProducts() {
-
-    try {
-
-        const response =
-            await fetch(
-                API_URL +
-                "/api/products",
-                {
-
-                    method: "GET",
-
-                    headers: {
-
-                        "Authorization":
-                            "Bearer " + token
-
-                    }
-
-                }
+            showMessage(
+                message,
+                data.message || "Farm details saved successfully!",
+                "success"
             );
 
+            document.getElementById("landArea").textContent = landArea;
+            document.getElementById("cropName").textContent = cropName;
+            document.getElementById("farmingType").textContent = farmingType;
 
-        const data =
-            await response.json();
+        } catch (error) {
+            console.error("Save farm details error:", error);
 
-
-        const table =
-            document.getElementById(
-                "productsTable"
+            showMessage(
+                message,
+                error.message || "Server connection failed.",
+                "danger"
             );
+        } finally {
+            button.disabled = false;
+            button.textContent = "Save Farm Details";
+        }
+    });
 
+    // ========================================
+    // ADD PRODUCT
+    // ========================================
+
+    document.getElementById("productForm").addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const button = document.getElementById("addProductButton");
+        const message = document.getElementById("productMessage");
+
+        const productName = document.getElementById("productName").value.trim();
+        const quantity = Number(document.getElementById("quantity").value);
+        const grade = document.getElementById("grade").value;
+        const price = Number(document.getElementById("price").value);
+        const description = document.getElementById("description").value.trim();
 
         if (
-            !data.success ||
-            !data.products ||
-            data.products.length === 0
+            !productName ||
+            !Number.isFinite(quantity) ||
+            quantity <= 0 ||
+            !grade ||
+            !Number.isFinite(price) ||
+            price < 0
         ) {
-
-            table.innerHTML = `
-
-                <tr>
-
-                    <td
-                        colspan="6"
-                        class="text-center text-muted"
-                    >
-
-                        No products added yet.
-
-                    </td>
-
-                </tr>
-
-            `;
-
+            showMessage(message, "Please enter valid product details.", "warning");
             return;
-
         }
 
+        button.disabled = true;
+        button.textContent = "Adding Product...";
 
-        table.innerHTML = "";
+        try {
+            const data = await apiRequest("/api/products", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    product_name: productName,
+                    quantity: quantity,
+                    grade: grade,
+                    price: price,
+                    description: description
+                })
+            });
 
-
-        data.products.forEach(
-            product => {
-
-                table.innerHTML += `
-
-                    <tr>
-
-                        <td>
-
-                            <strong>
-
-                                ${escapeHtml(
-                                    product.product_name
-                                )}
-
-                            </strong>
-
-                        </td>
-
-
-                        <td>
-
-                            ${escapeHtml(
-                                product.quantity
-                            )}
-
-                        </td>
-
-
-                        <td>
-
-                            <span class="badge bg-success">
-
-                                Grade
-                                ${escapeHtml(
-                                    product.grade
-                                )}
-
-                            </span>
-
-                        </td>
-
-
-                        <td>
-
-                            ₹${escapeHtml(
-                                product.price
-                            )}
-
-                        </td>
-
-
-                        <td>
-
-                            ${escapeHtml(
-                                product.description || "-"
-                            )}
-
-                        </td>
-
-
-                        <td>
-
-                            <button
-                                class="btn btn-danger btn-sm"
-                                onclick="deleteProduct(${Number(product.id)})"
-                            >
-
-                                🗑️ Delete
-
-                            </button>
-
-                        </td>
-
-                    </tr>
-
-                `;
-
+            if (!data.success) {
+                throw new Error(data.message || "Failed to add product.");
             }
-        );
 
-    }
+            showMessage(
+                message,
+                data.message || "Product added successfully!",
+                "success"
+            );
 
-    catch (error) {
+            document.getElementById("productForm").reset();
 
-        console.error(
-            "Error loading products:",
-            error
-        );
+            await loadProducts();
 
+        } catch (error) {
+            console.error("Add product error:", error);
 
-        document.getElementById(
-            "productsTable"
-        ).innerHTML = `
+            showMessage(
+                message,
+                error.message || "Server connection failed.",
+                "danger"
+            );
+        } finally {
+            button.disabled = false;
+            button.textContent = "Add Product";
+        }
+    });
 
+    // ========================================
+    // LOAD PRODUCTS
+    // ========================================
+
+    async function loadProducts() {
+        const table = document.getElementById("productsTable");
+
+        table.innerHTML = `
             <tr>
-
-                <td
-                    colspan="6"
-                    class="text-center text-danger"
-                >
-
-                    Failed to load products.
-
+                <td colspan="6" class="text-center">
+                    Loading products...
                 </td>
-
             </tr>
-
         `;
 
+        try {
+            const data = await apiRequest("/api/products");
+
+            if (!data.success || !Array.isArray(data.products)) {
+                throw new Error(data.message || "Unable to load products.");
+            }
+
+            currentProducts = data.products;
+
+            if (currentProducts.length === 0) {
+                table.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="text-center text-muted">
+                            No products added yet.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            table.innerHTML = "";
+
+            currentProducts.forEach((product) => {
+                const row = document.createElement("tr");
+
+                const nameCell = document.createElement("td");
+                const nameStrong = document.createElement("strong");
+                nameStrong.textContent = product.product_name || "Unnamed Product";
+                nameCell.appendChild(nameStrong);
+
+                const quantityCell = document.createElement("td");
+                quantityCell.textContent = product.quantity ?? "-";
+
+                const gradeCell = document.createElement("td");
+                const gradeBadge = document.createElement("span");
+                gradeBadge.className =
+                    product.grade === "A" ? "badge bg-success" :
+                    product.grade === "B" ? "badge bg-warning text-dark" :
+                    "badge bg-danger";
+                gradeBadge.textContent = `Grade ${product.grade || "N/A"}`;
+                gradeCell.appendChild(gradeBadge);
+
+                const priceCell = document.createElement("td");
+                priceCell.textContent =
+                    product.price === null || product.price === undefined
+                        ? "-"
+                        : `₹${product.price}`;
+
+                const descriptionCell = document.createElement("td");
+                descriptionCell.textContent = product.description || "-";
+
+                const actionCell = document.createElement("td");
+                const deleteButton = document.createElement("button");
+
+                deleteButton.type = "button";
+                deleteButton.className = "btn btn-danger btn-sm";
+                deleteButton.textContent = "🗑️ Delete";
+                deleteButton.addEventListener("click", () => {
+                    deleteProduct(product.id);
+                });
+
+                actionCell.appendChild(deleteButton);
+
+                row.append(
+                    nameCell,
+                    quantityCell,
+                    gradeCell,
+                    priceCell,
+                    descriptionCell,
+                    actionCell
+                );
+
+                table.appendChild(row);
+            });
+
+        } catch (error) {
+            console.error("Error loading products:", error);
+
+            table.innerHTML = `
+                <tr>
+                    <td colspan="6" class="text-center text-danger">
+                        ${escapeHtml(error.message || "Failed to load products.")}
+                    </td>
+                </tr>
+            `;
+        }
     }
 
-}
+    // ========================================
+    // DELETE PRODUCT
+    // ========================================
 
+    async function deleteProduct(productId) {
+        if (!productId) {
+            alert("Invalid product ID.");
+            return;
+        }
 
-// ========================================
-// DELETE PRODUCT
-// ========================================
-
-async function deleteProduct(productId) {
-
-    const confirmation =
-        confirm(
+        const confirmation = confirm(
             "Are you sure you want to delete this product?"
         );
 
+        if (!confirmation) {
+            return;
+        }
 
-    if (!confirmation) {
-
-        return;
-
-    }
-
-
-    try {
-
-        const response =
-            await fetch(
-                API_URL +
-                "/api/products/" +
-                productId,
+        try {
+            const data = await apiRequest(
+                `/api/products/${encodeURIComponent(productId)}`,
                 {
-
-                    method: "DELETE",
-
-                    headers: {
-
-                        "Authorization":
-                            "Bearer " + token
-
-                    }
-
+                    method: "DELETE"
                 }
             );
 
+            if (!data.success) {
+                throw new Error(data.message || "Failed to delete product.");
+            }
 
-        const data =
-            await response.json();
+            alert(data.message || "Product deleted successfully!");
 
+            await loadProducts();
 
-        if (data.success) {
-
-            alert(
-                "Product deleted successfully!"
-            );
-
-
-            loadProducts();
-
+        } catch (error) {
+            console.error("Delete product error:", error);
+            alert(error.message || "Server connection failed.");
         }
-
-        else {
-
-            alert(
-                data.message ||
-                "Failed to delete product."
-            );
-
-        }
-
     }
 
-    catch (error) {
+    // ========================================
+    // MESSAGE HELPER
+    // ========================================
 
-        console.error(
-            "Delete product error:",
-            error
-        );
+    function showMessage(element, text, type) {
+        element.innerHTML = "";
 
+        const alert = document.createElement("div");
+        alert.className = `alert alert-${type}`;
+        alert.textContent = text;
 
-        alert(
-            "Server connection failed."
-        );
-
+        element.appendChild(alert);
     }
 
-}
+    // ========================================
+    // HTML ESCAPE
+    // ========================================
 
+    function escapeHtml(value) {
+        return String(value ?? "")
+            .replaceAll("&", "&amp;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll('"', "&quot;")
+            .replaceAll("'", "&#039;");
+    }
 
-// ========================================
-// HTML ESCAPING
-// ========================================
+    // ========================================
+    // LOGOUT
+    // ========================================
 
-function escapeHtml(value) {
+    function logout() {
+        localStorage.removeItem("agrilinkkToken");
+        localStorage.removeItem("agrilinkkUser");
+        window.location.href = "login.html";
+    }
 
-    return String(value)
+    // ========================================
+    // INITIALIZE DASHBOARD
+    // ========================================
 
-        .replaceAll(
-            "&",
-            "&amp;"
-        )
-
-        .replaceAll(
-            "<",
-            "&lt;"
-        )
-
-        .replaceAll(
-            ">",
-            "&gt;"
-        )
-
-        .replaceAll(
-            '"',
-            "&quot;"
-        )
-
-        .replaceAll(
-            "'",
-            "&#039;"
-        );
-
-}
-
-
-// ========================================
-// LOGOUT
-// ========================================
-
-function logout() {
-
-    localStorage.removeItem(
-        "agrilinkkToken"
-    );
-
-
-    localStorage.removeItem(
-        "agrilinkkUser"
-    );
-
-
-    window.location.href =
-        "login.html";
-
-}
-
-
-// ========================================
-// LOAD DATA WHEN PAGE OPENS
-// ========================================
-
-loadFarmDetails();
-
-loadProducts();
-
-
+    if (token && user && user.role === "Farmer") {
+        loadFarmDetails();
+        loadProducts();
+    }
 </script>
 
-
 </body>
-
 </html>

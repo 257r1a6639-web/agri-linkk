@@ -1,8 +1,12 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore AGRI LINKK services for farmers, agricultural businesses, logistics providers, and communities.">
+    <meta name="theme-color" content="#0b5d35">
+
     <title>Services - AGRI LINKK</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -14,29 +18,45 @@
             --dark-green: #0b5d35;
             --light-green: #eaf7ef;
             --dark: #17351f;
+            --text-muted: #69766e;
+            --border: #e0ebe3;
         }
 
-        html { scroll-behavior: smooth; }
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
 
         body {
             font-family: Arial, sans-serif;
             color: #26372b;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid #f0b429;
+            outline-offset: 4px;
         }
 
         .navbar {
-            background: rgba(255,255,255,.98);
-            box-shadow: 0 2px 15px rgba(0,0,0,.08);
+            background: rgba(255, 255, 255, .98);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
         }
 
         .navbar-brand {
             color: var(--green) !important;
             font-size: 1.5rem;
             font-weight: 800;
+            letter-spacing: -.5px;
         }
 
         .nav-link {
             color: #34463a !important;
             font-weight: 600;
+            padding: 10px 12px !important;
+            transition: color .2s ease;
         }
 
         .nav-link:hover,
@@ -44,16 +64,59 @@
             color: var(--green) !important;
         }
 
+        .btn-success {
+            background-color: var(--green);
+            border-color: var(--green);
+            transition: background-color .2s ease, transform .2s ease;
+        }
+
+        .btn-success:hover {
+            background-color: var(--dark-green);
+            border-color: var(--dark-green);
+            transform: translateY(-2px);
+        }
+
         .hero {
-            background: linear-gradient(135deg,#0b5d35,#198754);
+            background: linear-gradient(135deg, #0b5d35, #198754);
             color: white;
-            padding: 90px 0;
+            padding: 95px 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before,
+        .hero::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .06);
+            pointer-events: none;
+        }
+
+        .hero::before {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            left: -80px;
+        }
+
+        .hero::after {
+            width: 400px;
+            height: 400px;
+            bottom: -250px;
+            right: -100px;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
         }
 
         .hero h1 {
-            font-size: 3.2rem;
+            font-size: clamp(2.3rem, 5vw, 3.5rem);
             font-weight: 800;
+            letter-spacing: -1px;
         }
 
         .hero p {
@@ -71,27 +134,30 @@
         .section-title {
             font-weight: 800;
             color: var(--dark);
+            letter-spacing: -.5px;
         }
 
         .subtitle {
             max-width: 700px;
-            margin: auto;
-            color: #6b776e;
-            line-height: 1.7;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--text-muted);
+            line-height: 1.8;
         }
 
         .service-card {
-            border: 1px solid #e0ebe3;
+            border: 1px solid var(--border);
             border-radius: 22px;
-            padding: 35px;
+            padding: 32px;
             height: 100%;
-            transition: .3s;
             background: white;
+            transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
         }
 
         .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(0,0,0,.09);
+            transform: translateY(-7px);
+            border-color: #b9dfc6;
+            box-shadow: 0 16px 35px rgba(18, 73, 39, .10);
         }
 
         .service-icon {
@@ -104,17 +170,20 @@
             align-items: center;
             justify-content: center;
             font-size: 1.7rem;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
         }
 
-        .service-card h4 {
+        .service-card h3 {
+            font-size: 1.25rem;
             font-weight: 750;
             color: var(--dark);
+            margin-bottom: 12px;
         }
 
         .service-card p {
-            color: #69766e;
-            line-height: 1.7;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 0;
         }
 
         .gray-section {
@@ -123,7 +192,8 @@
 
         .process {
             text-align: center;
-            padding: 25px;
+            padding: 25px 18px;
+            height: 100%;
         }
 
         .process-number {
@@ -136,21 +206,26 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 1.15rem;
             font-weight: 800;
+            box-shadow: 0 5px 15px rgba(25, 135, 84, .2);
         }
 
-        .process h5 {
+        .process h3 {
+            font-size: 1.15rem;
             font-weight: 750;
             color: var(--dark);
         }
 
         .process p {
-            color: #69766e;
-            line-height: 1.6;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 0;
         }
 
         .cta {
-            background: var(--light-green);
+            background: linear-gradient(135deg, #eaf7ef, #f4fbf6);
+            border: 1px solid #d9eee0;
             border-radius: 28px;
             padding: 55px 30px;
             text-align: center;
@@ -161,20 +236,31 @@
             color: var(--dark);
         }
 
+        .cta p {
+            color: var(--text-muted);
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
         footer {
             background: #10251a;
             color: #cbd8cf;
             padding: 55px 0 25px;
         }
 
-        footer h5 {
+        footer h2,
+        footer h3 {
             color: white;
+            font-size: 1.1rem;
             font-weight: 700;
         }
 
         footer a {
             color: #cbd8cf;
             text-decoration: none;
+            transition: color .2s ease;
         }
 
         footer a:hover {
@@ -182,18 +268,57 @@
         }
 
         .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,.1);
+            border-top: 1px solid rgba(255, 255, 255, .1);
             margin-top: 35px;
             padding-top: 20px;
+            font-size: .9rem;
         }
 
-        @media(max-width:768px) {
-            .hero h1 {
-                font-size: 2.4rem;
+        @media (max-width: 991.98px) {
+            .navbar-nav {
+                padding: 12px 0;
+                align-items: stretch !important;
+            }
+
+            .navbar-nav .btn {
+                margin-top: 8px;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .hero {
+                padding: 70px 0;
+            }
+
+            .hero p {
+                font-size: 1rem;
             }
 
             .section {
                 padding: 60px 0;
+            }
+
+            .service-card {
+                padding: 27px;
+            }
+
+            .cta {
+                padding: 40px 22px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+                scroll-behavior: auto !important;
             }
         }
     </style>
@@ -201,28 +326,54 @@
 
 <body>
 
-<nav class="navbar navbar-expand-lg sticky-top">
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg sticky-top" aria-label="Main navigation">
     <div class="container">
 
-        <a class="navbar-brand" href="index.html">🌱 AGRI LINKK</a>
+        <a class="navbar-brand" href="index.html" aria-label="AGRI LINKK Home">
+            🌱 AGRI LINKK
+        </a>
 
         <button class="navbar-toggler" type="button"
-                data-bs-toggle="collapse" data-bs-target="#nav">
+                data-bs-toggle="collapse"
+                data-bs-target="#mainNavigation"
+                aria-controls="mainNavigation"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="nav">
+        <div class="collapse navbar-collapse" id="mainNavigation">
             <ul class="navbar-nav ms-auto align-items-lg-center">
 
-                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="features.html">Features</a></li>
-                <li class="nav-item"><a class="nav-link active" href="services.html">Services</a></li>
-                <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-                <li class="nav-item"><a class="nav-link" href="careers.html">Careers</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="features.html">Features</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="services.html" aria-current="page">Services</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="gallery.html">Gallery</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="careers.html">Careers</a>
+                </li>
 
                 <li class="nav-item ms-lg-2">
-                    <a href="login.html" class="btn btn-success rounded-pill px-4">Login</a>
+                    <a href="login.html" class="btn btn-success rounded-pill px-4">
+                        Login
+                    </a>
                 </li>
 
             </ul>
@@ -230,141 +381,159 @@
     </div>
 </nav>
 
-<section class="hero">
+<!-- Hero -->
+<header class="hero">
     <div class="container">
         <h1>Our Services</h1>
+
         <p>
-            AGRI LINKK provides digital services that make it easier
-            to discover agricultural products, connect participants
-            and manage farm information.
+            AGRI LINKK brings agricultural participants together through
+            digital services designed to simplify farm information,
+            product discovery and connections between farmers and businesses.
         </p>
     </div>
-</section>
+</header>
 
-<section class="section">
+<!-- Services -->
+<section class="section" id="services">
     <div class="container">
 
         <div class="text-center mb-5">
             <h2 class="section-title">What We Provide</h2>
             <p class="subtitle mt-3">
-                A connected platform designed for farmers,
-                businesses, logistics providers and communities.
+                A connected platform designed for farmers, businesses,
+                logistics providers and communities.
             </p>
         </div>
 
         <div class="row g-4">
 
             <div class="col-md-6 col-lg-4">
-                <div class="service-card">
-                    <div class="service-icon"><i class="bi bi-person-vcard"></i></div>
-                    <h4>Farmer Registration</h4>
+                <article class="service-card">
+                    <div class="service-icon" aria-hidden="true">
+                        <i class="bi bi-person-vcard"></i>
+                    </div>
+                    <h3>Farmer Registration</h3>
                     <p>
-                        Farmers can create accounts and maintain
-                        their basic profile and agricultural information.
+                        Farmers can create accounts and maintain their
+                        basic profile and agricultural information.
                     </p>
-                </div>
+                </article>
             </div>
 
             <div class="col-md-6 col-lg-4">
-                <div class="service-card">
-                    <div class="service-icon"><i class="bi bi-map"></i></div>
-                    <h4>Farm Management</h4>
+                <article class="service-card">
+                    <div class="service-icon" aria-hidden="true">
+                        <i class="bi bi-map"></i>
+                    </div>
+                    <h3>Farm Management</h3>
                     <p>
-                        Store land area, location, crop name and
-                        farming method in a digital farm record.
+                        Keep digital farm records with details such as
+                        land area, location, crop name and farming method.
                     </p>
-                </div>
+                </article>
             </div>
 
             <div class="col-md-6 col-lg-4">
-                <div class="service-card">
-                    <div class="service-icon"><i class="bi bi-box-seam"></i></div>
-                    <h4>Product Listing</h4>
+                <article class="service-card">
+                    <div class="service-icon" aria-hidden="true">
+                        <i class="bi bi-box-seam"></i>
+                    </div>
+                    <h3>Product Listing</h3>
                     <p>
-                        Farmers can list products with quantity,
-                        description, grade and price.
+                        Farmers can list agricultural products with
+                        quantity, description, grade and price.
                     </p>
-                </div>
+                </article>
             </div>
 
             <div class="col-md-6 col-lg-4">
-                <div class="service-card">
-                    <div class="service-icon"><i class="bi bi-shop-window"></i></div>
-                    <h4>Digital Marketplace</h4>
+                <article class="service-card">
+                    <div class="service-icon" aria-hidden="true">
+                        <i class="bi bi-shop-window"></i>
+                    </div>
+                    <h3>Digital Marketplace</h3>
                     <p>
-                        Eligible users can explore agricultural
-                        products available on the platform.
+                        Eligible users can explore agricultural products
+                        listed on the platform and discover available offerings.
                     </p>
-                </div>
+                </article>
             </div>
 
             <div class="col-md-6 col-lg-4">
-                <div class="service-card">
-                    <div class="service-icon"><i class="bi bi-tags"></i></div>
-                    <h4>Grade-Based Pricing</h4>
+                <article class="service-card">
+                    <div class="service-icon" aria-hidden="true">
+                        <i class="bi bi-tags"></i>
+                    </div>
+                    <h3>Grade-Based Pricing</h3>
                     <p>
-                        Products can be categorized into Grade A,
-                        Grade B and Grade C with their respective prices.
+                        Organize product listings by quality categories
+                        such as Grade A, Grade B and Grade C, with
+                        corresponding prices where applicable.
                     </p>
-                </div>
+                </article>
             </div>
 
             <div class="col-md-6 col-lg-4">
-                <div class="service-card">
-                    <div class="service-icon"><i class="bi bi-truck"></i></div>
-                    <h4>Logistics Discovery</h4>
+                <article class="service-card">
+                    <div class="service-icon" aria-hidden="true">
+                        <i class="bi bi-truck"></i>
+                    </div>
+                    <h3>Logistics Discovery</h3>
                     <p>
-                        Logistics participants can view available
-                        agricultural products and farmer details.
+                        Logistics participants can explore agricultural
+                        listings and relevant farmer information to
+                        identify potential connections.
                     </p>
-                </div>
+                </article>
             </div>
 
         </div>
     </div>
 </section>
 
-<section class="section gray-section">
+<!-- Process -->
+<section class="section gray-section" id="how-it-works">
     <div class="container">
 
         <div class="text-center mb-5">
             <h2 class="section-title">How Our Services Work</h2>
             <p class="subtitle mt-3">
-                A simple four-step digital process.
+                Four simple steps to get started with AGRI LINKK.
             </p>
         </div>
 
         <div class="row g-4">
 
-            <div class="col-md-3">
+            <div class="col-6 col-lg-3">
                 <div class="process">
-                    <div class="process-number">1</div>
-                    <h5>Create Account</h5>
-                    <p>Register using your basic information and role.</p>
+                    <div class="process-number" aria-label="Step 1">1</div>
+                    <h3>Create an Account</h3>
+                    <p>Register with your basic information and select the appropriate account role.</p>
                 </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-6 col-lg-3">
                 <div class="process">
-                    <div class="process-number">2</div>
-                    <h5>Add Information</h5>
-                    <p>Enter farm or organization details.</p>
+                    <div class="process-number" aria-label="Step 2">2</div>
+                    <h3>Add Information</h3>
+                    <p>Provide relevant farm, product or organization information.</p>
                 </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-6 col-lg-3">
                 <div class="process">
-                    <div class="process-number">3</div>
-                    <h5>Explore</h5>
-                    <p>Browse products and available agricultural information.</p>
+                    <div class="process-number" aria-label="Step 3">3</div>
+                    <h3>Explore Products</h3>
+                    <p>Browse agricultural product listings and available platform information.</p>
                 </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-6 col-lg-3">
                 <div class="process">
-                    <div class="process-number">4</div>
-                    <h5>Connect</h5>
-                    <p>Contact relevant participants and build connections.</p>
+                    <div class="process-number" aria-label="Step 4">4</div>
+                    <h3>Build Connections</h3>
+                    <p>Connect with relevant participants and explore opportunities to collaborate.</p>
                 </div>
             </div>
 
@@ -372,41 +541,43 @@
     </div>
 </section>
 
+<!-- Call to action -->
 <section class="section">
     <div class="container">
 
         <div class="cta">
             <h2>Ready to Join AGRI LINKK?</h2>
+
             <p class="mt-3 mb-4">
-                Create your account and become part of the connected
-                agricultural ecosystem.
+                Create your account and become part of a connected
+                agricultural community.
             </p>
 
-            <a href="register.html"
-               class="btn btn-success btn-lg rounded-pill px-5">
-                Get Started
+            <a href="register.html" class="btn btn-success btn-lg rounded-pill px-5">
+                Get Started <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i>
             </a>
-        </div>
 
+        </div>
     </div>
 </section>
 
+<!-- Footer -->
 <footer>
     <div class="container">
 
         <div class="row g-4">
 
             <div class="col-lg-5">
-                <h5>🌱 AGRI LINKK</h5>
+                <h2>🌱 AGRI LINKK</h2>
                 <p class="mt-3">
-                    Connecting farmers with MSMEs, logistics,
+                    Connecting farmers with MSMEs, logistics providers,
                     communities and apartments through a digital
                     agricultural platform.
                 </p>
             </div>
 
             <div class="col-6 col-lg-2">
-                <h5>Company</h5>
+                <h3>Company</h3>
                 <div class="d-flex flex-column gap-2 mt-3">
                     <a href="index.html">Home</a>
                     <a href="about.html">About</a>
@@ -416,7 +587,7 @@
             </div>
 
             <div class="col-6 col-lg-2">
-                <h5>Explore</h5>
+                <h3>Explore</h3>
                 <div class="d-flex flex-column gap-2 mt-3">
                     <a href="gallery.html">Gallery</a>
                     <a href="careers.html">Careers</a>
@@ -426,21 +597,25 @@
             </div>
 
             <div class="col-lg-3">
-                <h5>Contact</h5>
+                <h3>Contact</h3>
+
                 <p class="mt-3">
-                    <i class="bi bi-envelope"></i>
-                    info@agrilinkk.com
+                    <i class="bi bi-envelope me-2" aria-hidden="true"></i>
+                    <a href="mailto:info@agrilinkk.com">info@agrilinkk.com</a>
                 </p>
+
                 <p>
-                    <i class="bi bi-telephone"></i>
-                    +91 98765 43210
+                    <i class="bi bi-telephone me-2" aria-hidden="true"></i>
+                    <a href="tel:+919876543210">+91 98765 43210</a>
                 </p>
             </div>
 
         </div>
 
         <div class="footer-bottom text-center">
-            <p class="mb-0">© 2026 AGRI LINKK. All Rights Reserved.</p>
+            <p class="mb-0">
+                &copy; <span id="currentYear">2026</span> AGRI LINKK. All Rights Reserved.
+            </p>
         </div>
 
     </div>
@@ -448,6 +623,10 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+<script>
+    // Keep the footer year current automatically.
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
-```

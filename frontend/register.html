@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Register - AGRI LINKK</title>
@@ -15,94 +12,64 @@
     >
 
     <style>
-
         body {
-            background: linear-gradient(
-                135deg,
-                #e8f5e9,
-                #f8fff9
-            );
-
+            background: linear-gradient(135deg, #e8f5e9, #f8fff9);
             min-height: 100vh;
         }
 
         .register-card {
-
             max-width: 600px;
-
             margin: 50px auto;
-
             border: none;
-
             border-radius: 18px;
-
-            box-shadow:
-                0 10px 30px
-                rgba(0, 0, 0, 0.10);
-
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
         }
 
         .brand {
-
             color: #198754;
-
             font-weight: bold;
-
             font-size: 28px;
-
         }
 
         .form-control,
         .form-select {
-
             border-radius: 10px;
-
             padding: 12px;
-
         }
 
         .btn-register {
-
             background-color: #198754;
-
             color: white;
-
             border: none;
-
             border-radius: 10px;
-
             padding: 12px;
-
             font-weight: 600;
-
         }
 
         .btn-register:hover {
-
             background-color: #146c43;
-
             color: white;
-
         }
 
+        .btn-register:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 576px) {
+            .register-card {
+                margin: 25px auto;
+            }
+        }
     </style>
-
 </head>
-
 
 <body>
 
-
 <!-- NAVBAR -->
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-success">
-
     <div class="container">
-
-        <a
-            class="navbar-brand fw-bold"
-            href="index.html"
-        >
+        <a class="navbar-brand fw-bold" href="index.html">
             🌾 AGRI LINKK
         </a>
 
@@ -111,308 +78,142 @@
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
         >
-
             <span class="navbar-toggler-icon"></span>
-
         </button>
 
-
-        <div
-            class="collapse navbar-collapse"
-            id="navbarNav"
-        >
-
+        <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-
                 <li class="nav-item">
-
-                    <a
-                        class="nav-link"
-                        href="index.html"
-                    >
-                        Home
-                    </a>
-
+                    <a class="nav-link" href="index.html">Home</a>
                 </li>
-
                 <li class="nav-item">
-
-                    <a
-                        class="nav-link"
-                        href="about.html"
-                    >
-                        About
-                    </a>
-
+                    <a class="nav-link" href="about.html">About</a>
                 </li>
-
                 <li class="nav-item">
-
-                    <a
-                        class="nav-link"
-                        href="services.html"
-                    >
-                        Services
-                    </a>
-
+                    <a class="nav-link" href="services.html">Services</a>
                 </li>
-
                 <li class="nav-item">
-
-                    <a
-                        class="nav-link"
-                        href="contact.html"
-                    >
-                        Contact
-                    </a>
-
+                    <a class="nav-link" href="contact.html">Contact</a>
                 </li>
-
                 <li class="nav-item">
-
-                    <a
-                        class="nav-link"
-                        href="login.html"
-                    >
-                        Login
-                    </a>
-
+                    <a class="nav-link" href="login.html">Login</a>
                 </li>
-
             </ul>
-
         </div>
-
     </div>
-
 </nav>
 
-
-<!-- REGISTER CARD -->
-
+<!-- REGISTER FORM -->
 <div class="container">
-
     <div class="card register-card">
-
         <div class="card-body p-4 p-md-5">
 
-
             <div class="text-center mb-4">
-
-                <div class="brand">
-                    🌾 AGRI LINKK
-                </div>
-
-                <h3 class="mt-2">
-                    Create Account
-                </h3>
-
-                <p class="text-muted">
-                    Join the AGRI LINKK community
-                </p>
-
+                <div class="brand">🌾 AGRI LINKK</div>
+                <h3 class="mt-2">Create Account</h3>
+                <p class="text-muted">Join the AGRI LINKK community</p>
             </div>
-
-
-            <!-- MESSAGE -->
 
             <div
                 id="message"
                 class="alert d-none"
+                role="alert"
+                aria-live="polite"
             ></div>
 
-
-            <!-- REGISTER FORM -->
-
-            <form
-                id="registerForm"
-                novalidate
-            >
-
-
-                <!-- FULL NAME -->
+            <form id="registerForm" novalidate>
 
                 <div class="mb-3">
-
-                    <label
-                        for="fullName"
-                        class="form-label"
-                    >
-                        Full Name
-                    </label>
-
+                    <label for="fullName" class="form-label">Full Name</label>
                     <input
                         type="text"
                         class="form-control"
                         id="fullName"
                         name="fullName"
                         placeholder="Enter your full name"
+                        autocomplete="name"
+                        maxlength="100"
                         required
                     >
-
                 </div>
 
-
-                <!-- EMAIL -->
-
                 <div class="mb-3">
-
-                    <label
-                        for="email"
-                        class="form-label"
-                    >
-                        Email Address
-                    </label>
-
+                    <label for="email" class="form-label">Email Address</label>
                     <input
                         type="email"
                         class="form-control"
                         id="email"
                         name="email"
                         placeholder="Enter your email"
+                        autocomplete="email"
+                        maxlength="254"
                         required
                     >
-
                 </div>
 
-
-                <!-- PHONE -->
-
                 <div class="mb-3">
-
-                    <label
-                        for="phone"
-                        class="form-label"
-                    >
-                        Phone Number
-                    </label>
-
+                    <label for="phone" class="form-label">Phone Number</label>
                     <input
                         type="tel"
                         class="form-control"
                         id="phone"
                         name="phone"
                         placeholder="Enter 10-digit phone number"
+                        autocomplete="tel"
+                        inputmode="numeric"
                         maxlength="10"
+                        pattern="[0-9]{10}"
                         required
                     >
-
+                    <div class="form-text">
+                        Enter a 10-digit mobile number without the country code.
+                    </div>
                 </div>
 
-
-                <!-- ROLE -->
-
                 <div class="mb-3">
-
-                    <label
-                        for="role"
-                        class="form-label"
-                    >
-                        Select Role
-                    </label>
-
-                    <select
-                        class="form-select"
-                        id="role"
-                        name="role"
-                        required
-                    >
-
-                        <option
-                            value=""
-                        >
-                            Select your role
-                        </option>
-
-                        <option
-                            value="Farmer"
-                        >
-                            Farmer
-                        </option>
-
-                        <option
-                            value="MSME"
-                        >
-                            MSME
-                        </option>
-
-                        <option
-                            value="Logistics"
-                        >
-                            Logistics
-                        </option>
-
-                        <option
-                            value="Community"
-                        >
-                            Community
-                        </option>
-
-                        <option
-                            value="Apartment"
-                        >
-                            Apartment
-                        </option>
-
-                        <option
-                            value="Admin"
-                        >
-                            Admin
-                        </option>
-
+                    <label for="role" class="form-label">Select Role</label>
+                    <select class="form-select" id="role" name="role" required>
+                        <option value="">Select your role</option>
+                        <option value="Farmer">Farmer</option>
+                        <option value="MSME">MSME</option>
+                        <option value="Logistics">Logistics</option>
+                        <option value="Community">Community</option>
+                        <option value="Apartment">Apartment</option>
                     </select>
-
                 </div>
 
-
-                <!-- PASSWORD -->
-
                 <div class="mb-3">
-
-                    <label
-                        for="password"
-                        class="form-label"
-                    >
-                        Password
-                    </label>
-
+                    <label for="password" class="form-label">Password</label>
                     <input
                         type="password"
                         class="form-control"
                         id="password"
                         name="password"
-                        placeholder="Minimum 6 characters"
+                        placeholder="Minimum 8 characters"
+                        autocomplete="new-password"
+                        minlength="8"
                         required
                     >
-
                 </div>
 
-
-                <!-- CONFIRM PASSWORD -->
-
                 <div class="mb-4">
-
-                    <label
-                        for="confirmPassword"
-                        class="form-label"
-                    >
+                    <label for="confirmPassword" class="form-label">
                         Confirm Password
                     </label>
-
                     <input
                         type="password"
                         class="form-control"
                         id="confirmPassword"
                         name="confirmPassword"
                         placeholder="Re-enter password"
+                        autocomplete="new-password"
                         required
                     >
-
                 </div>
-
-
-                <!-- SUBMIT -->
 
                 <button
                     type="submit"
@@ -421,403 +222,170 @@
                 >
                     Create Account
                 </button>
-
-
             </form>
 
-
             <div class="text-center mt-4">
-
-                <span class="text-muted">
-                    Already have an account?
-                </span>
-
+                <span class="text-muted">Already have an account?</span>
                 <a
                     href="login.html"
                     class="text-success fw-bold text-decoration-none"
                 >
                     Login here
                 </a>
-
             </div>
 
-
         </div>
-
     </div>
-
 </div>
 
-
-<!-- BOOTSTRAP -->
-
-<script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-></script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-
+"use strict";
 
 // ========================================
-// RAILWAY BACKEND
+// BACKEND CONFIGURATION
 // ========================================
 
-const API_URL =
-    "https://agri-linkk-production.up.railway.app";
-
+const API_URL = "https://agri-linkk-api.onrender.com";
 
 // ========================================
 // ELEMENTS
 // ========================================
 
-const registerForm =
-    document.getElementById(
-        "registerForm"
-    );
-
-const message =
-    document.getElementById(
-        "message"
-    );
-
-const registerButton =
-    document.getElementById(
-        "registerButton"
-    );
-
+const registerForm = document.getElementById("registerForm");
+const message = document.getElementById("message");
+const registerButton = document.getElementById("registerButton");
 
 // ========================================
 // SHOW MESSAGE
 // ========================================
 
-function showMessage(
-    text,
-    type
-) {
-
-    message.className =
-        "alert alert-" + type;
-
-    message.textContent =
-        text;
-
+function showMessage(text, type) {
+    message.className = `alert alert-${type}`;
+    message.textContent = text;
 }
-
 
 // ========================================
 // REGISTER
 // ========================================
 
-registerForm.addEventListener(
-    "submit",
-
-    async function (event) {
-
-        event.preventDefault();
-
-
-        // --------------------------------
-        // GET VALUES
-        // --------------------------------
-
-        const fullName =
-            document
-                .getElementById(
-                    "fullName"
-                )
-                .value
-                .trim();
-
-
-        const email =
-            document
-                .getElementById(
-                    "email"
-                )
-                .value
-                .trim();
-
-
-        const phone =
-            document
-                .getElementById(
-                    "phone"
-                )
-                .value
-                .trim();
-
-
-        const role =
-            document
-                .getElementById(
-                    "role"
-                )
-                .value;
-
-
-        const password =
-            document
-                .getElementById(
-                    "password"
-                )
-                .value;
-
-
-        const confirmPassword =
-            document
-                .getElementById(
-                    "confirmPassword"
-                )
-                .value;
-
-
-        // --------------------------------
-        // FRONTEND VALIDATION
-        // --------------------------------
-
-        if (
-            !fullName ||
-            !email ||
-            !phone ||
-            !role ||
-            !password ||
-            !confirmPassword
-        ) {
-
-            showMessage(
-                "Please fill in all fields.",
-                "danger"
-            );
-
-            return;
-
-        }
-
-
-        // --------------------------------
-        // EMAIL VALIDATION
-        // --------------------------------
-
-        const emailPattern =
-            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-
-        if (
-            !emailPattern.test(email)
-        ) {
-
-            showMessage(
-                "Please enter a valid email address.",
-                "danger"
-            );
-
-            return;
-
-        }
-
-
-        // --------------------------------
-        // PHONE VALIDATION
-        // --------------------------------
-
-        const phonePattern =
-            /^[0-9]{10}$/;
-
-
-        if (
-            !phonePattern.test(phone)
-        ) {
-
-            showMessage(
-                "Phone number must contain exactly 10 digits.",
-                "danger"
-            );
-
-            return;
-
-        }
-
-
-        // --------------------------------
-        // PASSWORD VALIDATION
-        // --------------------------------
-
-        if (
-            password.length < 6
-        ) {
-
-            showMessage(
-                "Password must contain at least 6 characters.",
-                "danger"
-            );
-
-            return;
-
-        }
-
-
-        // --------------------------------
-        // CONFIRM PASSWORD
-        // --------------------------------
-
-        if (
-            password !==
-            confirmPassword
-        ) {
-
-            showMessage(
-                "Passwords do not match.",
-                "danger"
-            );
-
-            return;
-
-        }
-
-
-        // --------------------------------
-        // DISABLE BUTTON
-        // --------------------------------
-
-        registerButton.disabled =
-            true;
-
-        registerButton.textContent =
-            "Creating Account...";
-
-
-        try {
-
-
-            // ========================================
-            // IMPORTANT:
-            // BACKEND EXPECTS full_name
-            // NOT fullName
-            // ========================================
-
-            const response =
-                await fetch(
-                    API_URL +
-                    "/api/register",
-                    {
-
-                        method: "POST",
-
-                        headers: {
-
-                            "Content-Type":
-                                "application/json"
-
-                        },
-
-                        body:
-                            JSON.stringify({
-
-                                full_name:
-                                    fullName,
-
-                                email:
-                                    email,
-
-                                phone:
-                                    phone,
-
-                                role:
-                                    role,
-
-                                password:
-                                    password
-
-                            })
-
-                    }
-                );
-
-
-            const data =
-                await response.json();
-
-
-            // --------------------------------
-            // ERROR
-            // --------------------------------
-
-            if (
-                !response.ok ||
-                !data.success
-            ) {
-
-                showMessage(
-                    data.message ||
-                    "Registration failed.",
-                    "danger"
-                );
-
-                return;
-
-            }
-
-
-            // --------------------------------
-            // SUCCESS
-            // --------------------------------
-
-            showMessage(
-                "Registration successful! Redirecting to login...",
-                "success"
-            );
-
-
-            registerForm.reset();
-
-
-            setTimeout(
-                function () {
-
-                    window.location.href =
-                        "login.html";
-
-                },
-
-                1500
-            );
-
-
-        }
-
-        catch (error) {
-
-            console.error(
-                "Registration error:",
-                error
-            );
-
-
-            showMessage(
-                "Unable to connect to the server. Please try again.",
-                "danger"
-            );
-
-        }
-
-        finally {
-
-            registerButton.disabled =
-                false;
-
-            registerButton.textContent =
-                "Create Account";
-
-        }
-
+registerForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    if (registerButton.disabled) {
+        return;
     }
 
-);
+    const fullName = document.getElementById("fullName").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const role = document.getElementById("role").value;
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
 
+    // Validate required fields
+    if (!fullName || !email || !phone || !role || !password || !confirmPassword) {
+        showMessage("Please fill in all fields.", "danger");
+        return;
+    }
+
+    // Validate email
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailPattern.test(email)) {
+        showMessage("Please enter a valid email address.", "danger");
+        return;
+    }
+
+    // Validate phone
+    if (!/^[0-9]{10}$/.test(phone)) {
+        showMessage("Phone number must contain exactly 10 digits.", "danger");
+        return;
+    }
+
+    // Validate password
+    if (password.length < 8) {
+        showMessage("Password must contain at least 8 characters.", "danger");
+        return;
+    }
+
+    // Confirm password
+    if (password !== confirmPassword) {
+        showMessage("Passwords do not match.", "danger");
+        return;
+    }
+
+    // Only allow the roles available in the form
+    const allowedRoles = [
+        "Farmer",
+        "MSME",
+        "Logistics",
+        "Community",
+        "Apartment"
+    ];
+
+    if (!allowedRoles.includes(role)) {
+        showMessage("Please select a valid account role.", "danger");
+        return;
+    }
+
+    registerButton.disabled = true;
+    registerButton.textContent = "Creating Account...";
+    showMessage("Submitting your registration...", "info");
+
+    try {
+        const response = await fetch(`${API_URL}/api/register`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                full_name: fullName,
+                email: email,
+                phone: phone,
+                role: role,
+                password: password
+            })
+        });
+
+        const data = await response.json().catch(() => ({}));
+
+        if (!response.ok || data.success !== true) {
+            showMessage(
+                data.message ||
+                `Registration failed. Server returned status ${response.status}.`,
+                "danger"
+            );
+            return;
+        }
+
+        showMessage(
+            "Registration successful! Redirecting to login...",
+            "success"
+        );
+
+        registerForm.reset();
+
+        setTimeout(() => {
+            window.location.href = "login.html";
+        }, 1500);
+
+    } catch (error) {
+        console.error("Registration error:", error);
+
+        showMessage(
+            "Unable to connect to the server. Please try again later.",
+            "danger"
+        );
+
+    } finally {
+        registerButton.disabled = false;
+        registerButton.textContent = "Create Account";
+    }
+});
 </script>
 
-
 </body>
-
 </html>

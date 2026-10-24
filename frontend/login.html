@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,111 +12,116 @@
 
     <style>
         :root {
-            --green:#198754;
-            --dark-green:#0b5d35;
-            --light-green:#eaf7ef;
-            --dark:#17351f;
+            --green: #198754;
+            --dark-green: #0b5d35;
+            --light-green: #eaf7ef;
+            --dark: #17351f;
         }
 
         body {
-            min-height:100vh;
-            font-family:Arial,sans-serif;
-            background:linear-gradient(135deg,#eaf7ef,#ffffff);
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #eaf7ef, #ffffff);
         }
 
         .navbar {
-            background:white;
-            box-shadow:0 2px 15px rgba(0,0,0,.08);
+            background: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, .08);
         }
 
         .navbar-brand {
-            color:var(--green)!important;
-            font-size:1.5rem;
-            font-weight:800;
+            color: var(--green) !important;
+            font-size: 1.5rem;
+            font-weight: 800;
         }
 
         .login-section {
-            min-height:calc(100vh - 72px);
-            padding:60px 0;
-            display:flex;
-            align-items:center;
+            min-height: calc(100vh - 72px);
+            padding: 60px 0;
+            display: flex;
+            align-items: center;
         }
 
         .login-card {
-            background:white;
-            border:1px solid #dfeae2;
-            border-radius:28px;
-            box-shadow:0 20px 50px rgba(0,0,0,.08);
-            overflow:hidden;
+            background: white;
+            border: 1px solid #dfeae2;
+            border-radius: 28px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, .08);
+            overflow: hidden;
         }
 
         .login-info {
-            background:linear-gradient(135deg,#0b5d35,#198754);
-            color:white;
-            padding:55px 40px;
+            background: linear-gradient(135deg, #0b5d35, #198754);
+            color: white;
+            padding: 55px 40px;
         }
 
         .login-info h1 {
-            font-weight:800;
+            font-weight: 800;
         }
 
         .login-info p {
-            color:#e7f7ec;
-            line-height:1.8;
+            color: #e7f7ec;
+            line-height: 1.8;
         }
 
         .role-box {
-            display:flex;
-            align-items:center;
-            gap:15px;
-            padding:15px;
-            border:1px solid rgba(255,255,255,.2);
-            border-radius:15px;
-            margin-top:15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, .2);
+            border-radius: 15px;
+            margin-top: 15px;
         }
 
         .role-box i {
-            font-size:1.5rem;
-            color:#bff3d0;
+            font-size: 1.5rem;
+            color: #bff3d0;
         }
 
         .form-section {
-            padding:55px 45px;
+            padding: 55px 45px;
         }
 
         .form-section h2 {
-            color:var(--dark);
-            font-weight:800;
+            color: var(--dark);
+            font-weight: 800;
         }
 
         .form-control,
         .form-select {
-            padding:14px 15px;
-            border-radius:12px;
+            padding: 14px 15px;
+            border-radius: 12px;
         }
 
         .form-control:focus,
         .form-select:focus {
-            border-color:var(--green);
-            box-shadow:0 0 0 .2rem rgba(25,135,84,.15);
+            border-color: var(--green);
+            box-shadow: 0 0 0 .2rem rgba(25, 135, 84, .15);
         }
 
         .message {
-            display:none;
-            border-radius:10px;
-            padding:12px;
-            margin-bottom:15px;
+            display: none;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 15px;
         }
 
         .login-btn {
-            padding:13px;
-            font-weight:700;
+            padding: 13px;
+            font-weight: 700;
         }
 
-        @media(max-width:768px) {
+        .login-btn:disabled {
+            opacity: .7;
+            cursor: wait;
+        }
+
+        @media (max-width: 768px) {
             .login-info,
             .form-section {
-                padding:35px 25px;
+                padding: 35px 25px;
             }
         }
     </style>
@@ -138,17 +144,13 @@
     </div>
 </nav>
 
-
 <section class="login-section">
-
     <div class="container">
 
         <div class="login-card">
-
             <div class="row g-0">
 
                 <div class="col-lg-5">
-
                     <div class="login-info h-100">
 
                         <h1>Welcome Back</h1>
@@ -157,7 +159,6 @@
                             Login to access your AGRI LINKK dashboard
                             and connect with the agricultural ecosystem.
                         </p>
-
 
                         <div class="role-box">
                             <i class="bi bi-person"></i>
@@ -168,7 +169,6 @@
                             </div>
                         </div>
 
-
                         <div class="role-box">
                             <i class="bi bi-building"></i>
                             <div>
@@ -178,7 +178,6 @@
                             </div>
                         </div>
 
-
                         <div class="role-box">
                             <i class="bi bi-truck"></i>
                             <div>
@@ -187,7 +186,6 @@
                                 <small>Discover products and farmers</small>
                             </div>
                         </div>
-
 
                         <div class="role-box">
                             <i class="bi bi-people"></i>
@@ -199,12 +197,9 @@
                         </div>
 
                     </div>
-
                 </div>
 
-
                 <div class="col-lg-7">
-
                     <div class="form-section">
 
                         <h2>Login</h2>
@@ -213,13 +208,15 @@
                             Enter your account details.
                         </p>
 
-                        <div id="message" class="message"></div>
+                        <div id="message"
+                             class="message"
+                             role="alert"
+                             aria-live="polite"></div>
 
                         <form id="loginForm">
 
                             <div class="mb-3">
-
-                                <label class="form-label">
+                                <label for="email" class="form-label">
                                     Email Address
                                 </label>
 
@@ -228,15 +225,13 @@
                                     id="email"
                                     class="form-control"
                                     placeholder="name@example.com"
+                                    autocomplete="email"
                                     required
                                 >
-
                             </div>
 
-
                             <div class="mb-3">
-
-                                <label class="form-label">
+                                <label for="password" class="form-label">
                                     Password
                                 </label>
 
@@ -245,23 +240,19 @@
                                     id="password"
                                     class="form-control"
                                     placeholder="Enter your password"
+                                    autocomplete="current-password"
                                     required
                                 >
-
                             </div>
 
-
                             <div class="mb-4">
-
-                                <label class="form-label">
+                                <label for="role" class="form-label">
                                     Login As
                                 </label>
 
-                                <select
-                                    id="role"
-                                    class="form-select"
-                                    required
-                                >
+                                <select id="role"
+                                        class="form-select"
+                                        required>
 
                                     <option value="">
                                         Select your role
@@ -275,22 +266,22 @@
                                     <option value="Admin">Admin</option>
 
                                 </select>
-
                             </div>
-
 
                             <button
                                 type="submit"
-                                class="btn btn-success w-100 rounded-pill login-btn"
-                            >
+                                id="loginButton"
+                                class="btn btn-success w-100 rounded-pill login-btn">
+
                                 Login to AGRI LINKK
+
                             </button>
 
                         </form>
 
-
                         <p class="text-center text-muted mt-4 mb-0">
                             Don't have an account?
+
                             <a href="register.html"
                                class="text-success fw-bold text-decoration-none">
                                 Create Account
@@ -298,26 +289,24 @@
                         </p>
 
                     </div>
-
                 </div>
 
             </div>
-
         </div>
 
     </div>
-
 </section>
-
 
 <script src="js/validation.js"></script>
 
 <script>
+const API_BASE_URL = "https://agri-linkk-api.onrender.com";
+
 const loginForm = document.getElementById("loginForm");
 const message = document.getElementById("message");
+const loginButton = document.getElementById("loginButton");
 
 function showMessage(text, success = false) {
-
     message.style.display = "block";
 
     message.className = success
@@ -327,49 +316,37 @@ function showMessage(text, success = false) {
     message.textContent = text;
 }
 
-
 loginForm.addEventListener("submit", async function(event) {
-
     event.preventDefault();
 
-    const email =
-        document.getElementById("email").value.trim();
-
-    const password =
-        document.getElementById("password").value;
-
-    const role =
-        document.getElementById("role").value;
-
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+    const role = document.getElementById("role").value;
 
     if (!email || !password || !role) {
-
         showMessage("Please fill all fields.");
-
         return;
     }
 
-
-    if (typeof validateEmail === "function" &&
-        !validateEmail(email)) {
-
+    if (
+        typeof validateEmail === "function" &&
+        !validateEmail(email)
+    ) {
         showMessage("Please enter a valid email address.");
-
         return;
     }
 
+    loginButton.disabled = true;
+    loginButton.textContent = "Connecting...";
 
     try {
-
         const response = await fetch(
-            "https://agri-linkk-production.up.railway.app/api/login",
+            `${API_BASE_URL}/api/login`,
             {
                 method: "POST",
-
                 headers: {
                     "Content-Type": "application/json"
                 },
-
                 body: JSON.stringify({
                     email,
                     password,
@@ -378,75 +355,72 @@ loginForm.addEventListener("submit", async function(event) {
             }
         );
 
+        let data;
 
-        const data = await response.json();
-
+        try {
+            data = await response.json();
+        } catch {
+            throw new Error(
+                "The server returned an invalid response. Please try again."
+            );
+        }
 
         if (!response.ok) {
-
-            showMessage(
-                data.message || "Login failed."
-            );
-
+            showMessage(data.message || "Login failed.");
             return;
         }
 
+        if (!data.token || !data.user) {
+            showMessage(
+                "The server response is missing login information."
+            );
+            return;
+        }
 
-        localStorage.setItem(
-            "agrilinkkToken",
-            data.token
-        );
-
-
+        localStorage.setItem("agrilinkkToken", data.token);
         localStorage.setItem(
             "agrilinkkUser",
             JSON.stringify(data.user)
         );
 
-
-        showMessage(
-            "Login successful! Redirecting...",
-            true
-        );
-
+        showMessage("Login successful! Redirecting...", true);
 
         const dashboards = {
-
             Farmer: "farmer-dashboard.html",
-
             MSME: "msme-dashboard.html",
-
             Logistics: "logistics-dashboard.html",
-
             Community: "community-dashboard.html",
-
             Apartment: "apartment-dashboard.html",
-
             Admin: "admin-dashboard.html"
-
         };
 
+        const destination = dashboards[role];
+
+        if (!destination) {
+            showMessage(
+                "Login succeeded, but no dashboard is configured for this role."
+            );
+            return;
+        }
 
         setTimeout(() => {
-
-            window.location.href =
-                dashboards[role];
-
+            window.location.href = destination;
         }, 700);
 
-
     } catch (error) {
-
-        console.error(error);
+        console.error("Login request failed:", error);
 
         showMessage(
-            "Unable to connect to the server. Make sure the backend is running on port 5000."
+            "Unable to connect to AGRI LINKK. Please check your internet connection and try again. If the problem continues, the backend or database may be unavailable."
         );
 
+    } finally {
+        loginButton.disabled = false;
+        loginButton.textContent = "Login to AGRI LINKK";
     }
-
 });
 </script>
 
 </body>
 </html>
+```
